@@ -3,13 +3,11 @@
     <div class="contenedor" v-if="this.$route.name === 'landing' || this.$route.name === 'registro' || this.$route.name === 'login'">
       <div
         class="menu">
-     
           <a href="/">Inicio</a>
           <a href="login">Login</a>
           <a href="registro">Registro</a>
-
       </div>
-      <div class="cuerpo"></div>
+
     </div>
     <router-view></router-view>
   </div>
@@ -22,9 +20,9 @@ export default {};
 <style>
 .contenedor {
   display: grid;
-  height: 100vh;
+  height: 7vh;
   grid-template-columns: repeat(8, 1fr);
-  grid-template-rows: 7% 93%;
+  grid-template-rows: 100%;
 
 }
 
@@ -43,8 +41,4 @@ export default {};
 
 }
 
-.cuerpo {
-  background-color: rgb(255, 255, 255);
-  grid-column: 1/-1;
-}
 </style>
