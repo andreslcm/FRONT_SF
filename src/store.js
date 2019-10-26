@@ -56,6 +56,23 @@ export const store = new Vuex.Store({
         })
         .catch(() => alert("Credenciales incorrectas"));
     },
+
+    /**
+     * Método para registrar un usuario.
+     * @param {store} context 
+     * @param {Objeto usuario} datos 
+     */
+    registrarUsuario: async function (context, datos) {
+      axios
+        .post("http://localhost:7070/registro", datos)
+        .then(() => {
+          alert("Registrado con éxito");
+          router.push("login");
+        })
+        .catch((error) => {
+          alert(error.response.data.message);
+        });
+    },
   },
   getters: {
     /**
