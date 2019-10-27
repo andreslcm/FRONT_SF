@@ -4,7 +4,7 @@ import LandingPage from './components/LandingPage.vue'
 import Logged from './components/Logged.vue'
 import Login from './components/Login.vue'
 import Registro from './components/Registro.vue'
-import { Store } from 'vuex'
+import { store } from './store'
 
 Vue.use(VueRouter)
 /**
@@ -47,9 +47,9 @@ export const router = new VueRouter ({
   mode: 'history'
 })
 
-router.beforeEach((to, from, next)=>{
-  if(to.matched.some(record => record.meta.requiresAuth)){
-    if(!Store.getters.estaAutenticado){
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.requiresAuth)){
+    if (!store.getters.estaAutenticado){
       next({
         path: '/login'
       })

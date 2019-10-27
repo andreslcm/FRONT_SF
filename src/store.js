@@ -56,7 +56,6 @@ export const store = new Vuex.Store({
         })
         .catch(() => alert("Credenciales incorrectas"));
     },
-
     /**
      * Método para registrar un usuario.
      * @param {store} context 
@@ -73,6 +72,13 @@ export const store = new Vuex.Store({
           alert(error.response.data.message);
         });
     },
+    logout: function(context){
+      localStorage.setItem("tokenJwt", null);
+      localStorage.setItem("idUsuario", null);
+      context.commit('SET_TOKEN', null);
+      context.commit('SET_ID', null);
+      router.push('login');
+    }
   },
   getters: {
     /**
@@ -94,9 +100,9 @@ export const store = new Vuex.Store({
      * @param {store} state 
      */
     estaAutenticado: function (state){
-      if(state.token != null){
+      if (state.token != "null"){
         return true;
-      }else {
+      } else {
         return false;
       }
     }

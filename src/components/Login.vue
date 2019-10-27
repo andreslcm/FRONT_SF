@@ -1,7 +1,7 @@
 <template>
   <div class="contenedor">
     <div class="formulario">
-      <img class="imagen" src="../assets/Recurso 4.png">
+      <img class="imagen" src="../assets/logo-azul.png">
        <label for="nombreUsuario">
         <b>Nombre de usuario</b>
       </label>
