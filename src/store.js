@@ -8,6 +8,9 @@ Vue.use(Vuex)
  * En el store se almacenan los datos y los métodos para cambiar estos datos.
  */
 export const store = new Vuex.Store({
+  /**
+   * ESTADO
+   */
   state: {
     token: localStorage.getItem("tokenJwt") || null,
     id: localStorage.getItem("idUsuario") || null,
@@ -16,6 +19,9 @@ export const store = new Vuex.Store({
     datosUsuario: {},
     contador: 0,
   },
+  /**
+   * MUTACIONES
+   */
   mutations: {
     /**
      * Mutación para cambiar el estado del token.
@@ -74,6 +80,9 @@ export const store = new Vuex.Store({
       state.filtro = filtro;
     },
   },
+  /**
+   * ACCIONES
+   */
   actions: {
     /**
      * Función asincrónica para inicio de sesión y captura de token y del id del usuario.
@@ -190,6 +199,9 @@ export const store = new Vuex.Store({
       context.commit('SET_CONTADOR', numero)
     },
   },
+  /**
+   * GETTERS
+   */
   getters: {
     /**
      * Método para obtener el id.

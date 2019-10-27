@@ -73,7 +73,6 @@ export default {
   padding: 0px 16px;
   background-color: white;
   border: 1px solid #f1f1f1;
- 
 }
 
 .imagen{

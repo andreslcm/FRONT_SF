@@ -1,14 +1,45 @@
 <template>
   <div class="contenedor">
     <SideBar class="sideBar"/>
+    <Clientes class="pagina" v-if="getContador === 1" />
+    <Facturas class="pagina" v-else-if="getContador === 2" />
+    <Estadisticas class="pagina" v-else-if="getContador === 3" />
+    <Usuario class="pagina" v-else-if="getContador === 4"/>
   </div>
 </template>
 
 <script>
-import SideBar from './SideBar.vue'
+import { mapActions } from 'vuex';
+import { mapGetters } from 'vuex';
+import SideBar from './SideBar.vue';
+import Clientes from './Clientes.vue';
+import Facturas from './Facturas.vue';
+import Estadisticas from './Estadisticas.vue';
+import Usuario from './Usuario';
 export default {
   components:{
     SideBar,
+    Clientes,
+    Facturas,
+    Estadisticas,
+    Usuario
+  },
+  methods: {
+    ...mapActions([
+      'cargarClientes',
+      'cargarFacturas',
+      'traerDatosUsuario'
+    ])
+  },
+  computed: {
+    ...mapGetters([
+      'getContador'
+    ])
+  },
+  created(){
+    this.cargarClientes();
+    this.cargarFacturas();
+    this.traerDatosUsuario();
   }
 }
 </script>
