@@ -169,21 +169,21 @@ export const store = new Vuex.Store({
   getters: {
     /**
      * Método para obtener el id.
-     * @param {Number} state 
+     * @param {estado} state 
      */
     getIdUsuario: function (state) {
       return state.id;
     },
     /**
      * 
-     * @param {String} state 
+     * @param {estado} state 
      */
     getToken: function (state) {
       return state.token;
     },
     /**
      * Método para saber si el usuario está autenticado.
-     * @param {store} state 
+     * @param {estado} state 
      */
     estaAutenticado: function (state) {
       if (state.token != "null") {
@@ -191,6 +191,28 @@ export const store = new Vuex.Store({
       } else {
         return false;
       }
-    }
+    },
+    /**
+     * Método para traer los clientes del usuario.
+     * @param {estado} state
+     */
+    getClientes: function (state) {
+      return state.clientes;
+    },
+    /**
+     * Método para traer el contador.
+     * @param {estado} state
+     */
+    getContador: function (state) {
+      return state.contador;
+    },
+    /**
+     * Método para traer los datos del usuario.
+     * @param {estado} state
+     */
+    getDatosUsuario: function (state){
+      console.log(state.datosUsuario)
+        return state.datosUsuario;
+    },
   }
 })
