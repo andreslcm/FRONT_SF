@@ -64,7 +64,15 @@ export const store = new Vuex.Store({
     */
     SET_DATOS_USUARIO(state, datos) {
       state.datosUsuario = datos;
-    }
+    },
+    /**
+     * Mutación para cambiar el estado del filtro de las facturas.
+     * @param {estado} state
+     * @param {Objeto filtro} filtro
+     */
+    SET_FILTRO(state, filtro) {
+      state.filtro = filtro;
+    },
   },
   actions: {
     /**
@@ -164,6 +172,14 @@ export const store = new Vuex.Store({
           .then(respuesta => {
               context.commit('SET_DATOS_USUARIO', respuesta.data);
           });
+    },
+    /**
+     * Función para establecer el filtro de las facturas.
+     * @param {Objeto filtro} filtro
+     * @param {store} context
+     */
+    filtrar: function (context, filtro) {
+      context.commit('SET_FILTRO', filtro)
     },
   },
   getters: {
