@@ -89,5 +89,16 @@ export const store = new Vuex.Store({
     getToken: function (state) {
       return state.token;
     },
+    /**
+     * Método para saber si el usuario está autenticado.
+     * @param {store} state 
+     */
+    estaAutenticado: function (state){
+      if(state.token != null){
+        return true;
+      }else {
+        return false;
+      }
+    }
   }
 })
