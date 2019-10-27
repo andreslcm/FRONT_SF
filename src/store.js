@@ -181,6 +181,14 @@ export const store = new Vuex.Store({
     filtrar: function (context, filtro) {
       context.commit('SET_FILTRO', filtro)
     },
+    /**
+     * Función para actualizar el contador de páginas.
+     * @param {store} context
+     * @param {Number} numero
+     */
+    actualizarContador: function (context, numero) {
+      context.commit('SET_CONTADOR', numero)
+    },
   },
   getters: {
     /**

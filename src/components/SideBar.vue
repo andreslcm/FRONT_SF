@@ -1,10 +1,10 @@
 <template>
   <div class="contenedor-side">
     <img class="imagen" src="../assets/logo-blanco.png" alt="">
-    <button class="botones boton-1">Clientes</button>
-    <button class="botones boton-2">Facturas</button>
-    <button class="botones boton-3">Estadísticas</button>
-    <button class="botones boton-4">Usuario</button>
+    <button @click="actualizarContador(1)" class="botones boton-1">Clientes</button>
+    <button @click="actualizarContador(2)" class="botones boton-2">Facturas</button>
+    <button @click="actualizarContador(3)" class="botones boton-3">Estadísticas</button>
+    <button @click="actualizarContador(4)" class="botones boton-4">Usuario</button>
     <img class="logout" src="../assets/logout.png" @click="logout">
   </div>
 </template>
@@ -15,7 +15,8 @@ export default {
   name: 'SideBar',
   methods: {
     ...mapActions([
-      'logout'
+      'logout',
+      'actualizarContador'
     ])
   }
 };
