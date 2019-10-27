@@ -8,24 +8,42 @@
       <label for="correo">
         <b>Correo electrónico</b>
       </label>
-      <input v-model="usuario.correo" type="text" placeholder="Ingrese su correo electrónico" name="correo" required />
-     
+      <input
+        v-model="usuario.correo"
+        type="text"
+        placeholder="Ingrese su correo electrónico"
+        name="correo"
+        required
+      />
+
       <label for="nombreUsuario">
         <b>Nombre de usuario</b>
       </label>
-      <input v-model="usuario.nombreUsuario" type="text" placeholder="Nombre de usuario" name="nombreUsuario" required />
+      <input
+        v-model="usuario.nombreUsuario"
+        type="text"
+        placeholder="Nombre de usuario"
+        name="nombreUsuario"
+        required
+      />
 
       <label for="contrasena">
         <b>Contraseña</b>
       </label>
-      <input v-model="usuario.contrasena" type="password" placeholder="Ingrese su contraseña" name="contraseña" required />
+      <input
+        v-model="usuario.contrasena"
+        type="password"
+        placeholder="Ingrese su contraseña"
+        name="contraseña"
+        required
+      />
 
       <label for="repetir">
         <b>Repita su contraseña</b>
       </label>
       <input type="password" placeholder="Repita la contraseña" name="repetir" required />
       <hr />
-   
+
       <button @click="registrarUsuario(usuario)" class="boton-registro">Registrar</button>
 
       <div class="formulario sesion">
@@ -39,21 +57,19 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+import { mapActions } from "vuex";
 export default {
   data() {
     return {
       usuario: {
         contrasena: "",
         nombreUsuario: "",
-        correo: "",
+        correo: ""
       }
     };
   },
   methods: {
-    ...mapActions([
-      'registrarUsuario'
-    ])
+    ...mapActions(["registrarUsuario"])
   }
 };
 </script>
@@ -132,15 +148,15 @@ h2 {
 
 @media screen and (max-width: 1400px) {
   .contenedor {
-  display: grid;
-  height: 93vh;
-  grid-template-columns: repeat (8, 1fr);
-  grid-template-rows: 10% 80% 10%;
-  grid-template-areas:
-    "c c c c c c c c"
-    ". . . f f . . ."
-    "a a a a a a a a";
-}
+    display: grid;
+    height: 93vh;
+    grid-template-columns: repeat (8, 1fr);
+    grid-template-rows: 10% 80% 10%;
+    grid-template-areas:
+      "c c c c c c c c"
+      ". . . f f . . ."
+      "a a a a a a a a";
+  }
   input[type="text"],
   input[type="password"] {
     width: 100%;
@@ -151,18 +167,18 @@ h2 {
     background: #f1f1f1;
   }
   .boton-registro {
-  background-color: #4caf50;
-  color: white;
-  padding: 7px 15px;
-  margin: 10px 0;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-  opacity: 0.9;
-}
-hr {
-  border: 1px solid #f1f1f1;
-  margin-bottom: 5px;
-}
+    background-color: #4caf50;
+    color: white;
+    padding: 7px 15px;
+    margin: 10px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+  }
+  hr {
+    border: 1px solid #f1f1f1;
+    margin-bottom: 5px;
+  }
 }
 </style>

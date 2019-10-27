@@ -1,13 +1,34 @@
 <template>
   <div class="contenedor">
     <div class="formulario">
-      <div class="imagen"></div>
-      <div class="entradas">
-        <label for="nombreUsuario">Usuario</label>
-        <input v-model="usuario.nombreUsuario" type="text" id="nombreUsuario" />
-        <label for="contrasena">Contraseña</label>
-        <input v-model="usuario.contrasena" type="text" id="contrasena" />
-        <button @click="logear(usuario)">Enviar</button>
+      <img class="imagen" src="../assets/Recurso 4.png">
+       <label for="nombreUsuario">
+        <b>Nombre de usuario</b>
+      </label>
+      <input
+        v-model="usuario.nombreUsuario"
+        type="text"
+        placeholder="Nombre de usuario"
+        name="nombreUsuario"
+        required
+      />
+
+      <label for="contrasena">
+        <b>Contraseña</b>
+      </label>
+      <input
+        v-model="usuario.contrasena"
+        type="password"
+        placeholder="Ingrese su contraseña"
+        name="contraseña"
+        required
+      />
+      <hr />
+      <button class="boton-enviar" @click="logear(usuario)">Enviar</button>
+       <div class="formulario sesion">
+        <p>
+          <a href="#">Recuperar contraseña</a>.
+        </p>
       </div>
     </div>
   </div>
@@ -37,41 +58,113 @@ export default {
   display: grid;
   height: 93vh;
   grid-template-columns: repeat (8, 1fr);
-  grid-template-rows: 100%;
+  grid-template-rows: 10% 57% 33%;
+  grid-template-areas:
+    "c c c c c c c c"
+    ". . . f f . . ."
+    "a a a a a a a a";
 }
 
+* {
+  box-sizing: border-box;
+}
 .formulario {
-  border: solid 1px black;
-  border-radius: 5px;
-  background-color: rgba(53, 53, 59, 0.486);
-  box-shadow: 5px 10px 8px #888888;
-  grid-column: 4/6;
-  height: 50%;
-  margin-top: 30%;
-
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: repeat(2, 1fr);
-
-  grid-template-areas:
-    "i"
-    "e";
+  grid-area: f;
+  padding: 0px 16px;
+  background-color: white;
+  border: 1px solid #f1f1f1;
+ 
 }
 
 .imagen{
-  grid-area: i;
+  margin-bottom: 5px;
+  width: 100%;
 }
 
-.entradas {
-  grid-area: e;
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 12px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
 }
 
-.entradas > *{
-  display: flex;
-  flex: 1;
-  justify-content: center;
-  margin: 5px auto;
+input[type="text"]:focus,
+input[type="password"]:focus {
+  background-color: #ddd;
+  outline: none;
 }
 
+hr {
+  border: 1px solid #f1f1f1;
+  margin-top: 5px;
+  margin-bottom: 15px;
+}
+
+.boton-enviar {
+  background-color: #4caf50;
+  color: white;
+  padding: 12px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+.boton-enviar:hover {
+  opacity: 1;
+}
+
+a {
+  color: dodgerblue;
+}
+
+.sesion {
+  background-color: #f1f1f1;
+  text-align: center;
+}
+
+h2 {
+  margin: 10px 0;
+}
+
+@media screen and (max-width: 1400px) {
+  .contenedor {
+    display: grid;
+    height: 93vh;
+    grid-template-columns: repeat (8, 1fr);
+    grid-template-rows: 10% 65% 25%;
+    grid-template-areas:
+      "c c c c c c c c"
+      ". . . f f . . ."
+      "a a a a a a a a";
+  }
+  input[type="text"],
+  input[type="password"] {
+    width: 100%;
+    padding: 5px;
+    margin: 5px 0 15px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+  }
+  .boton-enviar {
+    background-color: #4caf50;
+    color: white;
+    padding: 7px 15px;
+    margin: 10px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+  }
+  hr {
+    border: 1px solid #f1f1f1;
+    margin-bottom: 5px;
+  }
+}
 
 </style>
