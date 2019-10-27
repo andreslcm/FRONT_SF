@@ -214,5 +214,62 @@ export const store = new Vuex.Store({
       console.log(state.datosUsuario)
         return state.datosUsuario;
     },
+    /**
+     * Función para traer las facturas con o sin filtros.
+     * @param {estado} state
+     */
+    getFacturas: function (state) {
+      /**
+       * Filtro para listar facturas por clientes.
+       */
+      if (state.filtro.tipo == 'clientes') {
+          return state.facturas.filter(factura => {
+              if (factura.nombreCliente === state.filtro.nombre) {
+                  return true;
+              }
+          })
+      /**
+       * Filtro para traer facturas por estado: vencidas.
+       */
+      } else if (state.filtro.tipo == 'estados' && state.filtro.nombre == 'vencidas') {
+          return state.facturas.filter(factura => {
+              if (factura.estaPagada == false && state.filtro.nombre == 'vencidas' && (new Date(factura.fechaVencimiento).getTime() < new Date().getTime())) {
+                  return true;
+              }
+          })
+      /**
+       * Filtro para traer facturas por estado: pagadas.
+       */
+      } else if (state.filtro.tipo == 'estados' && state.filtro.nombre == 'pagadas') {
+          return state.facturas.filter(factura => {
+              if (factura.estaPagada == true && state.filtro.nombre == 'pagadas') {
+                  return true;
+              }
+          })
+      /**
+       * Filtro para traer facturas por estado: por cobrar.
+       */
+      } else if (state.filtro.tipo == 'estados' && state.filtro.nombre == 'por cobrar') {
+          return state.facturas.filter(factura => {
+              if (factura.estaPagada == false && state.filtro.nombre == 'por cobrar' && (new Date(factura.fechaVencimiento).getTime() > new Date().getTime())) {
+                  return true;
+              }
+          })
+      /**
+       * Filtro para traer facturas por rango de fechas.
+       */
+      } else if (state.filtro.tipo == 'fechas') {
+          var desde = document.getElementById('desde').value;
+          var hasta = document.getElementById('hasta').value;
+          return state.facturas.filter(factura => {
+              if (new Date(factura.fechaFactura).getTime() >=
+                  new Date(desde).getTime() &&
+                  new Date(factura.fechaFactura).getTime() <= new Date(hasta).getTime()) {
+                  return true;
+              }
+          })
+      }
+      return state.facturas;
+    },
   }
 })
