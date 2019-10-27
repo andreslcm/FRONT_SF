@@ -134,6 +134,22 @@ export const store = new Vuex.Store({
           context.commit('SET_CLIENTES', respuesta.data)
         });
     },
+    /**
+     * Función asincrónica para conectarse con al API y cargar las facturas del usuario.
+     * @param {store} context 
+     */
+    cargarFacturas: async function (context) {
+      axios
+        .get(`http://localhost:7070/listar-facturas/${context.getters.getIdUsuario}`, {
+          headers: {
+            Authorization: "Bearer " + context.getters.getToken
+          }
+        })
+        .then(respuesta => {
+
+          context.commit('SET_FACTURAS', respuesta.data);
+        });
+    },
   },
   getters: {
     /**
