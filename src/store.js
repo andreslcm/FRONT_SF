@@ -150,6 +150,21 @@ export const store = new Vuex.Store({
           context.commit('SET_FACTURAS', respuesta.data);
         });
     },
+    /**
+     * Función asincrónica para conectarse con al API y cargar los datos del usuario.
+     * @param {store} context 
+     */
+    traerDatosUsuario: async function (context) {
+      axios
+          .get(`http://localhost:7070/datos-usuario/${context.getters.getIdUsuario}`, {
+              headers: {
+                  Authorization: "Bearer " + context.getters.getToken
+              }
+          })
+          .then(respuesta => {
+              context.commit('SET_DATOS_USUARIO', respuesta.data);
+          });
+    },
   },
   getters: {
     /**
