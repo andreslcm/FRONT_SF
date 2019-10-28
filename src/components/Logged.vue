@@ -5,6 +5,7 @@
     <Facturas class="pagina" v-else-if="getContador === 2" />
     <Estadisticas class="pagina" v-else-if="getContador === 3" />
     <Usuario class="pagina" v-else-if="getContador === 4"/>
+    <AgregarCliente class="pagina" v-else-if="getContador === 5"/>
   </div>
 </template>
 
@@ -16,13 +17,15 @@ import Clientes from './Clientes.vue';
 import Facturas from './Facturas.vue';
 import Estadisticas from './Estadisticas.vue';
 import Usuario from './Usuario';
+import AgregarCliente from './AgregarCliente.vue'
 export default {
   components:{
     SideBar,
     Clientes,
     Facturas,
     Estadisticas,
-    Usuario
+    Usuario,
+    AgregarCliente,
   },
   methods: {
     ...mapActions([

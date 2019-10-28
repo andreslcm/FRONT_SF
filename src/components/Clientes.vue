@@ -1,7 +1,7 @@
 <template>
   <div class="contenedor-clientes">
     <div class="caja-iconos">
-      <img class="iconos" src="../assets/agregar.png" alt />
+      <img @click="actualizarContador(5)" class="iconos" src="../assets/agregar.png" alt />
       <img class="iconos" src="../assets/editar.png" alt />
       <img class="iconos" src="../assets/borrar.png" alt />
     </div>
@@ -34,9 +34,13 @@
 
 <script>
 import { mapGetters } from "vuex";
+import {mapActions} from 'vuex';
 export default {
+  methods: {
+    ...mapActions(['actualizarContador'])
+  },
   computed: {
-    ...mapGetters(["getClientes"])
+    ...mapGetters(['getClientes'])
   }
 };
 </script>
