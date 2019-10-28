@@ -131,12 +131,13 @@
       />
 
       <hr />
-      <button class="boton-enviar" @click="logear(usuario)">Enviar</button>
+      <button class="boton-enviar" @click="agregarCliente(cliente)">Enviar</button>
     </div>
   </div>
 </template>
 
 <script>
+import {mapActions} from 'vuex';
 export default {
   data() {
     return {
@@ -157,6 +158,9 @@ export default {
         horaProofreading: ""
       }
     };
+  },
+  methods:{
+    ...mapActions(['agregarCliente'])
   }
 };
 </script>

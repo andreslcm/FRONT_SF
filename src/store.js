@@ -173,14 +173,14 @@ export const store = new Vuex.Store({
      */
     traerDatosUsuario: async function (context) {
       axios
-          .get(`http://localhost:7070/datos-usuario/${context.getters.getIdUsuario}`, {
-              headers: {
-                  Authorization: "Bearer " + context.getters.getToken
-              }
-          })
-          .then(respuesta => {
-              context.commit('SET_DATOS_USUARIO', respuesta.data);
-          });
+        .get(`http://localhost:7070/datos-usuario/${context.getters.getIdUsuario}`, {
+          headers: {
+            Authorization: "Bearer " + context.getters.getToken
+          }
+        })
+        .then(respuesta => {
+          context.commit('SET_DATOS_USUARIO', respuesta.data);
+        });
     },
     /**
      * Función para establecer el filtro de las facturas.
@@ -197,6 +197,49 @@ export const store = new Vuex.Store({
      */
     actualizarContador: function (context, numero) {
       context.commit('SET_CONTADOR', numero)
+    },
+    /**
+     * Función asincrónica para agregar un cliente.
+     * @param {store} context 
+     * @param {Objeto cliente} datos 
+     */
+    agregarCliente: async function (context, datos) {
+      axios
+        .post(
+          `http://localhost:7070/agregar-cliente/${context.getters.getIdUsuario}`,
+
+          datos
+          ,
+          {
+            headers: {
+              Authorization: "Bearer " + context.getters.getToken
+            }
+          }
+        )
+        .then(() => {
+          alert("Cliente agregado con éxtio.")
+          context.dispatch('cargarClientes');
+          context.dispatch('actualizarContador', 1);
+        });
+    },
+    /**
+     * Función asincrónica para un borrar cliente.
+     * @param {store} context
+     */
+    borrarCliente: async function (context, idCliente) {
+      if (confirm("¿Está seguro de que desea elmininar a este cliente?")) {
+        axios
+        .delete(`http://localhost:7070/borrar-cliente/${idCliente}`, {
+          headers: {
+            Authorization: "Bearer " + context.getters.getToken
+          }
+        })
+        .then(() => {
+          alert("Cliente eliminado con éxito.")
+          context.dispatch('cargarClientes');
+          context.dispatch('actualizarContador', 1);
+        });
+      }
     },
   },
   /**
@@ -246,9 +289,9 @@ export const store = new Vuex.Store({
      * Método para traer los datos del usuario.
      * @param {estado} state
      */
-    getDatosUsuario: function (state){
+    getDatosUsuario: function (state) {
       console.log(state.datosUsuario)
-        return state.datosUsuario;
+      return state.datosUsuario;
     },
     /**
      * Función para traer las facturas con o sin filtros.
@@ -259,51 +302,51 @@ export const store = new Vuex.Store({
        * Filtro para listar facturas por clientes.
        */
       if (state.filtro.tipo == 'clientes') {
-          return state.facturas.filter(factura => {
-              if (factura.nombreCliente === state.filtro.nombre) {
-                  return true;
-              }
-          })
-      /**
-       * Filtro para traer facturas por estado: vencidas.
-       */
+        return state.facturas.filter(factura => {
+          if (factura.nombreCliente === state.filtro.nombre) {
+            return true;
+          }
+        })
+        /**
+         * Filtro para traer facturas por estado: vencidas.
+         */
       } else if (state.filtro.tipo == 'estados' && state.filtro.nombre == 'vencidas') {
-          return state.facturas.filter(factura => {
-              if (factura.estaPagada == false && state.filtro.nombre == 'vencidas' && (new Date(factura.fechaVencimiento).getTime() < new Date().getTime())) {
-                  return true;
-              }
-          })
-      /**
-       * Filtro para traer facturas por estado: pagadas.
-       */
+        return state.facturas.filter(factura => {
+          if (factura.estaPagada == false && state.filtro.nombre == 'vencidas' && (new Date(factura.fechaVencimiento).getTime() < new Date().getTime())) {
+            return true;
+          }
+        })
+        /**
+         * Filtro para traer facturas por estado: pagadas.
+         */
       } else if (state.filtro.tipo == 'estados' && state.filtro.nombre == 'pagadas') {
-          return state.facturas.filter(factura => {
-              if (factura.estaPagada == true && state.filtro.nombre == 'pagadas') {
-                  return true;
-              }
-          })
-      /**
-       * Filtro para traer facturas por estado: por cobrar.
-       */
+        return state.facturas.filter(factura => {
+          if (factura.estaPagada == true && state.filtro.nombre == 'pagadas') {
+            return true;
+          }
+        })
+        /**
+         * Filtro para traer facturas por estado: por cobrar.
+         */
       } else if (state.filtro.tipo == 'estados' && state.filtro.nombre == 'por cobrar') {
-          return state.facturas.filter(factura => {
-              if (factura.estaPagada == false && state.filtro.nombre == 'por cobrar' && (new Date(factura.fechaVencimiento).getTime() > new Date().getTime())) {
-                  return true;
-              }
-          })
-      /**
-       * Filtro para traer facturas por rango de fechas.
-       */
+        return state.facturas.filter(factura => {
+          if (factura.estaPagada == false && state.filtro.nombre == 'por cobrar' && (new Date(factura.fechaVencimiento).getTime() > new Date().getTime())) {
+            return true;
+          }
+        })
+        /**
+         * Filtro para traer facturas por rango de fechas.
+         */
       } else if (state.filtro.tipo == 'fechas') {
-          var desde = document.getElementById('desde').value;
-          var hasta = document.getElementById('hasta').value;
-          return state.facturas.filter(factura => {
-              if (new Date(factura.fechaFactura).getTime() >=
-                  new Date(desde).getTime() &&
-                  new Date(factura.fechaFactura).getTime() <= new Date(hasta).getTime()) {
-                  return true;
-              }
-          })
+        var desde = document.getElementById('desde').value;
+        var hasta = document.getElementById('hasta').value;
+        return state.facturas.filter(factura => {
+          if (new Date(factura.fechaFactura).getTime() >=
+            new Date(desde).getTime() &&
+            new Date(factura.fechaFactura).getTime() <= new Date(hasta).getTime()) {
+            return true;
+          }
+        })
       }
       return state.facturas;
     },
