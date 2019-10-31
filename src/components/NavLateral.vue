@@ -30,7 +30,7 @@
       <div class="contenido-dm">
         <a href="#" @click="filtrar({tipo: 'estados', nombre: 'pagadas'})">Pagadas</a>
         <a href="#" @click="filtrar({tipo: 'estados', nombre: 'vencidas'})">Vencidas</a>
-        <a href="#" @click="filtrar({tipo: 'estados', nombre: 'por cobrar'})">Por cobrar</a>
+        <a href="#" @click="filtrar({tipo: 'estados', nombre: 'por cobrar'})">Abierta</a>
         <a href="#" @click="filtrar({tipo: 'todos', nombre: ''})">Todos</a>
       </div>
     </div>

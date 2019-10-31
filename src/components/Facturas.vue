@@ -27,10 +27,10 @@
               </td>
               <td>{{factura.numeroFactura}}</td>
               <td>{{factura.ordenCompra}}</td>
-              <td>{{factura.fechaFactura}}</td>
-              <td>{{factura.fechaVencimiento}}</td>
+              <td>{{factura.fechaFactura | formatoFecha}}</td>
+              <td>{{factura.fechaVencimiento | formatoFecha}}</td>
               <td>{{factura.nombreCliente}}</td>
-              <td>{{factura.estado}}</td>
+              <td>{{factura | formatoEstado}}</td>
               <td>{{factura.total}}</td>
               <td>
                 <button>↕</button>
@@ -53,6 +53,40 @@ export default {
   },
   computed: {
     ...mapGetters(["getFacturas"])
+  },
+  filters: {
+    formatoFecha: function(fecha) {
+      var miFecha = new Date(fecha);
+      var dia =
+        miFecha.getDate() + 1 <= 9
+          ? "0" + String(miFecha.getDate() + 1)
+          : String(miFecha.getDate() + 1);
+      var mes =
+        miFecha.getMonth() + 1 <= 9
+          ? "0" + String(miFecha.getMonth() + 1)
+          : String(miFecha.getMonth() + 1);
+      var anio = String(miFecha.getFullYear());
+      var fechaCompleta = dia + "-" + mes + "-" + anio;
+      return fechaCompleta;
+    },
+    formatoEstado: function(factura) {
+      var miFecha = new Date(factura.fechaVencimiento);
+      var miEstado = "";
+      if (
+        miFecha.getTime() < new Date().getTime() &&
+        factura.estaPagada == false
+      ) {
+        miEstado = "Vencida";
+      } else if (
+        miFecha.getTime() > new Date().getTime() &&
+        factura.estaPagada == false
+      ) {
+        miEstado = "Abierta";
+      } else if (factura.estaPagada == true) {
+        miEstado = "Pagada";
+      }
+      return miEstado;
+    }
   }
 };
 </script>
