@@ -1,5 +1,5 @@
 <template>
-  <div class="contenedor">
+  <div id="contenedor" class="contenedor">
     <SideBar class="sideBar"/>
     <Clientes class="pagina" v-if="getContador === 1" />
     <Facturas class="pagina" v-else-if="getContador === 2" />
