@@ -11,7 +11,7 @@
     </div>
       <div class="menu-d">
       <button class="boton-dm">
-        Clientes
+        Clientes ▼
       </button>
       <div class="contenido-dm">
         <a
@@ -25,7 +25,7 @@
     </div>
       <div class="menu-d">
       <button class="boton-dm">
-        Clientes
+        Estado ▼
       </button>
       <div class="contenido-dm">
         <a href="#" @click="filtrar({tipo: 'estados', nombre: 'pagadas'})">Pagadas</a>
