@@ -12,8 +12,8 @@
               </th>
               <th>N°</th>
               <th>Orden</th>
-              <th id="fecha">Fecha</th>
-              <th>Vencimiento</th>
+              <th class="orden-f" @click="ordenarPorFecha">Fecha</th>
+              <th class="orden-f" @click="ordenarPorFecha">Vencimiento</th>
               <th>Cliente</th>
               <th>Estado</th>
               <th>Monto</th>
@@ -23,7 +23,7 @@
           <tbody>
             <tr v-for="factura in getFacturas" :key="factura.idFactura">
               <td>
-                <input type="checkbox" name="seleccion" />
+                <input @change="actualizarLista" v-model="idFacturas" :value="factura.idFacturas" type="checkbox" name="seleccion" />
               </td>
               <td>{{factura.numeroFactura}}</td>
               <td>{{factura.ordenCompra}}</td>
@@ -50,7 +50,8 @@ import { mapGetters } from "vuex";
 export default {
   data(){
     return {
-      idFacturas:[]
+      idFacturas: [],
+      contador: 0
     }
   },
   components: {
@@ -80,7 +81,26 @@ export default {
           this.idFacturas = [];
         }
       });
-    }
+    },
+
+    ordenarPorFecha: function() {
+      this.contador++;
+      if (this.contador % 2 != 0) {
+        this.getFacturas.sort(function(a, b) {
+          return (
+            new Date(a.fechaFactura).getTime() -
+            new Date(b.fechaFactura).getTime()
+          );
+        });
+      } else {
+        this.getFacturas.sort(function(a, b) {
+          return (
+            new Date(b.fechaFactura).getTime() -
+            new Date(a.fechaFactura).getTime()
+          );
+        });
+      }
+    },
   },
   filters: {
     formatoFecha: function(fecha) {
@@ -179,5 +199,11 @@ td {
 .tabla-f {
   position: absolute;
   width: 100%;
+}
+
+.orden-f:hover{
+  background-color: #4caf50;
+  color: black;
+  cursor: pointer;
 }
 </style>
