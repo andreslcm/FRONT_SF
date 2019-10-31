@@ -16,6 +16,7 @@ export const store = new Vuex.Store({
     id: localStorage.getItem("idUsuario") || null,
     clientes: [],
     facturas: [],
+    listaIdFacturas: [],
     datosUsuario: {},
     contador: 0,
     filtro: {
@@ -83,6 +84,14 @@ export const store = new Vuex.Store({
     SET_FILTRO(state, filtro) {
       state.filtro = filtro;
     },
+    /**
+     * Mutación para cambiar el estado de la lista de ID de facturas.
+     * @param {estado} state
+     * @param {List} lista
+     */
+    SET_LISTA_ID_FACTURAS(state, lista){
+      state.listaIdFacturas = lista;
+    }
   },
   /**
    * ACCIONES
@@ -265,6 +274,14 @@ export const store = new Vuex.Store({
           });
       }
     },
+    /**
+     * Función para listar los ID de las facturas.
+     * @param {store} context
+     * @param {List} lista
+     */
+    listarIdFacturas: function (context, lista) {
+      context.commit('SET_LISTA_ID_FACTURAS', lista)
+    },
   },
   /**
    * GETTERS
@@ -375,7 +392,7 @@ export const store = new Vuex.Store({
       return state.facturas;
     },
     /**
-     * MMétodo para obtener un cliente por su ID.
+     * Método para obtener un cliente por su ID.
      * @param {estado} state 
      */
     getClientePorId: function (state) {
@@ -386,6 +403,13 @@ export const store = new Vuex.Store({
           }
         })
       }
+    },
+    /**
+     * Método para obtener una lista de ID de facturas.
+     * @param {estado} state
+     */
+    getListaIdFacturas: function (state) {
+      return state.listaIdFacturas;
     },
   }
 })

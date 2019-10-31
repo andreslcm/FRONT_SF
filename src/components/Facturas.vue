@@ -8,7 +8,7 @@
           <thead>
             <tr>
               <th>
-                <input type="checkbox" id="todo" />
+                <input @click="seleccionarTodo" type="checkbox" id="todo" />
               </th>
               <th>N°</th>
               <th>Orden</th>
@@ -45,14 +45,42 @@
 
 <script>
 import NavLateral from "./NavLateral.vue";
-// import { mapActions } from "vuex";
+import { mapActions } from "vuex";
 import { mapGetters } from "vuex";
 export default {
+  data(){
+    return {
+      idFacturas:[]
+    }
+  },
   components: {
     NavLateral
   },
   computed: {
-    ...mapGetters(["getFacturas"])
+    ...mapGetters(['getFacturas', 'getListaFacturas'])
+  },
+  methods: {
+    ...mapActions(['listarIdFacturas']),
+
+    actualizarLista: function(){
+      this.listarIdFacturas(this.idFacturas);
+    },
+
+    seleccionarTodo: function() {
+      var todo = document.getElementById("todo");
+      var selecciones = document.getElementsByName("seleccion");
+      selecciones.forEach(elemento => {
+        elemento.checked = todo.checked;
+        if (
+          todo.checked == true &&
+          !this.idFacturas.includes(Number(elemento.value))
+        ) {
+          this.idFacturas.push(Number(elemento.value));
+        } else if (todo.checked == false) {
+          this.idFacturas = [];
+        }
+      });
+    }
   },
   filters: {
     formatoFecha: function(fecha) {
