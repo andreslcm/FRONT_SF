@@ -47,6 +47,9 @@ export const router = new VueRouter ({
   mode: 'history'
 })
 
+/**
+ * Método para redirigir al usuario en caso de que esté o no autenticado.
+ */
 router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.requiresAuth)){
     if (!store.getters.estaAutenticado){

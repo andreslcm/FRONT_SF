@@ -119,8 +119,8 @@
       />
 
       <hr />
-      <button class="botones">Enviar</button>
-      <button class="botones">Cancelar</button>
+      <button @click="actualizar" class="botones">Enviar</button>
+      <button @click="cerrarModal" class="botones">Cancelar</button>
     </div>
     <div class="caja-iconos">
       <img @click="actualizarContador(5)" class="iconos" src="../assets/agregar.png" alt />
@@ -153,7 +153,7 @@
                 />
               </td>
               <td>
-                <img @click="activarModal" class="iconos-tabla" src="../assets/editar.png" alt />
+                <img @click="activarModal(cliente.idCliente)" class="iconos-tabla" src="../assets/editar.png" alt />
               </td>
               <td>{{cliente.nombreCliente}}</td>
               <td>{{cliente.pais}}</td>
@@ -177,6 +177,7 @@ export default {
     return {
       idCliente: "",
       cliente: {
+        idCliente: "",
         nombreCliente: "",
         ciudad: "",
         estado: "",
@@ -195,14 +196,36 @@ export default {
     };
   },
   methods: {
-    ...mapActions(["actualizarContador", "borrarCliente"]),
-    activarModal: function() {
+    ...mapActions(["actualizarContador", "borrarCliente", "actualizarCliente"]),
+    activarModal: function(idCliente) {
+      var cliente = this.getClientePorId(idCliente)[0];
+      this.cliente.idCliente = cliente.idCliente;
+      this.cliente.nombreCliente = cliente.nombreCliente;
+      this.cliente.ciudad = cliente.ciudad;
+      this.cliente.estado = cliente.estado;
+      this.cliente.pais = cliente.pais;
+      this.cliente.correo = cliente.correo;
+      this.cliente.direccion = cliente.direccion;
+      this.cliente.codigoPostal = cliente.codigoPostal;
+      this.cliente.terminoPago = cliente.terminoPago;
+      this.cliente.palabraTraduccion = cliente.palabraTraduccion;
+      this.cliente.palabraEdicion = cliente.palabraEdicion;
+      this.cliente.palabraProofreading = cliente.palabraProofreading;
+      console.log(cliente);
       var modal = document.getElementById("modal-cliente");
       modal.className = "modal-cliente-activado";
+    },
+    cerrarModal: function(){
+      var modal = document.getElementById("modal-cliente");
+      modal.className = "modal-cliente";
+    },
+    actualizar: function(){
+      this.actualizarCliente(this.cliente);
+      this.cerrarModal();
     }
   },
   computed: {
-    ...mapGetters(["getClientes"])
+    ...mapGetters(["getClientes", "getClientePorId"])
   }
 };
 </script>

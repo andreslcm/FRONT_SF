@@ -229,16 +229,36 @@ export const store = new Vuex.Store({
     borrarCliente: async function (context, idCliente) {
       if (confirm("¿Está seguro de que desea elmininar a este cliente?")) {
         axios
-        .delete(`http://localhost:7070/borrar-cliente/${idCliente}`, {
-          headers: {
-            Authorization: "Bearer " + context.getters.getToken
-          }
-        })
-        .then(() => {
-          alert("Cliente eliminado con éxito.")
-          context.dispatch('cargarClientes');
-          context.dispatch('actualizarContador', 1);
-        });
+          .delete(`http://localhost:7070/borrar-cliente/${idCliente}`, {
+            headers: {
+              Authorization: "Bearer " + context.getters.getToken
+            }
+          })
+          .then(() => {
+            alert("Cliente eliminado con éxito.")
+            context.dispatch('cargarClientes');
+            context.dispatch('actualizarContador', 1);
+          });
+      }
+    },
+    /**
+     * Función asincrónica para actualizar lo datos de un cliente específico.
+     * @param {store} context 
+     * @param {Number} idCliente 
+     */
+    actualizarCliente: async function (context, cliente) {
+      if (confirm("¿Está seguro de que desea actualizar los datos?")) {
+        axios
+          .put(`http://localhost:7070/actualizar-cliente/${cliente.idCliente}`, cliente, {
+            headers: {
+              Authorization: "Bearer " + context.getters.getToken
+            }
+          })
+          .then(() => {
+            alert("Cliente actuilizado con éxito.")
+            context.dispatch('cargarClientes');
+            context.dispatch('actualizarContador', 1);
+          });
       }
     },
   },
@@ -349,6 +369,19 @@ export const store = new Vuex.Store({
         })
       }
       return state.facturas;
+    },
+    /**
+     * MMétodo para obtener un cliente por su ID.
+     * @param {estado} state 
+     */
+    getClientePorId: function (state) {
+      return (id) => {
+        return state.clientes.filter(cliente => {
+          if (cliente.idCliente == id) {
+            return true;
+          }
+        })
+      }
     },
   }
 })
