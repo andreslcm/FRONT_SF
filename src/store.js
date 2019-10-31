@@ -18,6 +18,10 @@ export const store = new Vuex.Store({
     facturas: [],
     datosUsuario: {},
     contador: 0,
+    filtro: {
+      tipo: 'todos',
+      nombre: ''
+    }
   },
   /**
    * MUTACIONES

@@ -57,8 +57,12 @@ export default {
   display: inline-block;
   font-size: 16px;
   cursor: pointer;
+  opacity: 0.9;
 }
 
+.botones:hover{
+   opacity: 1;
+}
 .boton-1 {
   grid-area: b1;
 }

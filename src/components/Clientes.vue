@@ -175,7 +175,6 @@ import { mapActions } from "vuex";
 export default {
   data() {
     return {
-      idCliente: "",
       cliente: {
         idCliente: "",
         nombreCliente: "",
