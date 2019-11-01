@@ -311,7 +311,7 @@ export const store = new Vuex.Store({
             context.dispatch('actualizarContador', 2);
           })
           .catch((error) => {
-            console.log(alert(error.response.data.message));
+            alert(error.response.data.message);
           });
       }
     },
@@ -337,6 +337,38 @@ export const store = new Vuex.Store({
             context.dispatch('actualizarContador', 2);
           });
       }
+    },
+    /**
+     * Función asincrónica para agregar una factura.
+     * @param {store} context 
+     * @param {Objeto factura} datos 
+     */
+    agregarFactura: async function (context, datos) {
+      console.log(datos.detalles);
+      axios
+        .post(
+          `http://localhost:7070/crear-factura/${context.getters.getIdUsuario}`,
+          {
+            factura: datos.factura,
+            detalles: datos.detalles
+          },
+          {
+            params: {
+              idCliente: datos.idCliente
+            },
+
+            headers: {
+              Authorization: "Bearer " + context.getters.getToken
+            }
+          },
+        )
+        .then(() => {
+          context.dispatch('cargarFacturas');
+          context.dispatch('actualizarContador', 2);
+        })
+        .catch(error => {
+          alert(error.response.data.message);
+        });
     },
   },
   /**

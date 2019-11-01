@@ -62,7 +62,6 @@
             </tr>
           </table>
         </div>
-        <hr />
       </div>
       <div class="cuerpo-factura">
         <table class="tabla-detalles">
@@ -77,8 +76,9 @@
           </thead>
           <tbody>
             <span v-show="false">{{multiplicacion}}</span>
-            <tr v-for="detalle in detalles" :key="detalle.id">
-              <td>
+            <tr class="fila-detalles" v-for="detalle in detalles" :key="detalle.id">
+              <td class="td-menos">
+                <img @click="eliminarDetalle" class="menos" src="../assets/menos.png" alt />
                 <textarea
                   v-model="detalle.descripcionProyecto"
                   type="text"
@@ -88,7 +88,7 @@
                   placeholder="Descripción del proyecto"
                 ></textarea>
               </td>
-              <td>
+              <td v-if="idCliente!=null">
                 <select class="dm-tarifas" name="tipo" id="seleccion" v-model="detalle.precio">
                   <option :value="getClientePorId(idCliente)[0].palabraTraduccion">Traducción</option>
                   <option :value="getClientePorId(idCliente)[0].palabraEdicion">Edición</option>
@@ -102,29 +102,40 @@
                 <input id="numeroPalabras" type="number" v-model.number="detalle.numeroPalabras" />
               </td>
               <td>
-                <input v-model="detalle.monto" type="number" id="monto" />
+                <input v-model="detalle.monto" type="number" id="monto" readonly />
               </td>
             </tr>
             <tr>
-              <td @click="agregarDetalle">Agregar detalle</td>
+              <td class="agregar-detalle" colspan="5" @click="agregarDetalle">Agregar detalle</td>
             </tr>
             <tr>
-              <td style="border: solid;" colspan="3" rowspan="3">
+              <td class="area-notas" colspan="3" rowspan="3">
                 <textarea placeholder="NOTAS" name id cols="85" rows="10"></textarea>
               </td>
             </tr>
             <tr>
-              <td style=" border: solid;" colspan="2" rowspan="2">
+              <td class="montos" colspan="2" rowspan="2">
                 <label for="subtotal">subtotal</label>
-                <input v-model="suma" type="text" id="subtotal" />
+                <input v-model="suma" type="text" id="subtotal" readonly />
                 <label for="impuestos">Impuestos</label>
                 <input v-model="factura.impuestos" type="text" id="impuestos" />
-                 <label for="total">Total</label>
-                <input v-model="sumaTotal" type="text" id="total" />
+                <label for="total">Total</label>
+                <input v-model="sumaTotal" type="text" id="total" readonly />
               </td>
             </tr>
           </tbody>
         </table>
+      </div>
+      <div class="boton-enviar">
+        <div>
+          <button
+            @click="enviarFactura({factura: factura, detalles: detalles, idCliente: idCliente})"
+            class="boton-f"
+          >Enviar</button>
+        </div>
+        <div>
+          <button class="boton-f">Cancelar</button>
+        </div>
       </div>
     </div>
     <div></div>
@@ -136,14 +147,14 @@ import { mapGetters, mapActions } from "vuex";
 export default {
   data() {
     return {
-      idCliente: 0,
+      idCliente: null,
       factura: {
         numeroFactura: "",
         ordenCompra: "",
         fechaFactura: "",
         fechaVencimiento: "",
         subtotal: "",
-        impuestos: "",
+        impuestos: 0,
         total: 0,
         notas: ""
       },
@@ -154,12 +165,11 @@ export default {
     ...mapGetters(["getClientes", "getClientePorId", "getDatosUsuario"]),
     suma() {
       return this.detalles.reduce((total, detalle) => {
-        return this.factura.subtotal = total + Number(detalle.monto);
+        return total + Number(detalle.monto);
       }, 0);
     },
     sumaTotal() {
-      return this.factura.total =
-        Number(this.factura.subtotal) + Number(this.factura.impuestos);
+      return this.suma + Number(this.factura.impuestos);
     },
     multiplicacion() {
       return this.detalles.forEach(detalle => {
@@ -168,15 +178,25 @@ export default {
     }
   },
   methods: {
-    ...mapActions(["traerDatosUsuario"]),
+    ...mapActions(["traerDatosUsuario", "agregarFactura"]),
+    sumar: function() {
+      this.factura.subtotal = document.getElementById("subtotal").value;
+      this.factura.total = document.getElementById("total").value;
+    },
+    enviarFactura: function(factura, detalles, idCliente) {
+      this.sumar();
+      this.agregarFactura(factura, detalles, idCliente);
+    },
     agregarDetalle: function() {
-      this.contador++;
       this.detalles.push({
         monto: null,
         descripcionProyecto: "",
         precio: "",
         numeroPalabras: ""
       });
+    },
+    eliminarDetalle: function() {
+      this.detalles.splice(this.detalles.length - 1, 1);
     }
   },
   mounted() {
@@ -205,7 +225,10 @@ export default {
   border: solid 1px #f1f1f1;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: repeat(3, 90px) 90px repeat(5, 1fr) repeat(4, 5px);
+  grid-template-rows: repeat(3, 60px) 90px repeat(5, 1fr) 5px 60px repeat(
+      2,
+      5px
+    );
   grid-template-areas:
     ". dc dc dc dc . . du du du du ."
     ". dc dc dc dc . . du du du du ."
@@ -217,7 +240,7 @@ export default {
     ". fa fa fa fa fa fa fa fa fa fa ."
     ". fa fa fa fa fa fa fa fa fa fa ."
     ". . . . . . . . . . . ."
-    ". . . . . . . . . . . ."
+    ". . . bot bot bot bot bot . . . ."
     ". . . . . . . . . . . ."
     ". . . . . . . . . . . .";
 }
@@ -235,23 +258,20 @@ export default {
 
 .datos-cliente {
   grid-area: dc;
-  background-color: aqua;
 }
 
 .datos-usuario {
   grid-area: du;
-  background-color: blue;
 }
 
 .cuerpo-factura {
   grid-area: fa;
-  background-color: blueviolet;
+  border: solid 1px #f1f1f1;
   box-sizing: content-box;
 }
 
 .datos-varios {
   grid-area: df;
-  background-color: yellow;
 }
 
 .c-tabla-v > tr {
@@ -261,7 +281,6 @@ export default {
 
 .c-tabla-v > tr > td {
   flex: 1;
-  background-color: blue;
   font-weight: bold;
   margin: 3px;
   padding: 3px;
@@ -273,7 +292,7 @@ export default {
 
 .datos-p {
   font-weight: bold;
-  font-size: 15pt;
+  font-size: 13pt;
 }
 
 p {
@@ -291,17 +310,17 @@ hr {
   border: 1px solid #f1f1f1;
 }
 
+table {
+  border-collapse: collapse;
+}
 .tabla-detalles > thead {
-  background-color: grey;
+  background-color: #f1f1f1;
 }
-.tabla-detalles > thead > tr >th:nth-child(1n+3) {
+.tabla-detalles > thead > tr > th:nth-child(1n + 3) {
   width: 90px;
-  color: red;
-  
 }
-.tabla-detalles > thead > tr >th:nth-child(2) {
+.tabla-detalles > thead > tr > th:nth-child(2) {
   width: 120px;
-  color: yellow;
 }
 
 .dm-tarifas {
@@ -310,11 +329,86 @@ hr {
   height: 25px;
 }
 
-textarea{
+textarea {
   border: none;
+  width: 99%;
 }
 
-textarea:hover{
+textarea:hover,
+input:hover,
+select:hover {
   background-color: rgb(250, 250, 190);
+}
+
+.boton-enviar {
+  grid-area: bot;
+  display: flex;
+}
+
+.boton-enviar > div {
+  flex: 1;
+  margin: auto;
+  text-align: center;
+}
+
+.boton-f {
+  background-color: #4caf50;
+  color: white;
+  padding: 7px 15px;
+  margin: 10px 5px;
+  border: none;
+  cursor: pointer;
+  opacity: 0.9;
+  width: 70%;
+}
+
+.boton-f:hover {
+  opacity: 1;
+}
+
+.montos {
+  border: 1px solid #f1f1f1;
+  text-align: center;
+  background-color: #f1f1f1;
+}
+
+.montos > label {
+  font-size: 13pt;
+  font-weight: bold;
+}
+
+.montos > input {
+  text-align: center;
+}
+.agregar-detalle {
+  padding: 5px 0px;
+  border: 1px solid #f1f1f1;
+  color: blue;
+  font-weight: bold;
+  background-color: #f1f1f1;
+}
+
+.agregar-detalle:hover {
+  cursor: pointer;
+}
+
+.fila-detalles > td > input {
+  text-align: center;
+}
+
+.menos {
+  flex: 1;
+  width: 15px;
+  height: 15px;
+  margin: auto;
+  padding: 5px;
+}
+
+.menos:hover {
+  cursor: pointer;
+}
+
+.td-menos {
+  display: flex;
 }
 </style>
