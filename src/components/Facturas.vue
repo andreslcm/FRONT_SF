@@ -1,7 +1,17 @@
 <template>
   <div class="contenedor-facturas">
-    <NavLateral class="contenedor-nav-l" :limpiarLista="limpiarLista"/>
-    <div class="contenedor-cifras"></div>
+    <NavLateral class="contenedor-nav-l" :limpiarLista="limpiarLista" />
+    <div class="contenedor-cifras">
+      <table>
+        <tr class="cifras">
+          <td class="total">Total: ${{getTotal}}</td>
+          <td class="por-cobrar">Total por cobrar: ${{getPorCobrar}}</td>
+          <td class="vencidas">Total vencidas: ${{getVencidas}}</td>
+          <td class="pagadas">Total pagadas: ${{getPagadas}}</td>
+          <td>N.° facturas: {{getFacturas.length}}</td>
+        </tr>
+      </table>
+    </div>
     <div class="contenedor-tabla-f">
       <div class="tabla-f">
         <table>
@@ -22,7 +32,13 @@
           <tbody>
             <tr class="seleccionar-f" v-for="factura in getFacturas" :key="factura.idFactura">
               <td>
-                <input v-model="idFacturas" :value="factura.idFactura" type="checkbox" name="seleccion" @change="actualizarLista"/>
+                <input
+                  v-model="idFacturas"
+                  :value="factura.idFactura"
+                  type="checkbox"
+                  name="seleccion"
+                  @change="actualizarLista"
+                />
               </td>
               <td>{{factura.numeroFactura}}</td>
               <td>{{factura.ordenCompra}}</td>
@@ -44,22 +60,29 @@ import NavLateral from "./NavLateral.vue";
 import { mapActions } from "vuex";
 import { mapGetters } from "vuex";
 export default {
-  data(){
+  data() {
     return {
       idFacturas: [],
       contador: 0
-    }
+    };
   },
   components: {
     NavLateral
   },
   computed: {
-    ...mapGetters(['getFacturas', 'getListaFacturas'])
+    ...mapGetters([
+      "getFacturas",
+      "getListaFacturas",
+      "getTotal",
+      "getPorCobrar",
+      "getVencidas",
+      "getPagadas"
+    ])
   },
   methods: {
-    ...mapActions(['listarIdFacturas']),
+    ...mapActions(["listarIdFacturas"]),
 
-    actualizarLista: function(){
+    actualizarLista: function() {
       this.listarIdFacturas(this.idFacturas);
     },
 
@@ -105,13 +128,13 @@ export default {
     formatoFecha: function(fecha) {
       var miFecha = new Date(fecha);
       var dia =
-        miFecha.getDate() + 1 <= 9
-          ? "0" + String(miFecha.getDate() + 1)
-          : String(miFecha.getDate() + 1);
+        miFecha.getDate() <= 9
+          ? "0" + String(miFecha.getDate())
+          : String(miFecha.getDate());
       var mes =
-        miFecha.getMonth() + 1 <= 9
-          ? "0" + String(miFecha.getMonth() + 1)
-          : String(miFecha.getMonth() + 1);
+        miFecha.getMonth() <= 9
+          ? "0" + String(miFecha.getMonth())
+          : String(miFecha.getMonth());
       var anio = String(miFecha.getFullYear());
       var fechaCompleta = dia + "-" + mes + "-" + anio;
       return fechaCompleta;
@@ -170,7 +193,8 @@ export default {
   grid-area: cif;
   height: 100%;
   width: 100%;
-  background-color: aqua;
+  background-color: rgba(138, 138, 138, 0.726);
+
 }
 
 .contenedor-tabla-f {
@@ -200,15 +224,31 @@ td {
   width: 100%;
 }
 
-.orden-f:hover{
+.orden-f:hover {
   background-color: #4caf50;
   color: black;
   cursor: pointer;
 }
 
-.seleccionar-f:hover{
+.seleccionar-f:hover {
   background-color: #4caf50;
   color: black;
   cursor: pointer;
+}
+
+.cifras {
+  font-weight: bold;
+}
+
+.pagadas {
+  color: green;
+}
+
+.por-cobrar {
+  color: yellow;
+}
+
+.vencidas{
+  color: red;
 }
 </style>

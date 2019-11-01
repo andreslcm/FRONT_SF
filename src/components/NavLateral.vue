@@ -1,18 +1,16 @@
 <template>
   <div class="barra-lateral">
     <div class="b-agregar">
-      <button class="boton">Agregar</button>
+      <button @click="actualizarContador(6)" class="boton">Agregar</button>
     </div>
     <div class="b-borrar">
-      <button class="boton">Borrar</button>
+      <button @click="borrar" class="boton">Borrar</button>
     </div>
     <div class="b-pagar">
       <button @click="pagar" class="boton">Pagar</button>
     </div>
-      <div class="menu-d">
-      <button class="boton-dm">
-        Clientes ▼
-      </button>
+    <div class="menu-d">
+      <button class="boton-dm">Clientes ▼</button>
       <div class="contenido-dm">
         <a
           href="#"
@@ -23,10 +21,8 @@
         <a href="#" @click="filtrar({tipo: 'todos', nombre: ''})">Todos</a>
       </div>
     </div>
-      <div class="menu-d">
-      <button class="boton-dm">
-        Estado ▼
-      </button>
+    <div class="menu-d">
+      <button class="boton-dm">Estado ▼</button>
       <div class="contenido-dm">
         <a href="#" @click="filtrar({tipo: 'estados', nombre: 'pagadas'})">Pagadas</a>
         <a href="#" @click="filtrar({tipo: 'estados', nombre: 'vencidas'})">Vencidas</a>
@@ -34,6 +30,13 @@
         <a href="#" @click="filtrar({tipo: 'todos', nombre: ''})">Todos</a>
       </div>
     </div>
+    <div class="fechas">
+      <label for="desde">Desde</label>
+      <input class="quitar-borde" type="date" name="desde" id="desde" />
+      <label for="hasta">Hasta</label>
+      <input class="quitar-borde" type="date" name="desde" id="hasta" />
+    </div>
+    <img class="buscar" src="../assets/buscar.png" @click="filtrar({tipo: 'fechas', nombre: ''})" />
   </div>
 </template>
 
@@ -42,18 +45,28 @@ import { mapGetters, mapActions } from "vuex";
 export default {
   name: "NavLateral",
   computed: {
-    ...mapGetters(['getClientes'])
+    ...mapGetters(["getClientes"])
   },
   methods: {
-    ...mapActions(['filtrar', 'pagarFacturas']),
-    
-    pagar: function(){
-          this.limpiarLista();
-          this.pagarFacturas();
-        },
+    ...mapActions([
+      "filtrar",
+      "pagarFacturas",
+      "borrarFacturas",
+      "actualizarContador"
+    ]),
+
+    pagar: function() {
+      this.limpiarLista();
+      this.pagarFacturas();
+    },
+
+    borrar: function() {
+      this.limpiarLista();
+      this.borrarFacturas();
+    }
   },
-  props:{
-    limpiarLista: Function,
+  props: {
+    limpiarLista: Function
   }
 };
 </script>
@@ -89,7 +102,7 @@ export default {
   display: inline-block;
 }
 
-.boton-dm{
+.boton-dm {
   color: white;
   padding: 7px 15px;
   margin: 10px 5px;
@@ -125,5 +138,23 @@ export default {
 
 .menu-d:hover .boton-dm {
   background-color: #3e8e41;
+}
+
+.buscar {
+  width: 5%;
+}
+
+.fechas > input {
+  padding: 7px 15px;
+  margin: 5px 5px;
+}
+.fechas > label {
+  color: white;
+  padding: 7px 15px;
+  margin: 5px 5px;
+}
+
+.buscar:hover {
+  cursor: pointer;
 }
 </style>

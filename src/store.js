@@ -315,6 +315,29 @@ export const store = new Vuex.Store({
           });
       }
     },
+    /**
+     * Función asincrónica para borrar una o varias facturas.
+     * @param {store} context 
+     */
+    borrarFacturas: async function (context) {
+      if (context.getters.getListaIdFacturas.length > 0) {
+        axios
+          .delete(
+            `http://localhost:7070/eliminar-factura/${context.getters.getListaIdFacturas}`,
+            {
+              headers: {
+                Authorization: "Bearer " + context.getters.getToken
+              }
+            }
+          )
+          .then(() => {
+            let lista = [];
+            context.commit('SET_LISTA_LIMPIA', lista);
+            context.dispatch('cargarFacturas');
+            context.dispatch('actualizarContador', 2);
+          });
+      }
+    },
   },
   /**
    * GETTERS
@@ -443,6 +466,59 @@ export const store = new Vuex.Store({
      */
     getListaIdFacturas: function (state) {
       return state.listaIdFacturas;
+    },
+    /**
+     * Método para obtener la suma del monto de todas las facturas.
+     * @param {estado} state 
+     */
+    getTotal: function (state) {
+      var total = 0;
+      state.facturas.forEach(factura => {
+        total += Number(factura.total)
+      });
+      return total;
+    },
+    /**
+     * Método para optener la suma de los montos de todas las facturas por cobrar.
+     * @param {estado} state 
+     */
+    getPorCobrar: function (state) {
+      var porCobrar = 0;
+      state.facturas.forEach(factura => {
+        if (factura.estaPagada == false) {
+          porCobrar += Number(factura.total);
+        }
+      });
+      return porCobrar;
+    },
+    /**
+     * Método para obtener la suma de todas las facturas que estén vencidas.
+     * @param {estado} state 
+     */
+    getVencidas: function (state) {
+      var vencidas = 0;
+      state.facturas.forEach(factura => {
+        if (
+          new Date(factura.fechaVencimiento).getTime() < new Date().getTime() &&
+          factura.estaPagada == false
+        ) {
+          vencidas += Number(factura.total);
+        }
+      });
+      return vencidas;
+    },
+    /**
+     * Método para obtener la suma de todas las facturas que ya han sido pagadas.
+     * @param {estado} state 
+     */
+    getPagadas: function (state) {
+      var pagadas = 0;
+      state.facturas.forEach(factura => {
+        if (factura.estaPagada == true) {
+          pagadas += Number(factura.total);
+        }
+      });
+      return pagadas;
     },
   }
 })
