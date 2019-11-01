@@ -1,6 +1,6 @@
 <template>
   <div class="contenedor-facturas">
-    <NavLateral class="contenedor-nav-l" />
+    <NavLateral class="contenedor-nav-l" :limpiarLista="limpiarLista"/>
     <div class="contenedor-cifras"></div>
     <div class="contenedor-tabla-f">
       <div class="tabla-f">
@@ -8,7 +8,7 @@
           <thead>
             <tr>
               <th>
-                <input @click="seleccionarTodo" type="checkbox" id="todo" />
+                <input @click="seleccionarTodo" @change="actualizarLista" type="checkbox" id="todo" />
               </th>
               <th>N°</th>
               <th>Orden</th>
@@ -17,13 +17,12 @@
               <th>Cliente</th>
               <th>Estado</th>
               <th>Monto</th>
-              <th></th>
             </tr>
           </thead>
           <tbody>
-            <tr v-for="factura in getFacturas" :key="factura.idFactura">
+            <tr class="seleccionar-f" v-for="factura in getFacturas" :key="factura.idFactura">
               <td>
-                <input @change="actualizarLista" v-model="idFacturas" :value="factura.idFacturas" type="checkbox" name="seleccion" />
+                <input v-model="idFacturas" :value="factura.idFactura" type="checkbox" name="seleccion" @change="actualizarLista"/>
               </td>
               <td>{{factura.numeroFactura}}</td>
               <td>{{factura.ordenCompra}}</td>
@@ -32,9 +31,6 @@
               <td>{{factura.nombreCliente}}</td>
               <td>{{factura | formatoEstado}}</td>
               <td>{{factura.total}}</td>
-              <td>
-                <button>↕</button>
-              </td>
             </tr>
           </tbody>
         </table>
@@ -101,6 +97,9 @@ export default {
         });
       }
     },
+    limpiarLista: function() {
+      this.idFacturas = [];
+    }
   },
   filters: {
     formatoFecha: function(fecha) {
@@ -202,6 +201,12 @@ td {
 }
 
 .orden-f:hover{
+  background-color: #4caf50;
+  color: black;
+  cursor: pointer;
+}
+
+.seleccionar-f:hover{
   background-color: #4caf50;
   color: black;
   cursor: pointer;

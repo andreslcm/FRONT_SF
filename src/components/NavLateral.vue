@@ -7,7 +7,7 @@
       <button class="boton">Borrar</button>
     </div>
     <div class="b-pagar">
-      <button class="boton">Pagar</button>
+      <button @click="pagar" class="boton">Pagar</button>
     </div>
       <div class="menu-d">
       <button class="boton-dm">
@@ -38,7 +38,6 @@
 </template>
 
 <script>
-// import { mapActions } from "vuex";
 import { mapGetters, mapActions } from "vuex";
 export default {
   name: "NavLateral",
@@ -46,7 +45,15 @@ export default {
     ...mapGetters(['getClientes'])
   },
   methods: {
-    ...mapActions(['filtrar'])
+    ...mapActions(['filtrar', 'pagarFacturas']),
+    
+    pagar: function(){
+          this.limpiarLista();
+          this.pagarFacturas();
+        },
+  },
+  props:{
+    limpiarLista: Function,
   }
 };
 </script>

@@ -89,9 +89,17 @@ export const store = new Vuex.Store({
      * @param {estado} state
      * @param {List} lista
      */
-    SET_LISTA_ID_FACTURAS(state, lista){
+    SET_LISTA_ID_FACTURAS(state, lista) {
       state.listaIdFacturas = lista;
-    }
+    },
+    /**
+     * Mutación para limpiar la lista de ID de facturas.
+     * @param {estado} state 
+     * @param {List} lista 
+     */
+    SET_LISTA_LIMPIA(state, lista) {
+      state.listaIdFacturas = lista;
+    },
   },
   /**
    * ACCIONES
@@ -220,9 +228,7 @@ export const store = new Vuex.Store({
       axios
         .post(
           `http://localhost:7070/agregar-cliente/${context.getters.getIdUsuario}`,
-
-          datos
-          ,
+          datos,
           {
             headers: {
               Authorization: "Bearer " + context.getters.getToken
@@ -281,6 +287,33 @@ export const store = new Vuex.Store({
      */
     listarIdFacturas: function (context, lista) {
       context.commit('SET_LISTA_ID_FACTURAS', lista)
+    },
+    /**
+     * Función asincrónica para marcar una factura como pagada.
+     * @param {store} context 
+     */
+    pagarFacturas: async function (context) {
+      if (context.getters.getListaIdFacturas.length > 0) {
+        axios
+          .put(
+            `http://localhost:7070/marcar-como-pagada/${context.getters.getListaIdFacturas}`,
+            null,
+            {
+              headers: {
+                Authorization: "Bearer " + context.getters.getToken
+              }
+            }
+          )
+          .then(() => {
+            let lista = [];
+            context.commit('SET_LISTA_LIMPIA', lista);
+            context.dispatch('cargarFacturas');
+            context.dispatch('actualizarContador', 2);
+          })
+          .catch((error) => {
+            console.log(alert(error.response.data.message));
+          });
+      }
     },
   },
   /**
