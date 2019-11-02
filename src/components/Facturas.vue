@@ -1,6 +1,6 @@
 <template>
   <div class="contenedor-facturas">
-    <ModalFactura v-if="mostrar == true" :idF="idF" id="factura-individual" :desactivarModal="desactivarModal" class="modal-factura"/>
+    <ModalFactura v-if="mostrar == true" :idFactura="idFactura" id="factura-individual" :desactivarModal="desactivarModal" class="modal-factura"/>
     <NavLateral class="contenedor-nav-l" :limpiarLista="limpiarLista" />
     <div class="contenedor-cifras">
       <table>
@@ -71,7 +71,7 @@ export default {
     return {
       idFacturas: [],
       contador: 0,
-      idF: "",
+      idFactura: "",
       mostrar: false,
     };
   },
@@ -134,11 +134,11 @@ export default {
       this.idFacturas = [];
     },
     activarModal: function(idFactura) {
-      this.idF = idFactura;
+      this.idFactura = idFactura;
       this.mostrar = true;
     },
     desactivarModal: function(){
-      this.cargarFacturas;
+      this.cargarFacturas();
       this.mostrar = false;
     }
   },

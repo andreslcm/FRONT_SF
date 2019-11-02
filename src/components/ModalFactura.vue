@@ -121,7 +121,7 @@
       <div class="boton-enviar">
         <div>
           <button
-            @click="enviarFactura({factura: factura, detalles: detalles, idCliente: idCliente})"
+            @click="actualizar(factura, detalles, idCliente, idFactura)"
             class="boton-f"
           >Enviar</button>
         </div>
@@ -150,11 +150,11 @@ export default {
         total: 0,
         notas: ""
       },
-      detalles: [],
+      detalles: []
     };
   },
   props: {
-    idF: Number,
+    idFactura: Number,
     desactivarModal: Function
   },
   computed: {
@@ -179,14 +179,10 @@ export default {
     }
   },
   methods: {
-    ...mapActions(["traerDatosUsuario", "agregarFactura"]),
+    ...mapActions(["traerDatosUsuario", "agregarFactura", "actualizarFactura"]),
     sumar: function() {
       this.factura.subtotal = document.getElementById("subtotal").value;
       this.factura.total = document.getElementById("total").value;
-    },
-    enviarFactura: function(factura, detalles, idCliente) {
-      this.sumar();
-      this.agregarFactura(factura, detalles, idCliente);
     },
     agregarDetalle: function() {
       this.detalles.push({
@@ -194,7 +190,7 @@ export default {
         descripcionProyecto: "",
         precio: "",
         numeroPalabras: "",
-        modalFactura:0,
+        modalFactura: 0
       });
     },
     eliminarDetalle: function() {
@@ -202,21 +198,25 @@ export default {
     },
     encontrarFactura: function() {
       this.getFacturas.forEach(factura => {
-        if (factura.idFactura == this.idF) {
+        if (factura.idFactura == this.idFactura) {
           this.idCliente = factura.idCliente;
           this.detalles = factura.detalles;
           this.factura = factura;
         }
       });
     },
-    cerrar: function(){
+    cerrar: function() {
+      this.desactivarModal();
+    },
+    actualizar: function(factura, detalles, idCliente, idFactura) {
+      this.sumar();
+      this.actualizarFactura({ factura, detalles, idCliente, idFactura });
       this.desactivarModal();
     }
   },
   mounted() {
-    this.traerDatosUsuario();
-    this.agregarDetalle();
     this.encontrarFactura();
+    this.traerDatosUsuario();
   }
 };
 </script>

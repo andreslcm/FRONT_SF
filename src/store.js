@@ -22,7 +22,7 @@ export const store = new Vuex.Store({
     filtro: {
       tipo: 'todos',
       nombre: ''
-    }
+    },
   },
   /**
    * MUTACIONES
@@ -356,6 +356,36 @@ export const store = new Vuex.Store({
               idCliente: datos.idCliente
             },
 
+            headers: {
+              Authorization: "Bearer " + context.getters.getToken
+            }
+          },
+        )
+        .then(() => {
+          context.dispatch('cargarFacturas');
+          context.dispatch('actualizarContador', 2);
+        })
+        .catch(error => {
+          alert(error.response.data.message);
+        });
+    },
+    /**
+     * Función asincrónica para actualizar los datos de una factura.
+     * @param {store} context 
+     * @param {Objeto datos} datos 
+     */
+    actualizarFactura: async function (context, datos) {
+      axios
+        .put(
+          `http://localhost:7070/actualizar-factura/${datos.idFactura}`,
+          {
+            factura: datos.factura,
+            detalles: datos.detalles
+          },
+          {
+            params: {
+              idCliente: datos.idCliente
+            },
             headers: {
               Authorization: "Bearer " + context.getters.getToken
             }
