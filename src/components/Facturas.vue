@@ -1,5 +1,6 @@
 <template>
   <div class="contenedor-facturas">
+    <ModalFactura v-if="mostrar == true" :idF="idF" id="factura-individual" :desactivarModal="desactivarModal" class="modal-factura"/>
     <NavLateral class="contenedor-nav-l" :limpiarLista="limpiarLista" />
     <div class="contenedor-cifras">
       <table>
@@ -30,7 +31,12 @@
             </tr>
           </thead>
           <tbody>
-            <tr class="seleccionar-f" v-for="factura in getFacturas" :key="factura.idFactura">
+            <tr
+              class="seleccionar-f"
+              v-for="factura in getFacturas"
+              :key="factura.idFactura"
+              @click="activarModal(factura.idFactura)"
+            >
               <td>
                 <input
                   v-model="idFacturas"
@@ -56,6 +62,7 @@
 </template>
 
 <script>
+import ModalFactura from "./ModalFactura.vue";
 import NavLateral from "./NavLateral.vue";
 import { mapActions } from "vuex";
 import { mapGetters } from "vuex";
@@ -63,11 +70,14 @@ export default {
   data() {
     return {
       idFacturas: [],
-      contador: 0
+      contador: 0,
+      idF: "",
+      mostrar: false,
     };
   },
   components: {
-    NavLateral
+    NavLateral,
+    ModalFactura
   },
   computed: {
     ...mapGetters([
@@ -80,7 +90,7 @@ export default {
     ])
   },
   methods: {
-    ...mapActions(["listarIdFacturas"]),
+    ...mapActions(["listarIdFacturas", "cargarFacturas"]),
 
     actualizarLista: function() {
       this.listarIdFacturas(this.idFacturas);
@@ -122,6 +132,14 @@ export default {
     },
     limpiarLista: function() {
       this.idFacturas = [];
+    },
+    activarModal: function(idFactura) {
+      this.idF = idFactura;
+      this.mostrar = true;
+    },
+    desactivarModal: function(){
+      this.cargarFacturas;
+      this.mostrar = false;
     }
   },
   filters: {
@@ -194,7 +212,6 @@ export default {
   height: 100%;
   width: 100%;
   background-color: rgba(138, 138, 138, 0.726);
-
 }
 
 .contenedor-tabla-f {
@@ -248,7 +265,24 @@ td {
   color: yellow;
 }
 
-.vencidas{
+.vencidas {
   color: red;
+}
+
+.modal-desactivado {
+  display: none;
+}
+
+.modal-factura {
+  position: absolute;
+  width: 60%;
+  height: 95%;
+  background-color: white;
+  z-index: 1;
+  margin-left: 10%;
+  margin-top: 15px;
+  overflow: auto;
+  border: solid 1 px #f1f1f1;
+  box-shadow: 5px 10px 18px #888888;
 }
 </style>

@@ -344,7 +344,6 @@ export const store = new Vuex.Store({
      * @param {Objeto factura} datos 
      */
     agregarFactura: async function (context, datos) {
-      console.log(datos.detalles);
       axios
         .post(
           `http://localhost:7070/crear-factura/${context.getters.getIdUsuario}`,
@@ -419,7 +418,6 @@ export const store = new Vuex.Store({
      * @param {estado} state
      */
     getDatosUsuario: function (state) {
-      console.log(state.datosUsuario)
       return state.datosUsuario;
     },
     /**

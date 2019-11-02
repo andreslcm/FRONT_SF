@@ -210,7 +210,6 @@ export default {
       this.cliente.palabraTraduccion = cliente.palabraTraduccion;
       this.cliente.palabraEdicion = cliente.palabraEdicion;
       this.cliente.palabraProofreading = cliente.palabraProofreading;
-      console.log(cliente);
       var modal = document.getElementById("modal-cliente");
       modal.className = "modal-cliente-activado";
     },

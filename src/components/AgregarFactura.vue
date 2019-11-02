@@ -411,4 +411,5 @@ select:hover {
 .td-menos {
   display: flex;
 }
+
 </style>
