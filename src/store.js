@@ -246,6 +246,7 @@ export const store = new Vuex.Store({
      * @param {store} context
      */
     borrarCliente: async function (context, idCliente) {
+      alert(idCliente)
       if (confirm("¿Está seguro de que desea elmininar a este cliente?")) {
         axios
           .delete(`http://localhost:7070/borrar-cliente/${idCliente}`, {
@@ -398,6 +399,23 @@ export const store = new Vuex.Store({
         .catch(error => {
           alert(error.response.data.message);
         });
+    },
+    /**
+     * Función asincrónica para actualizar los datos del usuario.
+     * @param {store} context
+     * @param {Objeto} datos
+     */
+    actualizarDatosUsuario: async function (context, datos) {
+      axios.
+          put(`http://localhost:7070/actualizar-datos/${context.getters.getIdUsuario}`, datos, {
+              headers: {
+                  Authorization: "Bearer " + context.getters.getToken
+              }
+          })
+          .then(() => {
+              alert("Modificado con éxtio")
+              context.dispatch('traerDatosUsuario');
+          })
     },
   },
   /**

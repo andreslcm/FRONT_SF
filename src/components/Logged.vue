@@ -19,7 +19,7 @@ import Facturas from './Facturas.vue';
 import Estadisticas from './Estadisticas.vue';
 import Usuario from './Usuario';
 import AgregarCliente from './AgregarCliente.vue';
-import AgregarFactura from './AgregarFactura.vue'
+import AgregarFactura from './AgregarFactura.vue';
 export default {
   components:{
     SideBar,
@@ -28,7 +28,7 @@ export default {
     Estadisticas,
     Usuario,
     AgregarCliente,
-    AgregarFactura
+    AgregarFactura,
   },
   methods: {
     ...mapActions([

@@ -78,7 +78,7 @@
             <span v-show="false">{{multiplicacion}}</span>
             <tr class="fila-detalles" v-for="detalle in detalles" :key="detalle.id">
               <td class="td-menos">
-                <img @click="eliminarDetalle" class="menos" src="../assets/menos.png" alt />
+                <img @click="eliminarDetalle(detalles.indexOf(detalle))" class="menos" src="../assets/menos.png" alt />
                 <textarea
                   v-model="detalle.descripcionProyecto"
                   type="text"
@@ -195,8 +195,8 @@ export default {
         numeroPalabras: ""
       });
     },
-    eliminarDetalle: function() {
-      this.detalles.splice(this.detalles.length - 1, 1);
+    eliminarDetalle: function(indice) {
+      this.detalles.splice(indice, 1);
     }
   },
   mounted() {
