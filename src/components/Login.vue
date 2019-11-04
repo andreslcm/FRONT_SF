@@ -1,37 +1,28 @@
 <template>
-  <div class="contenedor">
-    <div class="formulario">
-      <img class="imagen" src="../assets/logo-azul.png">
-       <label for="nombreUsuario">
-        <b>Nombre de usuario</b>
-      </label>
-      <input
-        v-model="usuario.nombreUsuario"
-        type="text"
-        placeholder="Nombre de usuario"
-        name="nombreUsuario"
-        required
-      />
+<div class="hola">
+<img class="fondi" src="../assets/fondo.jpg">
+    <div class="log">
+        <img class="imagen" src="../assets/logo-azul.png">
+        <ul>
+          <li>
+            <input v-model="usuario.nombreUsuario" type="text" id="nombreUsuario" placeholder="Usuario" required title="Nombre de Usuario"/>
+          </li>  
+          <li>
+            <input v-model="usuario.contrasena" type="password" id="contrasena" placeholder="Contraseña" required title="Contraseña"/>
+          </li>
 
-      <label for="contrasena">
-        <b>Contraseña</b>
-      </label>
-      <input
-        v-model="usuario.contrasena"
-        type="password"
-        placeholder="Ingrese su contraseña"
-        name="contraseña"
-        required
-      />
-      <hr />
-      <button class="boton-enviar" @click="logear(usuario)">Enviar</button>
-       <div class="formulario sesion">
+        <div class="button_cont" align="center">
+                <button @click="logear(usuario)" class="buttonhover" href="add-website-here" target="_blank" rel="nofollow"><span>Entrar</span></button>
+        </div>
+        <div class="contraRecuperar">
         <p>
-          <a href="#">Recuperar contraseña</a>.
+          ¿Olvidaste tu contraseña?
+          <a href="#">Recuperala!</a>.
         </p>
       </div>
-    </div>
+      </ul>
   </div>
+</div>
 </template>
 
 <script>
