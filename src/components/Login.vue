@@ -1,25 +1,25 @@
 <template>
-<div class="hola">
-<img class="fondi" src="../assets/fondo.jpg">
-    <div class="log">
-        <img class="imagen" src="../assets/logo-azul.png">
-        <ul>
-          <li>
-            <input v-model="usuario.nombreUsuario" type="text" id="nombreUsuario" placeholder="Usuario" required title="Nombre de Usuario"/>
-          </li>  
-          <li>
-            <input v-model="usuario.contrasena" type="password" id="contrasena" placeholder="Contraseña" required title="Contraseña"/>
-          </li>
+<div class="principal">
+  <img class="fondi" src="../assets/fondo.jpg">
+  <div class="log">
+    <img class="imagen" src="../assets/logo-azul.png">
+      <ul>
+        <li>
+          <input v-model="usuario.nombreUsuario" type="text" id="nombreUsuario" placeholder="Usuario" required title="Nombre de Usuario"/>
+        </li>  
+        <li>
+          <input v-model="usuario.contrasena" type="password" id="contrasena" placeholder="Contraseña" required title="Contraseña"/>
+        </li>
 
         <div class="button_cont" align="center">
-                <button @click="logear(usuario)" class="buttonhover" href="add-website-here" target="_blank" rel="nofollow"><span>Entrar</span></button>
+          <button @click="logear(usuario)" class="buttonhover" href="add-website-here" target="_blank" rel="nofollow"><span>Entrar</span></button>
         </div>
         <div class="contraRecuperar">
-        <p>
-          ¿Olvidaste tu contraseña?
-          <a href="#">Recuperala!</a>.
-        </p>
-      </div>
+          <p>
+            ¿Olvidaste tu contraseña?
+            <a href="#">Recuperala!</a>.
+          </p>
+        </div>
       </ul>
   </div>
 </div>
@@ -45,116 +45,115 @@ export default {
 </script>
 
 <style scoped>
-.contenedor {
-  display: grid;
+*{
+  font-family:"Helvetica Neue", Helvetica;
+  overflow: hidden;
+}
+
+.fondi{
+  position: relative;
+  margin: 0%;
+  overflow: hidden;
+  padding: 0%;
   height: 93vh;
-  grid-template-columns: repeat (8, 1fr);
-  grid-template-rows: 10% 57% 33%;
-  grid-template-areas:
-    "c c c c c c c c"
-    ". . . f f . . ."
-    "a a a a a a a a";
-}
-
-* {
-  box-sizing: border-box;
-}
-.formulario {
-  grid-area: f;
-  padding: 0px 16px;
-  background-color: white;
-  border: 1px solid #f1f1f1;
-}
-
-.imagen{
-  margin-bottom: 5px;
   width: 100%;
+  z-index: -1;
 }
 
-input[type="text"],
-input[type="password"] {
-  width: 100%;
-  padding: 12px;
-  margin: 5px 0 22px 0;
-  display: inline-block;
+.principal{
+  display: flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 93vh;
+  background:white;
+}
+
+.demo-canvas {
+  position: absolute;
+
+}
+
+img{
+  width: 90% ;
+  margin: 2% 5%;
+}
+
+.log {
+  height: auto;
+  width: 50vh;
+  padding: auto;
+  align-items: center;
+	justify-content: center;
+  background: #CCD4EB;
+  box-shadow: 0 30px 60px -12px rgba(50,50,93,.25),0 18px 36px -18px rgba(0,0,0,.3),0 -12px 36px -8px rgba(0,0,0,.025);
+  position: absolute;
+  align-items: center;
+	justify-content: center;
+}
+.buttonhover {
+  border-radius: 4px;
   border: none;
-  background: #f1f1f1;
-}
-
-input[type="text"]:focus,
-input[type="password"]:focus {
-  background-color: #ddd;
-  outline: none;
-}
-
-hr {
-  border: 1px solid #f1f1f1;
-  margin-top: 5px;
-  margin-bottom: 15px;
-}
-
-.boton-enviar {
-  background-color: #4caf50;
-  color: white;
-  padding: 12px 20px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-  opacity: 0.9;
-}
-
-.boton-enviar:hover {
-  opacity: 1;
-}
-
-a {
-  color: dodgerblue;
-}
-
-.sesion {
-  background-color: #f1f1f1;
   text-align: center;
+  text-transform: uppercase;
+  transition: all 0.4s;
+  cursor: pointer;
+  background: #0C427D;
+  margin: 5% 0%;
+  padding: 2%;
+  font-weight: 1000;
+  color: white;
+}
+.buttonhover span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.4s;
 }
 
-h2 {
-  margin: 10px 0;
+.buttonhover span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
 }
 
-@media screen and (max-width: 1400px) {
-  .contenedor {
-    display: grid;
-    height: 93vh;
-    grid-template-columns: repeat (8, 1fr);
-    grid-template-rows: 10% 65% 25%;
-    grid-template-areas:
-      "c c c c c c c c"
-      ". . . f f . . ."
-      "a a a a a a a a";
-  }
-  input[type="text"],
-  input[type="password"] {
-    width: 100%;
-    padding: 5px;
-    margin: 5px 0 15px 0;
-    display: inline-block;
-    border: none;
-    background: #f1f1f1;
-  }
-  .boton-enviar {
-    background-color: #4caf50;
-    color: white;
-    padding: 7px 15px;
-    margin: 10px 0;
-    border: none;
-    cursor: pointer;
-    width: 100%;
-    opacity: 0.9;
-  }
-  hr {
-    border: 1px solid #f1f1f1;
-    margin-bottom: 5px;
-  }
+.buttonhover:hover span {
+  padding-right: 25px;
+}
+
+.buttonhover:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+input {
+  width:75%;
+  background:white;
+  border:0;
+  padding:20px;
+  border-radius:6px;
+  margin:10px 20px;
+  color:#0C427D;
+  font-weight:800 ;
+  border: 1px white;
+}
+
+p a {
+  margin: 0%;
+  padding:0%;
+  text-decoration: underline;
+}
+
+.contraRecuperar{
+  display: flex;
+  margin-bottom: 20px;
+}
+
+p{
+  margin: auto;
+  width: auto;
 }
 
 </style>
