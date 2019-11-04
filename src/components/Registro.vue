@@ -1,59 +1,39 @@
 <template>
-  <div class="contenedor">
-    <div class="formulario">
-      <h2>Registro</h2>
-      <p>Regístrese para crear una cuenta.</p>
-      <hr />
-
-      <label for="correo">
-        <b>Correo electrónico</b>
-      </label>
-      <input
-        v-model="usuario.correo"
-        type="text"
-        placeholder="Ingrese su correo electrónico"
-        name="correo"
-        required
-      />
-
-      <label for="nombreUsuario">
-        <b>Nombre de usuario</b>
-      </label>
-      <input
-        v-model="usuario.nombreUsuario"
-        type="text"
-        placeholder="Nombre de usuario"
-        name="nombreUsuario"
-        required
-      />
-
-      <label for="contrasena">
-        <b>Contraseña</b>
-      </label>
-      <input
-        v-model="usuario.contrasena"
-        type="password"
-        placeholder="Ingrese su contraseña"
-        name="contraseña"
-        required
-      />
-
-      <label for="repetir">
-        <b>Repita su contraseña</b>
-      </label>
-      <input type="password" placeholder="Repita la contraseña" name="repetir" required />
-      <hr />
-
-      <button @click="registrarUsuario(usuario)" class="boton-registro">Registrar</button>
-
-      <div class="formulario sesion">
+<div class="principal">
+<img class="fondi" src="../assets/fondo.jpg">
+  <div class="log">
+  <img class="imagen" src="../assets/logo-azul.png">
+    <ul>
+      <li>
+        <input v-model="usuario.nombre" type="text" id="nombre" placeholder="Nombre" title="Ingrese su Nombre" required/>
+      </li>
+      <li>
+        <input v-model="usuario.apellido" type="text" id="apellido" placeholder="Apellido" title="Ingrese su Apellido" required/>
+      </li>
+      <li>
+        <input v-model="usuario.contrasena" type="password" onkeyup='check();' id="contrsena" placeholder="Contrseña" title="Ingrese su Contraseña" required/>
+      </li>
+      <li>
+        <input type="password" id="contrsena2" placeholder="Confirme su Contrseña" onkeyup='check();' title="Confrime su Contraseña" required/>
+      </li>
+      <li>
+        <input v-model="usuario.nombreUsuario" type="text" id="nombreUsuario" placeholder="Nombre de usuario" title="Ingrese su Nombre de Usuario" required/>
+      </li>
+      <li>
+        <input v-model="usuario.correo" type="email" id="correo" placeholder="Correo electrónico" title="Ingrese su Correo" required/>
+      </li>
+      <div class="button_cont" align="center">
+        <button @click="registrarUsuario(usuario)" class="buttonhover" id="submit" target="_blank" rel="nofollow"><span>Registrarse</span></button>
+      </div>
+      <div class="inicioSesion">
         <p>
           ¿Ya tiene una cuenta?
           <a href="/login">Inicie sesión</a>.
         </p>
       </div>
-    </div>
+    </ul>
   </div>
+</div>
 </template>
 
 <script>
