@@ -41,4 +41,21 @@ export default {};
   align-items: center;
 }
 
+.menu > a {
+  color: white;
+  margin:10px;
+}
+
+a{
+  color: #fff;
+  font-weight:800 ;
+  padding: 3vh;
+}
+
+a:hover{
+  background-color: #CCD4EB;
+  color: #0C427D;
+  font-weight:800 ;
+}
+
 </style>
