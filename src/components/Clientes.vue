@@ -316,11 +316,12 @@ td {
     padding: 15px;
   }
 
+
+}
   .modal-cliente {
     display: none;
     pointer-events: none;
   }
-
   .modal-cliente-activado {
     position: absolute;
     overflow: auto;
@@ -359,5 +360,4 @@ td {
   .botones:hover {
     opacity: 1;
   }
-}
 </style>
