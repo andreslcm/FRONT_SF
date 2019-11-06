@@ -364,7 +364,7 @@ export const store = new Vuex.Store({
         )
         .then(() => {
           context.dispatch('cargarFacturas');
-          context.dispatch('actualizarContador', 2);
+          // context.dispatch('actualizarContador', 2);
         })
         .catch(error => {
           alert(error.response.data.message);

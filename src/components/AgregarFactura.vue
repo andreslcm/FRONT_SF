@@ -1,5 +1,5 @@
 <template>
-  <div class="contenedor-agregar-f">
+  <div class="contenedor-agregar-f" id="facturapdf" v-if="mostrar == true">
     <div class="cabecera">FACTURA</div>
     <div class="contenedor-fac">
       <div class="datos-cliente">
@@ -140,13 +140,22 @@
     </div>
     <div></div>
   </div>
+  <div v-else-if="mostrar==false">
+    <VistaFactura :factura="factura" :idCliente="idCliente" :detalles="detalles"/>
+  </div>
 </template>
 
 <script>
+import VistaFactura from './VistaFactura.vue';
 import { mapGetters, mapActions } from "vuex";
+
 export default {
+  components: {
+    VistaFactura
+  },
   data() {
     return {
+      mostrar: true,
       idCliente: null,
       factura: {
         numeroFactura: "",
@@ -186,6 +195,7 @@ export default {
     enviarFactura: function(factura, detalles, idCliente) {
       this.sumar();
       this.agregarFactura(factura, detalles, idCliente);
+      this.mostrar = false;
     },
     agregarDetalle: function() {
       this.detalles.push({
@@ -197,7 +207,7 @@ export default {
     },
     eliminarDetalle: function(indice) {
       this.detalles.splice(indice, 1);
-    }
+    },
   },
   mounted() {
     this.traerDatosUsuario();
