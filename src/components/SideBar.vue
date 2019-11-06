@@ -1,5 +1,5 @@
 <template>
-
+<div>
     <div class="contenedor-side">
     <img class="imagen" src="../assets/logoblanco.png" alt="">
     <button @click="actualizarContador(1)" class="botones boton-1">Clientes</button>
@@ -9,7 +9,7 @@
     <img class="logout" src="../assets/salir.png" @click="logout">
   </div>
 
-   <img class="imagen1" src="C:\Users\Usuario\Desktop\FRONT_SF\src\assets\chamo.png" alt="">
+   <img class="imagen1" src="../assets/chamo.png" alt="">
    
 </div>
 </template>
@@ -122,8 +122,8 @@ hr {
 }
    
 .contenedor-side {
-  height: 150%;
-  width: 20%;
+  height: 122%;
+  width: 150%;
   float:left;
   background-color: #0C427D;
   display: grid;
@@ -172,24 +172,26 @@ hr {
 .boton-2 {
   grid-area: b2;
   color: #0C427D;
-  margin-top: -15%;
+  margin-top: -35%;
 }
 
 .boton-3 {
   grid-area: b3;
   color: #0C427D;
-  margin-top: -29%;
+  margin-top: -50%;
 }
 
 .boton-4 {
   grid-area: b4;
   color: #0C427D;
-  margin-top: -44%;
+  margin-top: -65%;
 }
 
 .imagen{
-  margin-top: 10%;
+  margin-top: 5%;
   margin-left: 10%;
+  width: 80%;
+  height: 80%;
   grid-area: i;
 }
 .imagen:hover {
@@ -197,10 +199,11 @@ hr {
 }
 
 .logout{
-  margin-top: -58%;
-  width: 100%;
-  height: 90%;
+  margin-top: -78%;
+  width: 110%;
+  height: 89%;
   grid-area: l;
+  margin-left: -10%;
 }
 
 .logout:hover{
@@ -208,10 +211,10 @@ hr {
 }
 
 .imagen1{
-  margin-left:-100%;
-  margin-top: 15%;
-  width: 8%;
-  height: 30%;
+  margin-left:34%;
+  margin-top: -100%;
+  width: 80%;
+  height: 28%;
   float: left;
 }
 
