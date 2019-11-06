@@ -1,5 +1,9 @@
 <template>
+<div>
+<img class="EditPerfil" src="../assets/Eperfil.png">
+
   <div class="contenedor-usuario">
+    
     <div class="u-datos">
       <label for="nombreUsuario">
         <b>Nombre</b>
@@ -120,6 +124,7 @@
       <button @click="actualizarDatosUsuario(usuario)" class="boton-enviar">Actualizar</button>
     </div>
   </div>
+</div>
 </template>
 
 <script>
@@ -174,10 +179,19 @@ export default {
 <style scoped>
 * {
   box-sizing: border-box;
+  
 }
+
+b{
+  color: #0C427D;
+
+}
+
 .contenedor-usuario {
-  height: 100%;
-  width: 100%;
+  height: 70%;
+  width: 95%;
+  margin-top: 3.1%;
+  margin-left: 5%;
   display: grid;
   grid-template-columns: 15% auto 15%;
   grid-template-rows: 88% 10%;
@@ -213,15 +227,19 @@ input[type="password"] {
   margin: 5px 0 15px 0;
   display: inline-block;
   border: none;
-  background: #f1f1f1;
+  background: #CCD4EB;
+}
+input{
+  color: #0C427D;
 }
 
 hr {
-  border: 1px solid #f1f1f1;
+  border: 1px solid #CCD4EB;
 }
 
 .boton-enviar {
-  background-color: #4caf50;
+  background-color:  #0C427D;
+  width: 10%;
   color: white;
   padding: 12px 20px;
   margin: 8px 0;
@@ -233,5 +251,12 @@ hr {
 
 .boton-enviar:hover {
   opacity: 1;
+}
+
+.EditPerfil{
+  width: 50%;
+  height: 6%;
+  margin-left: 50%;
+  margin-top: 2.5%;
 }
 </style>
