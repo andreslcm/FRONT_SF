@@ -1,49 +1,4 @@
 <template>
-<<<<<<< HEAD
-  <div class="contenedor">
-    <!-- Formulario de registro -->
-    <div class="formulario">
-      <h2>Registro</h2>
-      <p>Regístrese para crear una cuenta.</p>
-      <hr />
-      <label for="correo">
-        <b>Correo electrónico</b>
-      </label>
-      <input
-        v-model="usuario.correo"
-        type="text"
-        placeholder="Ingrese su correo electrónico"
-        name="correo"
-        required
-      />
-      <label for="nombreUsuario">
-        <b>Nombre de usuario</b>
-      </label>
-      <input
-        v-model="usuario.nombreUsuario"
-        type="text"
-        placeholder="Nombre de usuario"
-        name="nombreUsuario"
-        required
-      />
-      <label for="contrasena">
-        <b>Contraseña</b>
-      </label>
-      <input
-        v-model="usuario.contrasena"
-        type="password"
-        placeholder="Ingrese su contraseña"
-        name="contraseña"
-        required
-      />
-      <label for="repetir">
-        <b>Repita su contraseña</b>
-      </label>
-      <input type="password" placeholder="Repita la contraseña" name="repetir" required />
-      <hr />
-      <button @click="registrarUsuario(usuario)" class="boton-registro">Registrar</button>
-      <div class="formulario sesion">
-=======
 <div class="principal">
   <div class="log">
   <img class="imagen" src="../assets/logo-azul.png">
@@ -70,7 +25,6 @@
         <button @click="registrarUsuario(usuario)" class="buttonhover" id="submit" target="_blank" rel="nofollow"><span>Registrarse</span></button>
       </div>
       <div class="inicioSesion">
->>>>>>> estilos-landing
         <p>
           ¿Ya tiene una cuenta?
           <a href="/login">Inicie sesión</a>.

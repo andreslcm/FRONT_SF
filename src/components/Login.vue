@@ -1,38 +1,4 @@
 <template>
-<<<<<<< HEAD
-  <div class="contenedor">
-    <!-- Formulario de login -->
-    <div class="formulario">
-      <img class="imagen" src="../assets/logo-azul.png" />
-      <label for="nombreUsuario">
-        <b>Nombre de usuario</b>
-      </label>
-      <input
-        v-model="usuario.nombreUsuario"
-        type="text"
-        placeholder="Nombre de usuario"
-        name="nombreUsuario"
-        required
-      />
-      <label for="contrasena">
-        <b>Contraseña</b>
-      </label>
-      <input
-        v-model="usuario.contrasena"
-        type="password"
-        placeholder="Ingrese su contraseña"
-        name="contraseña"
-        required
-      />
-      <hr />
-      <button class="boton-enviar" @click="logear(usuario)">Enviar</button>
-      <div class="formulario sesion">
-        <p>
-          <a href="#">Recuperar contraseña</a>.
-        </p>
-      </div>
-    </div>
-=======
 <div class="principal">
   <div class="log">
     <img class="imagen" src="../assets/logo-azul.png">
@@ -54,7 +20,6 @@
           </p>
         </div>
       </ul>
->>>>>>> estilos-landing
   </div>
 </div>
 </template>
@@ -95,15 +60,9 @@ export default {
 
 }
 
-<<<<<<< HEAD
-.imagen {
-  margin-bottom: 5px;
-  width: 100%;
-=======
 img{
   width: 90% ;
   margin: 2% 5%;
->>>>>>> estilos-landing
 }
 
 .log {
