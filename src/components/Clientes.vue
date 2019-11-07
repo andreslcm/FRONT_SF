@@ -153,7 +153,12 @@
                 />
               </td>
               <td>
-                <img @click="activarModal(cliente.idCliente)" class="iconos-tabla" src="../assets/editar.png" alt />
+                <img
+                  @click="activarModal(cliente.idCliente)"
+                  class="iconos-tabla"
+                  src="../assets/editar.png"
+                  alt
+                />
               </td>
               <td>{{cliente.nombreCliente}}</td>
               <td>{{cliente.pais}}</td>
@@ -213,11 +218,11 @@ export default {
       var modal = document.getElementById("modal-cliente");
       modal.className = "modal-cliente-activado";
     },
-    cerrarModal: function(){
+    cerrarModal: function() {
       var modal = document.getElementById("modal-cliente");
       modal.className = "modal-cliente";
     },
-    actualizar: function(){
+    actualizar: function() {
       this.actualizarCliente(this.cliente);
       this.cerrarModal();
     }
@@ -315,49 +320,47 @@ td {
   td {
     padding: 15px;
   }
-
-
 }
-  .modal-cliente {
-    display: none;
-    pointer-events: none;
-  }
-  .modal-cliente-activado {
-    position: absolute;
-    overflow: auto;
-    margin-left: 20%;
-    margin-top: 5%;
-    height: 75vh;
-    width: 50%;
-    background-color: white;
-    border: solid 1 px #f1f1f1;
-    box-shadow: 5px 10px 18px #888888;
-    z-index: 1;
-    padding: 10px;
-  }
+.modal-cliente {
+  display: none;
+  pointer-events: none;
+}
+.modal-cliente-activado {
+  position: absolute;
+  overflow: auto;
+  margin-left: 20%;
+  margin-top: 5%;
+  height: 75vh;
+  width: 50%;
+  background-color: white;
+  border: solid 1 px #f1f1f1;
+  box-shadow: 5px 10px 18px #888888;
+  z-index: 1;
+  padding: 10px;
+}
 
-  input[type="text"],
-  input[type="number"] {
-    width: 100%;
-    padding: 10px;
-    margin: 5px 0 15px 0;
-    display: inline-block;
-    border: none;
-    background: #f1f1f1;
-  }
-  .botones {
-    background-color: #4caf50;
-    color: white;
-    padding: 12px 20px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-    width: 49%;
-    margin-left: 1%;
-    opacity: 0.9;
-  }
+input[type="text"],
+input[type="number"] {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0 15px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+.botones {
+  background-color: #4caf50;
+  color: white;
+  padding: 12px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 49%;
+  margin-left: 1%;
+  opacity: 0.9;
+}
 
-  .botones:hover {
-    opacity: 1;
-  }
+.botones:hover {
+  opacity: 1;
+}
 </style>
