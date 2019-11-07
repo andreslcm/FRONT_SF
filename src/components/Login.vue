@@ -1,6 +1,5 @@
 <template>
 <div class="principal">
-  <img class="fondi" src="../assets/fondo.jpg">
   <div class="log">
     <img class="imagen" src="../assets/logo-azul.png">
       <ul>
@@ -12,7 +11,7 @@
         </li>
 
         <div class="button_cont" align="center">
-          <button @click="logear(usuario)" class="buttonhover" href="add-website-here" target="_blank" rel="nofollow"><span>Entrar</span></button>
+          <button @click="logear(usuario)" class="buttonhover"><span>Entrar</span></button>
         </div>
         <div class="contraRecuperar">
           <p>
@@ -48,16 +47,6 @@ export default {
 *{
   font-family:"Helvetica Neue", Helvetica;
   overflow: hidden;
-}
-
-.fondi{
-  position: relative;
-  margin: 0%;
-  overflow: hidden;
-  padding: 0%;
-  height: 93vh;
-  width: 100%;
-  z-index: -1;
 }
 
 .principal{

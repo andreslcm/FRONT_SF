@@ -1,6 +1,5 @@
 <template>
 <div class="principal">
-<img class="fondi" src="../assets/fondo.jpg">
   <div class="log">
   <img class="imagen" src="../assets/logo-azul.png">
     <ul>
@@ -11,10 +10,10 @@
         <input v-model="usuario.apellido" type="text" id="apellido" placeholder="Apellido" title="Ingrese su Apellido" required/>
       </li>
       <li>
-        <input v-model="usuario.contrasena" type="password" onkeyup='check();' id="contrsena" placeholder="Contrseña" title="Ingrese su Contraseña" required/>
+        <input v-model="usuario.contrasena" type="password" id="contrsena" placeholder="Contrseña" title="Ingrese su Contraseña" required/>
       </li>
       <li>
-        <input type="password" id="contrsena2" placeholder="Confirme su Contrseña" onkeyup='check();' title="Confrime su Contraseña" required/>
+        <input type="password" id="contrsena2" placeholder="Confirme su Contrseña" title="Confrime su Contraseña" required/>
       </li>
       <li>
         <input v-model="usuario.nombreUsuario" type="text" id="nombreUsuario" placeholder="Nombre de usuario" title="Ingrese su Nombre de Usuario" required/>
@@ -58,15 +57,6 @@ export default {
 *{
   font-family:"Helvetica Neue", Helvetica;
   overflow: hidden;
-}
-
-.fondi{
-  position: relative;
-  margin: 0%;
-  overflow: hidden;
-  padding: 0%;
-  height: 93vh;
-  width: 100%;
 }
 
 img{
