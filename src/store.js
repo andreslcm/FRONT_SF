@@ -407,15 +407,15 @@ export const store = new Vuex.Store({
      */
     actualizarDatosUsuario: async function (context, datos) {
       axios.
-          put(`http://localhost:7070/actualizar-datos/${context.getters.getIdUsuario}`, datos, {
-              headers: {
-                  Authorization: "Bearer " + context.getters.getToken
-              }
-          })
-          .then(() => {
-              alert("Modificado con éxtio")
-              context.dispatch('traerDatosUsuario');
-          })
+        put(`http://localhost:7070/actualizar-datos/${context.getters.getIdUsuario}`, datos, {
+          headers: {
+            Authorization: "Bearer " + context.getters.getToken
+          }
+        })
+        .then(() => {
+          alert("Modificado con éxtio")
+          context.dispatch('traerDatosUsuario');
+        })
     },
   },
   /**
@@ -424,21 +424,24 @@ export const store = new Vuex.Store({
   getters: {
     /**
      * Método para obtener el id.
-     * @param {estado} state 
+     * @param {estado} state
+     * @return Number
      */
     getIdUsuario: function (state) {
       return state.id;
     },
     /**
-     * 
+     * Función para obtener el token de autenticación de un usuario.
      * @param {estado} state 
+     * @return String
      */
     getToken: function (state) {
       return state.token;
     },
     /**
      * Método para saber si el usuario está autenticado.
-     * @param {estado} state 
+     * @param {estado} state
+     * @return Boolean
      */
     estaAutenticado: function (state) {
       if (state.token != "null") {
@@ -450,6 +453,7 @@ export const store = new Vuex.Store({
     /**
      * Método para traer los clientes del usuario.
      * @param {estado} state
+     * @return Array
      */
     getClientes: function (state) {
       return state.clientes;
@@ -457,6 +461,7 @@ export const store = new Vuex.Store({
     /**
      * Método para traer el contador.
      * @param {estado} state
+     * @return Number
      */
     getContador: function (state) {
       return state.contador;
@@ -464,6 +469,7 @@ export const store = new Vuex.Store({
     /**
      * Método para traer los datos del usuario.
      * @param {estado} state
+     * @return Object
      */
     getDatosUsuario: function (state) {
       return state.datosUsuario;
@@ -471,6 +477,7 @@ export const store = new Vuex.Store({
     /**
      * Función para traer las facturas con o sin filtros.
      * @param {estado} state
+     * @return Array
      */
     getFacturas: function (state) {
       /**
@@ -528,6 +535,7 @@ export const store = new Vuex.Store({
     /**
      * Método para obtener un cliente por su ID.
      * @param {estado} state 
+     * @return Array
      */
     getClientePorId: function (state) {
       return (id) => {
@@ -541,6 +549,7 @@ export const store = new Vuex.Store({
     /**
      * Método para obtener una lista de ID de facturas.
      * @param {estado} state
+     * @return Array
      */
     getListaIdFacturas: function (state) {
       return state.listaIdFacturas;
@@ -548,6 +557,7 @@ export const store = new Vuex.Store({
     /**
      * Método para obtener la suma del monto de todas las facturas.
      * @param {estado} state 
+     * @return Number
      */
     getTotal: function (state) {
       var total = 0;
@@ -558,7 +568,8 @@ export const store = new Vuex.Store({
     },
     /**
      * Método para optener la suma de los montos de todas las facturas por cobrar.
-     * @param {estado} state 
+     * @param {estado} state
+     * @return Number
      */
     getPorCobrar: function (state) {
       var porCobrar = 0;
@@ -571,7 +582,8 @@ export const store = new Vuex.Store({
     },
     /**
      * Método para obtener la suma de todas las facturas que estén vencidas.
-     * @param {estado} state 
+     * @param {estado} state
+     * @return Number
      */
     getVencidas: function (state) {
       var vencidas = 0;
@@ -587,7 +599,8 @@ export const store = new Vuex.Store({
     },
     /**
      * Método para obtener la suma de todas las facturas que ya han sido pagadas.
-     * @param {estado} state 
+     * @param {estado} state
+     * @return Number
      */
     getPagadas: function (state) {
       var pagadas = 0;

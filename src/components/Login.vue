@@ -1,8 +1,9 @@
 <template>
   <div class="contenedor">
+    <!-- Formulario de login -->
     <div class="formulario">
-      <img class="imagen" src="../assets/logo-azul.png">
-       <label for="nombreUsuario">
+      <img class="imagen" src="../assets/logo-azul.png" />
+      <label for="nombreUsuario">
         <b>Nombre de usuario</b>
       </label>
       <input
@@ -12,7 +13,6 @@
         name="nombreUsuario"
         required
       />
-
       <label for="contrasena">
         <b>Contraseña</b>
       </label>
@@ -25,7 +25,7 @@
       />
       <hr />
       <button class="boton-enviar" @click="logear(usuario)">Enviar</button>
-       <div class="formulario sesion">
+      <div class="formulario sesion">
         <p>
           <a href="#">Recuperar contraseña</a>.
         </p>
@@ -35,7 +35,7 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+import { mapActions } from "vuex";
 export default {
   data() {
     return {
@@ -46,9 +46,7 @@ export default {
     };
   },
   methods: {
-    ...mapActions([
-      'logear'
-    ])
+    ...mapActions(["logear"])
   }
 };
 </script>
@@ -75,7 +73,7 @@ export default {
   border: 1px solid #f1f1f1;
 }
 
-.imagen{
+.imagen {
   margin-bottom: 5px;
   width: 100%;
 }
@@ -165,5 +163,4 @@ h2 {
     margin-bottom: 5px;
   }
 }
-
 </style>

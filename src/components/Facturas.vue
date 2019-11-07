@@ -1,6 +1,13 @@
 <template>
   <div class="contenedor-facturas">
-    <ModalFactura v-if="mostrar == true" :idFactura="idFactura" id="factura-individual" :desactivarModal="desactivarModal" class="modal-factura"/>
+    <!-- Modal para editar los datos de una factura seleccionada. -->
+    <ModalFactura
+      v-if="mostrar == true"
+      :idFactura="idFactura"
+      id="factura-individual"
+      :desactivarModal="desactivarModal"
+      class="modal-factura"
+    />
     <NavLateral class="contenedor-nav-l" :limpiarLista="limpiarLista" />
     <div class="contenedor-cifras">
       <table>
@@ -13,6 +20,7 @@
         </tr>
       </table>
     </div>
+    <!-- Tabla de facturas -->
     <div class="contenedor-tabla-f">
       <div class="tabla-f">
         <table>
@@ -72,7 +80,7 @@ export default {
       idFacturas: [],
       contador: 0,
       idFactura: "",
-      mostrar: false,
+      mostrar: false
     };
   },
   components: {
@@ -91,11 +99,15 @@ export default {
   },
   methods: {
     ...mapActions(["listarIdFacturas", "cargarFacturas"]),
-
+    /**
+     * Función para actualizar la lista de id seleccionados.
+     */
     actualizarLista: function() {
       this.listarIdFacturas(this.idFacturas);
     },
-
+    /**
+     * Función para seleccionar todos los checkboxes.
+     */
     seleccionarTodo: function() {
       var todo = document.getElementById("todo");
       var selecciones = document.getElementsByName("seleccion");
@@ -111,7 +123,10 @@ export default {
         }
       });
     },
-
+    /**
+     * Función para ordenar las facturas por fecha.
+     * @return Array
+     */
     ordenarPorFecha: function() {
       this.contador++;
       if (this.contador % 2 != 0) {
@@ -130,19 +145,32 @@ export default {
         });
       }
     },
+    /**
+     * Función para limpiar la lista de id de facturas.
+     */
     limpiarLista: function() {
       this.idFacturas = [];
     },
+    /**
+     * Función para activar el modal de edición de una factura.
+     */
     activarModal: function(idFactura) {
       this.idFactura = idFactura;
       this.mostrar = true;
     },
-    desactivarModal: function(){
+    /**
+     * Función para desactuivar el modal.
+     */
+    desactivarModal: function() {
       this.cargarFacturas();
       this.mostrar = false;
     }
   },
   filters: {
+    /**
+     * Filtro para darle formato a las fechas.
+     * @param {Date} fecha
+     */
     formatoFecha: function(fecha) {
       var miFecha = new Date(fecha);
       var dia =
@@ -157,6 +185,11 @@ export default {
       var fechaCompleta = dia + "-" + mes + "-" + anio;
       return fechaCompleta;
     },
+    /**
+     * Filtro para darle formato al campo del estado de una factura.
+     * @param {Object} factura
+     * @return String
+     */
     formatoEstado: function(factura) {
       var miFecha = new Date(factura.fechaVencimiento);
       var miEstado = "";

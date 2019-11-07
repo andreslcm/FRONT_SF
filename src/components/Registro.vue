@@ -1,10 +1,10 @@
 <template>
   <div class="contenedor">
+    <!-- Formulario de registro -->
     <div class="formulario">
       <h2>Registro</h2>
       <p>Regístrese para crear una cuenta.</p>
       <hr />
-
       <label for="correo">
         <b>Correo electrónico</b>
       </label>
@@ -15,7 +15,6 @@
         name="correo"
         required
       />
-
       <label for="nombreUsuario">
         <b>Nombre de usuario</b>
       </label>
@@ -26,7 +25,6 @@
         name="nombreUsuario"
         required
       />
-
       <label for="contrasena">
         <b>Contraseña</b>
       </label>
@@ -37,15 +35,12 @@
         name="contraseña"
         required
       />
-
       <label for="repetir">
         <b>Repita su contraseña</b>
       </label>
       <input type="password" placeholder="Repita la contraseña" name="repetir" required />
       <hr />
-
       <button @click="registrarUsuario(usuario)" class="boton-registro">Registrar</button>
-
       <div class="formulario sesion">
         <p>
           ¿Ya tiene una cuenta?

@@ -30,6 +30,7 @@
           <p>{{getDatosUsuario.telefono}}</p>
         </div>
       </div>
+      <!-- Datos del usuario -->
       <div class="datos-varios">
         <hr />
         <div>
@@ -55,6 +56,7 @@
           </table>
         </div>
       </div>
+      <!-- Contenedor factura -->
       <div class="cuerpo-factura">
         <table class="tabla-detalles">
           <thead>
@@ -70,7 +72,12 @@
             <span v-show="false">{{multiplicacion}}</span>
             <tr class="fila-detalles" v-for="detalle in detalles" :key="detalle.id">
               <td class="td-menos">
-                <img @click="eliminarDetalle(detalles.indexOf(detalle))" class="menos" src="../assets/menos.png" alt />
+                <img
+                  @click="eliminarDetalle(detalles.indexOf(detalle))"
+                  class="menos"
+                  src="../assets/menos.png"
+                  alt
+                />
                 <textarea
                   v-model="detalle.descripcionProyecto"
                   type="text"
@@ -164,14 +171,26 @@ export default {
       "getDatosUsuario",
       "getClientePorId"
     ]),
+    /**
+     * Función para sumar los montos de cada detalle.
+     * @return Number
+     */
     suma() {
       return this.detalles.reduce((total, detalle) => {
         return total + Number(detalle.monto);
       }, 0);
     },
+    /**
+     * Función para sumar el subtotal y los impuestos de una factura.
+     * @return Number
+     */
     sumaTotal() {
       return this.suma + Number(this.factura.impuestos);
     },
+    /**
+     * Función para multiplicar el número de palabras por la tarifa seleccionada.
+     * @return Number
+     */
     multiplicacion() {
       return this.detalles.forEach(detalle => {
         detalle.monto = detalle.precio * detalle.numeroPalabras;
@@ -180,10 +199,16 @@ export default {
   },
   methods: {
     ...mapActions(["traerDatosUsuario", "agregarFactura", "actualizarFactura"]),
+    /**
+     * Función para sumar el subtotal y el total.
+     */
     sumar: function() {
       this.factura.subtotal = document.getElementById("subtotal").value;
       this.factura.total = document.getElementById("total").value;
     },
+    /**
+     * Función para a gregar detalles a una factura.
+     */
     agregarDetalle: function() {
       this.detalles.push({
         monto: null,
@@ -193,9 +218,15 @@ export default {
         modalFactura: 0
       });
     },
+    /**
+     * Función para eleminar detalles de una factura.
+     */
     eliminarDetalle: function(indice) {
       this.detalles.splice(indice, 1);
     },
+    /**
+     * Función para encontrar una factura.
+     */
     encontrarFactura: function() {
       this.getFacturas.forEach(factura => {
         if (factura.idFactura == this.idFactura) {
@@ -205,9 +236,15 @@ export default {
         }
       });
     },
+    /**
+     * Función para cerrar el modal.
+     */
     cerrar: function() {
       this.desactivarModal();
     },
+    /**
+     * Función para actualizar una factura.
+     */
     actualizar: function(factura, detalles, idCliente, idFactura) {
       this.sumar();
       this.actualizarFactura({ factura, detalles, idCliente, idFactura });

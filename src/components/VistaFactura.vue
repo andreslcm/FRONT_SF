@@ -1,7 +1,9 @@
 <template>
+  <!-- Vista previa de la factura antes de imprimirlar o descargarla como PDF -->
   <div class="imprimir-factura">
     <div @click="guardarPdf" class="icono-i">Descargar PDF</div>
     <div id="guardar" class="contenido">
+      <!-- Datos del usuario -->
       <div class="datos-usuario">
         <p class="nombre">{{getDatosUsuario.nombre}} {{getDatosUsuario.apellido}}</p>
         <p>{{getDatosUsuario.direccion}}</p>
@@ -13,6 +15,7 @@
         <p class="titulo-factura">Factura</p>
         N.° {{factura.numeroFactura}}
       </div>
+      <!-- Datos del cliente -->
       <div class="datos-cliente">
         <p class="cliente">Para:</p>
         <p>{{cliente.nombreCliente}}</p>
@@ -21,6 +24,7 @@
         <p>{{cliente.estado}}, {{cliente.codigoPostal}}</p>
         <p>{{cliente.pais}}</p>
       </div>
+      <!-- Términos -->
       <div class="terminos">
         <table class="tabla1">
           <thead>
@@ -41,6 +45,7 @@
       </div>
       <div class="tabla">
         <hr />
+        <!-- Tabla de datos de la factura -->
         <table class="tabla2">
           <thead>
             <tr>
@@ -75,7 +80,7 @@
           </tbody>
         </table>
       </div>
-
+      <!-- Notas -->
       <div class="pago">
         <p class="titulo-notas">Notas:</p>
         Pagar a: {{getDatosUsuario.datosPaypal}}
@@ -103,14 +108,19 @@ export default {
     ...mapGetters(["getDatosUsuario", "getClientePorId"])
   },
   methods: {
+    /**
+     * Función para obtener el cliente de la factura.
+     * @param {Number} idCliente
+     */
     obtenerCliente: function(idCliente) {
       this.cliente = this.getClientePorId(idCliente)[0];
     },
-
+    /**
+     * Función para guardar la factura como PDF.
+     */
     guardarPdf: function() {
       html2canvas(document.getElementById("guardar")).then(function(canvas) {
         var imgData = canvas.toDataURL("image/png", 1);
-
         var doc = new jsPDF("p", "mm", "a4");
         doc.addImage(imgData, "PNG", 8, 5);
         doc.autoPrint();

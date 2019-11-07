@@ -1,5 +1,6 @@
 <template>
   <div class="contenedor-clientes">
+    <!-- Contenedor modal para editar los datos de un cliente. -->
     <div id="modal-cliente" class="modal-cliente">
       <label for="nombreCliente">
         <b>Nombre</b>
@@ -11,7 +12,6 @@
         name="nombreCliente"
         required
       />
-
       <label for="ciudad">
         <b>Ciudad</b>
       </label>
@@ -22,7 +22,6 @@
         name="ciudad"
         required
       />
-
       <label for="estado">
         <b>Estado</b>
       </label>
@@ -33,12 +32,10 @@
         name="estado"
         required
       />
-
       <label for="pais">
         <b>País</b>
       </label>
       <input v-model="cliente.pais" type="text" placeholder="Ingrese el país" name="pais" required />
-
       <label for="direccion">
         <b>Dirección</b>
       </label>
@@ -49,7 +46,6 @@
         name="direccion"
         required
       />
-
       <label for="codigoPostal">
         <b>Código postal</b>
       </label>
@@ -60,7 +56,6 @@
         name="codigoPostal"
         required
       />
-
       <label for="correo">
         <b>Correo electrónico</b>
       </label>
@@ -81,7 +76,6 @@
         name="terminoPago"
         required
       />
-
       <label for="palabraTraduccion">
         <b>Precio palabra traducción</b>
       </label>
@@ -93,7 +87,6 @@
         step=".01"
         required
       />
-
       <label for="palabraEdicion">
         <b>Precio palabra edición</b>
       </label>
@@ -105,7 +98,6 @@
         step=".01"
         required
       />
-
       <label for="palabraProofreading">
         <b>Precio palabra proofreading</b>
       </label>
@@ -117,7 +109,6 @@
         step=".01"
         required
       />
-
       <hr />
       <button @click="actualizar" class="botones">Enviar</button>
       <button @click="cerrarModal" class="botones">Cancelar</button>
@@ -127,6 +118,7 @@
       <img class="iconos" src="../assets/editar.png" alt />
       <img class="iconos" src="../assets/borrar.png" alt />
     </div>
+    <!-- Tabla de clientes -->
     <div class="contenedor-tabla">
       <div class="tabla">
         <table>
@@ -153,7 +145,12 @@
                 />
               </td>
               <td>
-                <img @click="activarModal(cliente.idCliente)" class="iconos-tabla" src="../assets/editar.png" alt />
+                <img
+                  @click="activarModal(cliente.idCliente)"
+                  class="iconos-tabla"
+                  src="../assets/editar.png"
+                  alt
+                />
               </td>
               <td>{{cliente.nombreCliente}}</td>
               <td>{{cliente.pais}}</td>
@@ -196,6 +193,10 @@ export default {
   },
   methods: {
     ...mapActions(["actualizarContador", "borrarCliente", "actualizarCliente"]),
+    /**
+     * Función para activar el modal de edición.
+     * @param {Number} idCliente
+     */
     activarModal: function(idCliente) {
       var cliente = this.getClientePorId(idCliente)[0];
       this.cliente.idCliente = cliente.idCliente;
@@ -213,11 +214,17 @@ export default {
       var modal = document.getElementById("modal-cliente");
       modal.className = "modal-cliente-activado";
     },
-    cerrarModal: function(){
+    /**
+     * Función para cerrar el modal.
+     */
+    cerrarModal: function() {
       var modal = document.getElementById("modal-cliente");
       modal.className = "modal-cliente";
     },
-    actualizar: function(){
+    /**
+     * Función para actualizar los datos de un cliente.
+     */
+    actualizar: function() {
       this.actualizarCliente(this.cliente);
       this.cerrarModal();
     }
@@ -315,49 +322,47 @@ td {
   td {
     padding: 15px;
   }
-
-
 }
-  .modal-cliente {
-    display: none;
-    pointer-events: none;
-  }
-  .modal-cliente-activado {
-    position: absolute;
-    overflow: auto;
-    margin-left: 20%;
-    margin-top: 5%;
-    height: 75vh;
-    width: 50%;
-    background-color: white;
-    border: solid 1 px #f1f1f1;
-    box-shadow: 5px 10px 18px #888888;
-    z-index: 1;
-    padding: 10px;
-  }
+.modal-cliente {
+  display: none;
+  pointer-events: none;
+}
+.modal-cliente-activado {
+  position: absolute;
+  overflow: auto;
+  margin-left: 20%;
+  margin-top: 5%;
+  height: 75vh;
+  width: 50%;
+  background-color: white;
+  border: solid 1 px #f1f1f1;
+  box-shadow: 5px 10px 18px #888888;
+  z-index: 1;
+  padding: 10px;
+}
 
-  input[type="text"],
-  input[type="number"] {
-    width: 100%;
-    padding: 10px;
-    margin: 5px 0 15px 0;
-    display: inline-block;
-    border: none;
-    background: #f1f1f1;
-  }
-  .botones {
-    background-color: #4caf50;
-    color: white;
-    padding: 12px 20px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-    width: 49%;
-    margin-left: 1%;
-    opacity: 0.9;
-  }
+input[type="text"],
+input[type="number"] {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0 15px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+.botones {
+  background-color: #4caf50;
+  color: white;
+  padding: 12px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 49%;
+  margin-left: 1%;
+  opacity: 0.9;
+}
 
-  .botones:hover {
-    opacity: 1;
-  }
+.botones:hover {
+  opacity: 1;
+}
 </style>

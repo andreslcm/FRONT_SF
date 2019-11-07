@@ -1,5 +1,7 @@
 <template>
+  <!-- Menú para la vista de facturas -->
   <div class="barra-lateral">
+    <!-- Botones -->
     <div class="b-agregar">
       <button @click="actualizarContador(6)" class="boton">Agregar</button>
     </div>
@@ -9,6 +11,7 @@
     <div class="b-pagar">
       <button @click="pagar" class="boton">Pagar</button>
     </div>
+    <!-- Menú desplegable de clientes para un susuario específico -->
     <div class="menu-d">
       <button class="boton-dm">Clientes ▼</button>
       <div class="contenido-dm">
@@ -21,6 +24,7 @@
         <a href="#" @click="filtrar({tipo: 'todos', nombre: ''})">Todos</a>
       </div>
     </div>
+    <!-- Menú desplegable de estados de una factura -->
     <div class="menu-d">
       <button class="boton-dm">Estado ▼</button>
       <div class="contenido-dm">
@@ -30,6 +34,7 @@
         <a href="#" @click="filtrar({tipo: 'todos', nombre: ''})">Todos</a>
       </div>
     </div>
+    <!-- Fechas para filtrar -->
     <div class="fechas">
       <label for="desde">Desde</label>
       <input class="quitar-borde" type="date" name="desde" id="desde" />
@@ -54,12 +59,16 @@ export default {
       "borrarFacturas",
       "actualizarContador"
     ]),
-
+    /**
+     * Función para marcar una factura como pagada.
+     */
     pagar: function() {
       this.limpiarLista();
       this.pagarFacturas();
     },
-
+    /**
+     * Función para borrar una factura.
+     */
     borrar: function() {
       this.limpiarLista();
       this.borrarFacturas();

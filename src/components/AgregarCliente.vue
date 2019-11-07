@@ -1,9 +1,10 @@
 <template>
   <div class="contenedor-ac">
+    <!-- Contenedor izquierdo de datos del cliente -->
     <div class="datos-izquierda">
       <h2>Datos del cliente</h2>
-        <hr />
-       <label for="nombreCliente">
+      <hr />
+      <label for="nombreCliente">
         <b>Nombre</b>
       </label>
       <input
@@ -13,8 +14,7 @@
         name="nombreCliente"
         required
       />
-
-       <label for="ciudad">
+      <label for="ciudad">
         <b>Ciudad</b>
       </label>
       <input
@@ -24,8 +24,7 @@
         name="ciudad"
         required
       />
-
-       <label for="estado">
+      <label for="estado">
         <b>Estado</b>
       </label>
       <input
@@ -35,19 +34,11 @@
         name="estado"
         required
       />
-
-       <label for="pais">
+      <label for="pais">
         <b>País</b>
       </label>
-      <input
-        v-model="cliente.pais"
-        type="text"
-        placeholder="Ingrese el país"
-        name="pais"
-        required
-      />
-
-       <label for="direccion">
+      <input v-model="cliente.pais" type="text" placeholder="Ingrese el país" name="pais" required />
+      <label for="direccion">
         <b>Dirección</b>
       </label>
       <input
@@ -57,8 +48,7 @@
         name="direccion"
         required
       />
-      
-       <label for="codigoPostal">
+      <label for="codigoPostal">
         <b>Código postal</b>
       </label>
       <input
@@ -68,7 +58,6 @@
         name="codigoPostal"
         required
       />
-  
       <label for="correo">
         <b>Correo electrónico</b>
       </label>
@@ -80,10 +69,11 @@
         required
       />
     </div>
+    <!-- Contenedor derecho de datos del cliente -->
     <div class="datos-derecha">
       <h2>Términos y tarifas</h2>
       <hr />
-       <label for="terminoPago">
+      <label for="terminoPago">
         <b>Término de pago</b>
       </label>
       <input
@@ -93,8 +83,7 @@
         name="terminoPago"
         required
       />
-       
-       <label for="palabraTraduccion">
+      <label for="palabraTraduccion">
         <b>Precio palabra traducción</b>
       </label>
       <input
@@ -105,8 +94,7 @@
         step=".01"
         required
       />
-
-       <label for="palabraEdicion">
+      <label for="palabraEdicion">
         <b>Precio palabra edición</b>
       </label>
       <input
@@ -117,8 +105,7 @@
         step=".01"
         required
       />
-
-       <label for="palabraProofreading">
+      <label for="palabraProofreading">
         <b>Precio palabra proofreading</b>
       </label>
       <input
@@ -129,7 +116,6 @@
         step=".01"
         required
       />
-
       <hr />
       <button class="boton-enviar" @click="agregarCliente(cliente)">Enviar</button>
     </div>
@@ -137,7 +123,7 @@
 </template>
 
 <script>
-import {mapActions} from 'vuex';
+import { mapActions } from "vuex";
 export default {
   data() {
     return {
@@ -159,14 +145,14 @@ export default {
       }
     };
   },
-  methods:{
-    ...mapActions(['agregarCliente'])
+  methods: {
+    ...mapActions(["agregarCliente"])
   }
 };
 </script>
 
 <style scoped>
-*{
+* {
   box-sizing: border-box;
 }
 .contenedor-ac {

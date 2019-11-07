@@ -1,4 +1,5 @@
 <template>
+  <!-- Contenedor de datos del usuario -->
   <div class="contenedor-usuario">
     <div class="u-datos">
       <label for="nombreUsuario">
@@ -11,7 +12,6 @@
         name="nombreUsuario"
         required
       />
-
       <label for="apellidoCliente">
         <b>Apellido</b>
       </label>
@@ -22,7 +22,6 @@
         name="apellidoCliente"
         required
       />
-
       <label for="nombreUsuario">
         <b>Nombre de usuario</b>
       </label>
@@ -33,7 +32,6 @@
         name="nombreUsuario"
         required
       />
-
       <label for="contrasena">
         <b>Contraseña</b>
       </label>
@@ -44,7 +42,6 @@
         name="contrasena"
         required
       />
-
       <label for="ciudad">
         <b>Ciudad</b>
       </label>
@@ -55,7 +52,6 @@
         name="ciudad"
         required
       />
-
       <label for="estado">
         <b>Estado</b>
       </label>
@@ -66,12 +62,10 @@
         name="estado"
         required
       />
-
       <label for="pais">
         <b>País</b>
       </label>
       <input v-model="usuario.pais" type="text" placeholder="Ingrese el país" name="pais" required />
-
       <label for="direccion">
         <b>Dirección</b>
       </label>
@@ -82,7 +76,6 @@
         name="direccion"
         required
       />
-
       <label for="codigoPostal">
         <b>Código postal</b>
       </label>
@@ -93,7 +86,6 @@
         name="codigoPostal"
         required
       />
-
       <label for="correo">
         <b>Correo electrónico</b>
       </label>
@@ -104,7 +96,6 @@
         name="correo"
         required
       />
-
       <label for="paypal">
         <b>Paypal</b>
       </label>
@@ -147,6 +138,9 @@ export default {
   },
   methods: {
     ...mapActions(["actualizarDatosUsuario"]),
+    /**
+     * Función para cargar los datos del usuario al momento de cargar el componente.
+     */
     cargarDatos: function() {
       this.usuario.nombre = this.getDatosUsuario.nombre;
       this.usuario.apellido = this.getDatosUsuario.apellido;

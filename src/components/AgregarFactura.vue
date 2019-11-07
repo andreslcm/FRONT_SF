@@ -1,5 +1,7 @@
 <template>
+  <!-- Contenedor de la sección agregar facturas -->
   <div class="contenedor-agregar-f" id="facturapdf" v-if="mostrar == true">
+    <!-- Cebecera -->
     <div class="cabecera">FACTURA</div>
     <div class="contenedor-fac">
       <div class="datos-cliente">
@@ -40,6 +42,7 @@
       </div>
       <div class="datos-varios">
         <hr />
+        <!-- Contenedor de la tabla -->
         <div>
           <table class="c-tabla-v">
             <tr>
@@ -63,7 +66,9 @@
           </table>
         </div>
       </div>
+      <!-- Cuerpo de la factura -->
       <div class="cuerpo-factura">
+        <!-- Detalles de la factura -->
         <table class="tabla-detalles">
           <thead>
             <tr>
@@ -78,7 +83,12 @@
             <span v-show="false">{{multiplicacion}}</span>
             <tr class="fila-detalles" v-for="detalle in detalles" :key="detalle.id">
               <td class="td-menos">
-                <img @click="eliminarDetalle(detalles.indexOf(detalle))" class="menos" src="../assets/menos.png" alt />
+                <img
+                  @click="eliminarDetalle(detalles.indexOf(detalle))"
+                  class="menos"
+                  src="../assets/menos.png"
+                  alt
+                />
                 <textarea
                   v-model="detalle.descripcionProyecto"
                   type="text"
@@ -140,13 +150,14 @@
     </div>
     <div></div>
   </div>
+  <!-- Vista de la factura para imprimir -->
   <div v-else-if="mostrar==false">
-    <VistaFactura :factura="factura" :idCliente="idCliente" :detalles="detalles"/>
+    <VistaFactura :factura="factura" :idCliente="idCliente" :detalles="detalles" />
   </div>
 </template>
 
 <script>
-import VistaFactura from './VistaFactura.vue';
+import VistaFactura from "./VistaFactura.vue";
 import { mapGetters, mapActions } from "vuex";
 
 export default {
@@ -172,14 +183,26 @@ export default {
   },
   computed: {
     ...mapGetters(["getClientes", "getClientePorId", "getDatosUsuario"]),
+    /**
+     * Función para sumar los montos de cada detalle.
+     * @return Number
+     */
     suma() {
       return this.detalles.reduce((total, detalle) => {
         return total + Number(detalle.monto);
       }, 0);
     },
+    /**
+     * Función para sumar el subtotal con los impuestos.
+     * @return Number
+     */
     sumaTotal() {
       return this.suma + Number(this.factura.impuestos);
     },
+    /**
+     * Función para multiplicar la tarifa por el número de palabras ingresado.
+     * @return Number
+     */
     multiplicacion() {
       return this.detalles.forEach(detalle => {
         detalle.monto = detalle.precio * detalle.numeroPalabras;
@@ -188,15 +211,27 @@ export default {
   },
   methods: {
     ...mapActions(["traerDatosUsuario", "agregarFactura"]),
+    /**
+     * Función para ejecutar las sumas antes de enviar una factura.
+     */
     sumar: function() {
       this.factura.subtotal = document.getElementById("subtotal").value;
       this.factura.total = document.getElementById("total").value;
     },
+    /**
+     * Función para enviar una factura.
+     * @param {Objeto} factura
+     * @param {Array} detalles
+     * @param {Number} idCliente
+     */
     enviarFactura: function(factura, detalles, idCliente) {
       this.sumar();
       this.agregarFactura(factura, detalles, idCliente);
       this.mostrar = false;
     },
+    /**
+     * Función para agregar detalles a una factura.
+     */
     agregarDetalle: function() {
       this.detalles.push({
         monto: null,
@@ -205,9 +240,12 @@ export default {
         numeroPalabras: ""
       });
     },
+    /**
+     * Función para eliminar detalles de una factura.
+     */
     eliminarDetalle: function(indice) {
       this.detalles.splice(indice, 1);
-    },
+    }
   },
   mounted() {
     this.traerDatosUsuario();
@@ -421,5 +459,4 @@ select:hover {
 .td-menos {
   display: flex;
 }
-
 </style>
