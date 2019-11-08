@@ -3,7 +3,7 @@
     <!-- Contenedor izquierdo de datos del cliente -->
     <div class="datos-izquierda">
       <h2>Datos del cliente</h2>
-      <hr />
+     
       <label for="nombreCliente">
         <b>Nombre</b>
       </label>
@@ -72,7 +72,7 @@
     <!-- Contenedor derecho de datos del cliente -->
     <div class="datos-derecha">
       <h2>Términos y tarifas</h2>
-      <hr />
+     
       <label for="terminoPago">
         <b>Término de pago</b>
       </label>
@@ -116,7 +116,7 @@
         step=".01"
         required
       />
-      <hr />
+      
       <button class="boton-enviar" @click="agregarCliente(cliente)">Enviar</button>
     </div>
   </div>
@@ -154,9 +154,36 @@ export default {
 <style scoped>
 * {
   box-sizing: border-box;
+  height: 82%;
+  margin: 0;
 }
+
+html{
+	background-image: url(../assets/fondo.jpg);
+	background-repeat: no-repeat;
+	background-size: 100%;
+}
+
+
+h2{
+color: #0C427D;
+margin-top: -5%;
+}
+
+.titulo{
+	width: 55%;
+	height: 8%;
+	float: right;
+	margin-top: 2.8%;
+}
+
 .contenedor-ac {
-  height: 100%;
+  height: 10%;
+  margin-left: 12%;
+  width: 80%;
+  margin-right: 6%;
+  margin-top: 4.6%;
+  float: right;
   display: grid;
   grid-template-columns: 50%, 50%;
   grid-template-rows: 2% 96% 2%;
@@ -165,18 +192,22 @@ export default {
     "d i"
     "p p";
 }
+
+.formulario{
+  height: 100%;
+}
 .datos-izquierda {
   grid-area: d;
   width: 100%;
   padding: 0 10px;
-  margin-left: 10px;
+  margin-left: 2%;
   border-right: solid 1px #f1f1f1;
 }
 .datos-derecha {
   width: 100%;
   grid-area: i;
   padding: 0 20px;
-  margin-right: 10px;
+  margin-right: 15px;
 }
 input[type="text"],
 input[type="number"] {
@@ -185,13 +216,17 @@ input[type="number"] {
   margin: 5px 0 15px 0;
   display: inline-block;
   border: none;
-  background: #f1f1f1;
+  background: #CCD4EB;
+  color: #0C427D;
+}
+label{
+  color: rgb(255, 255, 255);
 }
 hr {
   border: 1px solid #f1f1f1;
 }
 .boton-enviar {
-  background-color: #4caf50;
+  background-color: #0C427D;
   color: white;
   padding: 12px 20px;
   margin: 8px 0;
@@ -199,8 +234,94 @@ hr {
   cursor: pointer;
   width: 100%;
   opacity: 0.9;
+  text-align: center;
+  margin-top: 1%;
 }
 .boton-enviar:hover {
   opacity: 1;
 }
+   
+.contenedor-side {
+  height: 150%;
+  width: 20%;
+  float:left;
+  background-color: #0C427D;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(14, 1fr);
+  grid-template-areas:
+         "i i i"
+         "i i i"
+         ". . ."
+         ". b1 ."
+         ". . ."
+         ". b2 ."
+         ". . ."
+         ". b3 ."
+         ". . ."
+         ". b4 ."
+         ". . ."
+         ". l ."
+         ". . ."
+         ". . ."
+}
+.botones {
+  background-color: #CCD4EB;
+  border: none;
+  color: white;
+  padding: 10px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+}
+.boton-1 {
+  grid-area: b1;
+  color: #0C427D;
+}
+.boton-2 {
+  grid-area: b2;
+  color: #0C427D;
+  margin-top: -15%;
+}
+.boton-3 {
+  grid-area: b3;
+  color: #0C427D;
+  margin-top: -29%;
+}
+.boton-4 {
+  grid-area: b4;
+  color: #0C427D;
+  margin-top: -44%;
+}
+
+.imagen{
+  margin-top: 10%;
+  margin-left: 10%;
+  grid-area: i;
+}
+.imagen:hover {
+  cursor: pointer;
+}
+.logout{
+  margin-top: -58%;
+  width: 100%;
+  height: 90%;
+  grid-area: l;
+}
+.logout:hover{
+  cursor: pointer;
+}
+
+.imagen1{
+  margin-left:-14%;
+  margin-top: 37%;
+  width: 8%;
+  height: 30%;
+  float: left;
+}
+
+
 </style>
+

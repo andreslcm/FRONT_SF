@@ -270,14 +270,21 @@ export default {
 }
 table {
   text-align: center;
-  width: 100%;
+  width: 85%;
+  margin-left: 11%;
+
 }
 thead {
   background-color: rgb(60, 63, 71);
   color: white;
+ 
 }
 tbody > tr:nth-child(even) {
-  background-color: rgb(168, 164, 164);
+  background-color: #CCD4EB;
+}
+
+th{
+background-color: #0C427D;
 }
 td {
   padding: 10px;

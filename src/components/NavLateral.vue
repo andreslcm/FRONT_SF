@@ -87,12 +87,12 @@ export default {
 .barra-lateral {
   height: 50px;
   width: 100%;
-  background-color: rgb(60, 63, 71);
+  background-color:#0C427D;
   display: flex;
 }
 .boton {
-  background-color: #4caf50;
-  color: white;
+  background-color: #CCD4EB;
+  color: #0C427D;
   padding: 7px 15px;
   margin: 10px 5px;
   border: none;
@@ -101,22 +101,24 @@ export default {
 }
 .boton:hover {
   opacity: 1;
+  background-color: rgb(199, 205, 223);
+  color: #0C427D;
 }
 .menu-d {
   position: relative;
   display: inline-block;
 }
 .boton-dm {
-  color: white;
+  color: #0C427D;
   padding: 7px 15px;
   margin: 10px 5px;
   border: none;
   cursor: pointer;
-  background-color: rgb(60, 63, 71);
+  background-color:rgb(199, 205, 223);
 }
 .contenido-dm {
   display: none;
-  color: black;
+  color: #0C427D;
   position: absolute;
   background-color: #f1f1f1;
   min-width: 180px;
@@ -124,19 +126,21 @@ export default {
   z-index: 1;
 }
 .contenido-dm a {
-  color: black;
+  color:#0C427D;
   padding: 12px 16px;
   text-decoration: none;
   display: block;
 }
 .contenido-dm a:hover {
-  background-color: #ddd;
+  background-color: rgb(199, 205, 223);
+  color: #0C427D;
 }
 .menu-d:hover .contenido-dm {
   display: block;
 }
 .menu-d:hover .boton-dm {
-  background-color: #3e8e41;
+  background-color: rgb(199, 205, 223);
+  color: #0C427D;
 }
 .buscar {
   width: 5%;
@@ -144,6 +148,7 @@ export default {
 .fechas > input {
   padding: 7px 15px;
   margin: 5px 5px;
+  color: #0C427D;
 }
 .fechas > label {
   color: white;
