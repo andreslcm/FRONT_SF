@@ -765,6 +765,20 @@ export const store = new Vuex.Store({
       return avg;
     },
 
+    getPromedioEnero: function (state) {
+      var total = 0;
+      var largo = 0;
+      state.facturas.forEach(factura => {
+        var variable = new Date(factura.fechaFactura)
+        if(variable.getMonth() == 0) {
+          total += Number(factura.total)
+          largo +=1;
+        }
+      })
+      var avg = total/largo;
+      return avg;
+    },
+
 
   }
 })
