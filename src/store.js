@@ -144,6 +144,9 @@ export const store = new Vuex.Store({
         })
         .catch((error) => {
           alert(error.response.data.message);
+        })
+        .catch(error => {
+          alert(error.response.data.message);
         });
     },
     /**
@@ -170,6 +173,9 @@ export const store = new Vuex.Store({
         })
         .then(respuesta => {
           context.commit('SET_CLIENTES', respuesta.data)
+        })
+        .catch(error => {
+          alert(error.response.data.message);
         });
     },
     /**
@@ -186,6 +192,9 @@ export const store = new Vuex.Store({
         .then(respuesta => {
 
           context.commit('SET_FACTURAS', respuesta.data);
+        })
+        .catch(error => {
+          alert(error.response.data.message);
         });
     },
     /**
@@ -201,6 +210,9 @@ export const store = new Vuex.Store({
         })
         .then(respuesta => {
           context.commit('SET_DATOS_USUARIO', respuesta.data);
+        })
+        .catch(error => {
+          alert(error.response.data.message);
         });
     },
     /**
@@ -217,7 +229,7 @@ export const store = new Vuex.Store({
      * @param {Number} numero
      */
     actualizarContador: function (context, numero) {
-      context.commit('SET_CONTADOR', numero)
+      context.commit('SET_CONTADOR', numero);
     },
     /**
      * Función asincrónica para agregar un cliente.
@@ -239,6 +251,9 @@ export const store = new Vuex.Store({
           alert("Cliente agregado con éxtio.")
           context.dispatch('cargarClientes');
           context.dispatch('actualizarContador', 1);
+        })
+        .catch(error => {
+          alert(error.response.data.message);
         });
     },
     /**
@@ -258,6 +273,9 @@ export const store = new Vuex.Store({
             alert("Cliente eliminado con éxito.")
             context.dispatch('cargarClientes');
             context.dispatch('actualizarContador', 1);
+          })
+          .catch(error => {
+            alert(error.response.data.message);
           });
       }
     },
@@ -278,6 +296,9 @@ export const store = new Vuex.Store({
             alert("Cliente actuilizado con éxito.")
             context.dispatch('cargarClientes');
             context.dispatch('actualizarContador', 1);
+          })
+          .catch(error => {
+            alert(error.response.data.message);
           });
       }
     },
@@ -336,6 +357,9 @@ export const store = new Vuex.Store({
             context.commit('SET_LISTA_LIMPIA', lista);
             context.dispatch('cargarFacturas');
             context.dispatch('actualizarContador', 2);
+          })
+          .catch(error => {
+            alert(error.response.data.message);
           });
       }
     },
