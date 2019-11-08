@@ -187,6 +187,94 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+.contenedor{
+  overflow: auto;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  min-height: 93vh;
+  background:white;
+  display: table;
+}
+.estadisticas12 {
+  display: table-row;
+}
+.estadisticas34 {
+  display: table-row;
+}
+.estadisticas1{
+  margin: auto;
+  align-items: center;
+  justify-content: center;
+  float: left;
+}
+.estadisticas2{
+  margin: auto;
+  align-items: center;
+  justify-content: center;
+  float: left;
+}
+.estadisticas3{
+  margin: auto;
+  align-items: center;
+  justify-content: center;
+  float: left;
+}
+.estadisticas4{
+  margin: auto;
+  align-items: center;
+  float: left;
+  justify-content: center;
+}
+table.paleBlueRows {
+  border: 1px solid #FFFFFF;
+  width: 350px;
+  height: 200px;
+  text-align: center;
+  border-collapse: collapse;
+}
+table.paleBlueRows td, table.paleBlueRows th {
+  border: 3px solid #FFFFFF;
+  padding: 5px 3px;
+}
+table.paleBlueRows tbody td {
+  font-size: 13px;
+}
+table.paleBlueRows tr:nth-child(even) {
+  background: #CCD4EB;
+}
+table.paleBlueRows thead {
+  background: #0C427D;
+  border-bottom: 5px solid #FFFFFF;
+}
+table.paleBlueRows thead th {
+  font-size: 17px;
+  font-weight: bold;
+  color: #FFFFFF;
+  text-align: center;
+  border-left: 3px solid #FFFFFF;
+}
+table.paleBlueRows thead th:first-child {
+  border-left: none;
+}
+table.paleBlueRows tfoot td {
+  font-size: 14px;
+}
+table.progress td progress{
+  width: 400px;
+}
+progress {
+  background-color: #CCD4EB;
+  border: 0;
+  height: 18px;
+  width: 100%;
+  color: #0C427D;
+}
+progress::-webkit-progress-value {
+  background: #0C427D;
+}
+progress::-moz-progress-bar {
+  background: #0C427D;
+}
 </style>
