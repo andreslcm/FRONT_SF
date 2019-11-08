@@ -43,7 +43,6 @@
               class="seleccionar-f"
               v-for="factura in getFacturas"
               :key="factura.idFactura"
-              @click="activarModal(factura.idFactura)"
             >
               <td>
                 <input
@@ -54,13 +53,13 @@
                   @change="actualizarLista"
                 />
               </td>
-              <td>{{factura.numeroFactura}}</td>
-              <td>{{factura.ordenCompra}}</td>
-              <td>{{factura.fechaFactura | formatoFecha}}</td>
-              <td>{{factura.fechaVencimiento | formatoFecha}}</td>
-              <td>{{factura.nombreCliente}}</td>
-              <td>{{factura | formatoEstado}}</td>
-              <td>{{factura.total}}</td>
+              <td @click="activarModal(factura.idFactura)">{{factura.numeroFactura}}</td>
+              <td @click="activarModal(factura.idFactura)">{{factura.ordenCompra}}</td>
+              <td @click="activarModal(factura.idFactura)">{{factura.fechaFactura | formatoFecha}}</td>
+              <td @click="activarModal(factura.idFactura)">{{factura.fechaVencimiento | formatoFecha}}</td>
+              <td @click="activarModal(factura.idFactura)">{{factura.nombreCliente}}</td>
+              <td @click="activarModal(factura.idFactura)">{{factura | formatoEstado}}</td>
+              <td @click="activarModal(factura.idFactura)">{{factura.total}}</td>
             </tr>
           </tbody>
         </table>

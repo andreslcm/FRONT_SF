@@ -144,7 +144,7 @@
           >Enviar</button>
         </div>
         <div>
-          <button class="boton-f">Cancelar</button>
+          <button @click="actualizarContador(2)" class="boton-f">Cancelar</button>
         </div>
       </div>
     </div>
@@ -210,7 +210,7 @@ export default {
     }
   },
   methods: {
-    ...mapActions(["traerDatosUsuario", "agregarFactura"]),
+    ...mapActions(["traerDatosUsuario", "agregarFactura", "actualizarContador"]),
     /**
      * Función para ejecutar las sumas antes de enviar una factura.
      */
