@@ -611,5 +611,63 @@ export const store = new Vuex.Store({
       });
       return pagadas;
     },
+    /**
+     * Método para obtener el mejor cliente.
+     * @param {estado} state
+     * @return String
+     */
+    getMejorCliente: function (state) {
+      var clientesArray = [];
+      var nombreClientevar;
+      state.clientes.forEach(cliente => {
+        console.log(cliente);
+        var totalcliente = 0;
+        state.facturas.forEach(factura => {
+          if (factura.idCliente==cliente.idCliente) {
+            totalcliente += Number(factura.total);
+            clientesArray.push(cliente.idCliente, totalcliente)
+          } 
+        });
+      })
+      var max = clientesArray[0];
+      var maxIndex = 0;
+      for (var i = 1; i < clientesArray.length; i++) {
+          if (clientesArray[i] > max) {
+              maxIndex = i;
+              max = clientesArray[i];
+          }
+      }
+      state.clientes.forEach(cliente => {
+        if (cliente.idCliente == clientesArray[(maxIndex -1)]){
+          nombreClientevar = cliente.nombreCliente
+        }
+      })
+      return nombreClientevar;
+    },
+    /**
+     * Método para obtener el mejor pago del cliente.
+     * @param {estado} state
+     * @return String
+     */
+    getMejorPagoDeCliente: function (state) {
+      var clientesArray = [];
+      state.clientes.forEach(cliente => {
+        var totalcliente = 0;
+        state.facturas.forEach(factura => {
+          if (factura.idCliente==cliente.idCliente) {
+            totalcliente += Number(factura.total);
+            clientesArray.push(cliente.idCliente, totalcliente)
+          } 
+        });
+      })
+      console.log(clientesArray);
+      var max = clientesArray[0];
+      for (var i = 1; i < clientesArray.length; i++) {
+          if (clientesArray[i] > max) {
+              max = clientesArray[i];
+          }
+      }
+      return max;
+    },
   }
 })
