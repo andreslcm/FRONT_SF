@@ -115,8 +115,6 @@
     </div>
     <div class="caja-iconos">
       <img @click="actualizarContador(5)" class="iconos" src="../assets/agregar.png" alt />
-      <img class="iconos" src="../assets/editar.png" alt />
-      <img class="iconos" src="../assets/borrar.png" alt />
     </div>
     <!-- Tabla de clientes -->
     <div class="contenedor-tabla">
@@ -251,7 +249,7 @@ export default {
   grid-column: 2/-1;
   grid-row: 1/-1;
   width: 100%;
-  height: 21%;
+  height: 9%;
   z-index: 1;
   background-color: rgba(39, 73, 119, 0.199);
   align-self: center;
@@ -309,7 +307,7 @@ td {
   .caja-iconos {
     grid-area: c;
     width: 100%;
-    height: 23%;
+    height: 9%;
     background-color: rgba(39, 73, 119, 0.199);
     z-index: 1;
     align-self: center;
