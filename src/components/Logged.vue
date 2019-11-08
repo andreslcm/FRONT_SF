@@ -49,7 +49,6 @@ export default {
 * {
   box-sizing: border-box;
 }
-
 .contenedor {
   display: grid;
   height: 100vh;
@@ -57,11 +56,9 @@ export default {
   grid-template-rows: 100%;
   grid-template-areas: "s c";
 }
-
 .sideBar {
   grid-area: s;
 }
-
 .pagina {
   grid-area: c;
 }

@@ -210,7 +210,11 @@ export default {
     }
   },
   methods: {
-    ...mapActions(["traerDatosUsuario", "agregarFactura", "actualizarContador"]),
+    ...mapActions([
+      "traerDatosUsuario",
+      "agregarFactura",
+      "actualizarContador"
+    ]),
     /**
      * Función para ejecutar las sumas antes de enviar una factura.
      */
@@ -266,7 +270,6 @@ export default {
     ". cab ."
     ". con .";
 }
-
 .contenedor-fac {
   margin-bottom: 20px;
   grid-area: con;
@@ -292,7 +295,6 @@ export default {
     ". . . . . . . . . . . ."
     ". . . . . . . . . . . .";
 }
-
 .cabecera {
   grid-area: cab;
   padding: 7px;
@@ -303,57 +305,46 @@ export default {
   font-size: 15pt;
   letter-spacing: 5px;
 }
-
 .datos-cliente {
   grid-area: dc;
 }
-
 .datos-usuario {
   grid-area: du;
 }
-
 .cuerpo-factura {
   grid-area: fa;
   border: solid 1px #f1f1f1;
   box-sizing: content-box;
 }
-
 .datos-varios {
   grid-area: df;
 }
-
 .c-tabla-v > tr {
   display: flex;
   justify-content: space-evenly;
 }
-
 .c-tabla-v > tr > td {
   flex: 1;
   font-weight: bold;
   margin: 3px;
   padding: 3px;
 }
-
 .select-clientes {
   border: 0px;
 }
-
 .datos-p {
   font-weight: bold;
   font-size: 13pt;
 }
-
 p {
   margin-top: 2px;
   margin-bottom: 2px;
 }
-
 input {
   border: 0px;
   height: 25px;
   width: 100%;
 }
-
 hr {
   border: 1px solid #f1f1f1;
 }
@@ -370,35 +361,29 @@ table {
 .tabla-detalles > thead > tr > th:nth-child(2) {
   width: 120px;
 }
-
 .dm-tarifas {
   width: 100%;
   border: 0px;
   height: 25px;
 }
-
 textarea {
   border: none;
   width: 99%;
 }
-
 textarea:hover,
 input:hover,
 select:hover {
   background-color: rgb(250, 250, 190);
 }
-
 .boton-enviar {
   grid-area: bot;
   display: flex;
 }
-
 .boton-enviar > div {
   flex: 1;
   margin: auto;
   text-align: center;
 }
-
 .boton-f {
   background-color: #4caf50;
   color: white;
@@ -409,22 +394,18 @@ select:hover {
   opacity: 0.9;
   width: 70%;
 }
-
 .boton-f:hover {
   opacity: 1;
 }
-
 .montos {
   border: 1px solid #f1f1f1;
   text-align: center;
   background-color: #f1f1f1;
 }
-
 .montos > label {
   font-size: 13pt;
   font-weight: bold;
 }
-
 .montos > input {
   text-align: center;
 }
@@ -435,15 +416,12 @@ select:hover {
   font-weight: bold;
   background-color: #f1f1f1;
 }
-
 .agregar-detalle:hover {
   cursor: pointer;
 }
-
 .fila-detalles > td > input {
   text-align: center;
 }
-
 .menos {
   flex: 1;
   width: 15px;
@@ -451,11 +429,9 @@ select:hover {
   margin: auto;
   padding: 5px;
 }
-
 .menos:hover {
   cursor: pointer;
 }
-
 .td-menos {
   display: flex;
 }

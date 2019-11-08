@@ -26,14 +26,12 @@ export default {};
   margin: 0%;
   font-family:"Helvetica Neue", Helvetica;
 }
-
 .contenedor {
   display: grid;
   height: 7vh;
   grid-template-columns: repeat(8, 1fr);
   grid-template-rows: 100%; 
 }
-
 .menu {
   grid-column: 1/-1;
   background-color: #0C427D;
@@ -41,18 +39,15 @@ export default {};
   color: white;
   align-items: center;
 }
-
 .menu > a {
   color: white;
   margin:10px;
 }
-
 a{
   color: #fff;
   font-weight:800 ;
   padding: 3vh;
 }
-
 a:hover{
   background-color: #CCD4EB;
   color: #0C427D;

@@ -215,7 +215,6 @@ export default {
 * {
   box-sizing: border-box;
 }
-
 .contenedor-facturas {
   height: 100%;
   display: grid;
@@ -226,7 +225,6 @@ export default {
     "cif"
     "tab";
 }
-
 .contenedor-tabla-f {
   grid-area: tab;
   height: 100%;
@@ -234,18 +232,15 @@ export default {
   position: relative;
   overflow: auto;
 }
-
 .contenedor-nav-l {
   grid-area: nav;
 }
-
 .contenedor-cifras {
   grid-area: cif;
   height: 100%;
   width: 100%;
   background-color: rgba(138, 138, 138, 0.726);
 }
-
 .contenedor-tabla-f {
   width: 100%;
   position: relative;
@@ -259,52 +254,41 @@ thead {
   background-color: rgb(60, 63, 71);
   color: white;
 }
-
 tbody > tr:nth-child(even) {
   background-color: rgb(168, 164, 164);
 }
-
 td {
   padding: 10px;
 }
-
 .tabla-f {
   position: absolute;
   width: 100%;
 }
-
 .orden-f:hover {
   background-color: #4caf50;
   color: black;
   cursor: pointer;
 }
-
 .seleccionar-f:hover {
   background-color: #4caf50;
   color: black;
   cursor: pointer;
 }
-
 .cifras {
   font-weight: bold;
 }
-
 .pagadas {
   color: green;
 }
-
 .por-cobrar {
   color: yellow;
 }
-
 .vencidas {
   color: red;
 }
-
 .modal-desactivado {
   display: none;
 }
-
 .modal-factura {
   position: absolute;
   width: 60%;

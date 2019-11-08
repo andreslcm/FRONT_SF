@@ -84,14 +84,12 @@ export default {
 * {
   box-sizing: border-box;
 }
-
 .barra-lateral {
   height: 50px;
   width: 100%;
   background-color: rgb(60, 63, 71);
   display: flex;
 }
-
 .boton {
   background-color: #4caf50;
   color: white;
@@ -101,16 +99,13 @@ export default {
   cursor: pointer;
   opacity: 0.9;
 }
-
 .boton:hover {
   opacity: 1;
 }
-
 .menu-d {
   position: relative;
   display: inline-block;
 }
-
 .boton-dm {
   color: white;
   padding: 7px 15px;
@@ -119,7 +114,6 @@ export default {
   cursor: pointer;
   background-color: rgb(60, 63, 71);
 }
-
 .contenido-dm {
   display: none;
   color: black;
@@ -129,30 +123,24 @@ export default {
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
 }
-
 .contenido-dm a {
   color: black;
   padding: 12px 16px;
   text-decoration: none;
   display: block;
 }
-
 .contenido-dm a:hover {
   background-color: #ddd;
 }
-
 .menu-d:hover .contenido-dm {
   display: block;
 }
-
 .menu-d:hover .boton-dm {
   background-color: #3e8e41;
 }
-
 .buscar {
   width: 5%;
 }
-
 .fechas > input {
   padding: 7px 15px;
   margin: 5px 5px;
@@ -162,7 +150,6 @@ export default {
   padding: 7px 15px;
   margin: 5px 5px;
 }
-
 .buscar:hover {
   cursor: pointer;
 }

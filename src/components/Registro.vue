@@ -58,23 +58,19 @@ export default {
   font-family:"Helvetica Neue", Helvetica;
   overflow: hidden;
 }
-
 img{
   padding: 10%;
   padding-bottom: 0%;
 }
-
 .button_cont{
   align-content:center;
 }
-
 .principal{
   display: flex;
 	align-items: center;
 	justify-content: center;
 	min-height: 93vh;
 }
-
 .log {
   height: auto;
   width: 50vh;
@@ -87,7 +83,6 @@ img{
   align-items: center;
 	justify-content: center;
 }
-
 .buttonhover {
   border-radius: 4px;
   border: none;
@@ -101,14 +96,12 @@ img{
   font-weight: 1000;
   color: white;
 }
-
 .buttonhover span {
   cursor: pointer;
   display: inline-block;
   position: relative;
   transition: 0.4s;
 }
-
 .buttonhover span:after {
   content: '\00bb';
   position: absolute;
@@ -117,16 +110,13 @@ img{
   right: -20px;
   transition: 0.5s;
 }
-
 .buttonhover:hover span {
   padding-right: 25px;
 }
-
 .buttonhover:hover span:after {
   opacity: 1;
   right: 0;
 }
-
 input {
   width:75%;
   background:white;
@@ -138,18 +128,15 @@ input {
   font-weight:800 ;
   border: 1px white;
 }
-
 p a {
   margin: 0%;
   padding:0%;
   text-decoration: underline;
 }
-
 .inicioSesion{
   display: flex;
   margin-bottom: 10px;
 }
-
 p{
   margin: auto;
   width: auto;

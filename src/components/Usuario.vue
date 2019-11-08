@@ -180,7 +180,6 @@ export default {
     ". bot .";
   overflow: auto;
 }
-
 .u-datos {
   height: 100%;
   width: 100%;
@@ -191,14 +190,12 @@ export default {
   border: 1px solid #f1f1f1;
   padding: 20px;
 }
-
 .u-botones {
   grid-area: bot;
   margin-top: 10px;
   height: 100%;
   width: 100%;
 }
-
 input[type="text"],
 input[type="number"],
 input[type="password"] {
@@ -209,11 +206,9 @@ input[type="password"] {
   border: none;
   background: #f1f1f1;
 }
-
 hr {
   border: 1px solid #f1f1f1;
 }
-
 .boton-enviar {
   background-color: #4caf50;
   color: white;
@@ -224,7 +219,6 @@ hr {
   width: 100%;
   opacity: 0.9;
 }
-
 .boton-enviar:hover {
   opacity: 1;
 }

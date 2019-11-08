@@ -46,7 +46,6 @@ export default {
   font-family:"Helvetica Neue", Helvetica;
   overflow: hidden;
 }
-
 .principal{
   display: flex;
 	align-items: center;
@@ -54,17 +53,14 @@ export default {
 	min-height: 93vh;
   background:white;
 }
-
 .demo-canvas {
   position: absolute;
 
 }
-
 img{
   width: 90% ;
   margin: 2% 5%;
 }
-
 .log {
   height: auto;
   width: 50vh;
@@ -96,7 +92,6 @@ img{
   position: relative;
   transition: 0.4s;
 }
-
 .buttonhover span:after {
   content: '\00bb';
   position: absolute;
@@ -105,16 +100,13 @@ img{
   right: -20px;
   transition: 0.5s;
 }
-
 .buttonhover:hover span {
   padding-right: 25px;
 }
-
 .buttonhover:hover span:after {
   opacity: 1;
   right: 0;
 }
-
 input {
   width:75%;
   background:white;
@@ -126,18 +118,15 @@ input {
   font-weight:800 ;
   border: 1px white;
 }
-
 p a {
   margin: 0%;
   padding:0%;
   text-decoration: underline;
 }
-
 .contraRecuperar{
   display: flex;
   margin-bottom: 20px;
 }
-
 p{
   margin: auto;
   width: auto;

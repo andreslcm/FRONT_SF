@@ -146,7 +146,6 @@ export default {
   grid-template-areas: "i con .";
   background-color: #f1f1f1;
 }
-
 .icono-i {
   grid-area: i;
   text-align: center;
@@ -155,7 +154,6 @@ export default {
   font-size: 15pt;
   color: blue;
 }
-
 .contenido {
   margin-top: 10px;
   margin-bottom: 10px;
@@ -181,38 +179,32 @@ export default {
   padding: 10px;
   background-color: white;
 }
-
 .datos-usuario {
   grid-area: du;
   width: 100%;
   height: 100%;
 }
-
 .numero-factura {
   grid-area: nf;
   width: 100%;
   height: 100%;
   text-align: end;
 }
-
 .datos-cliente {
   grid-area: dc;
   width: 100%;
   height: 100%;
 }
-
 .terminos {
   grid-area: t;
   width: 100%;
   height: 100%;
 }
-
 .terminos > table > thead > th {
   text-align: start;
   width: 33%;
   color: orange;
 }
-
 .terminos > table > tbody > tr {
   width: 100%;
   font-weight: bold;
@@ -222,23 +214,19 @@ export default {
   width: 100%;
   height: 100%;
 }
-
 .pago {
   grid-area: p;
   width: 100%;
   height: 100%;
 }
-
 p {
   margin: 0;
 }
-
 .nombre {
   font-size: 20pt;
   letter-spacing: 3px;
   font-weight: bold;
 }
-
 .tabla2 {
   width: 100%;
   text-align: start;
@@ -246,19 +234,16 @@ p {
   border-collapse: collapse;
   margin-top: 10px;
 }
-
 .tabla2 > thead > tr > th:nth-child(1) {
   text-align: left;
 }
 .tabla2 > thead > tr > th {
   border: 0.5px solid #f1f1f1;
 }
-
 .tabla2 > thead > tr {
   background-color: orange;
   color: white;
 }
-
 .tabla2 > tbody > tr > td:nth-child(1n + 2) {
   text-align: center;
 }
@@ -268,7 +253,6 @@ p {
 tr:nth-child(even) {
   background-color: #f1f1f1;
 }
-
 .totales > td:nth-child(1n + 2) {
   background-color: orange;
   color: white;
@@ -277,7 +261,6 @@ tr:nth-child(even) {
 .totales > td:nth-child(1) {
   background-color: white;
 }
-
 .totales > td:nth-child(2) {
   border-right: none;
 }
@@ -285,35 +268,29 @@ tr:nth-child(even) {
   border-bottom: solid 0.1px white;
   border-left: solid 0.1px white;
 }
-
 .tabla2 > tbody > tr:nth-last-child(4) {
   border: 0.5px solid #f1f1f1;
 }
 td {
   padding: 5px;
 }
-
 .titulo-factura {
   font-weight: bold;
   color: orange;
   font-size: 15pt;
 }
-
 .titulo-notas {
   font-weight: bold;
   font-size: 15pt;
 }
-
 .cliente {
   color: orange;
   font-size: 13pt;
   font-weight: bold;
 }
-
 hr {
   border: 0.5px solid #f1f1f1;
 }
-
 @media screen and (max-width: 1400px) {
   .imprimir-factura {
     display: absolute;

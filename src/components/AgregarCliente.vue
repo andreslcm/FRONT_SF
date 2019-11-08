@@ -165,7 +165,6 @@ export default {
     "d i"
     "p p";
 }
-
 .datos-izquierda {
   grid-area: d;
   width: 100%;
@@ -173,14 +172,12 @@ export default {
   margin-left: 10px;
   border-right: solid 1px #f1f1f1;
 }
-
 .datos-derecha {
   width: 100%;
   grid-area: i;
   padding: 0 20px;
   margin-right: 10px;
 }
-
 input[type="text"],
 input[type="number"] {
   width: 100%;
@@ -190,11 +187,9 @@ input[type="number"] {
   border: none;
   background: #f1f1f1;
 }
-
 hr {
   border: 1px solid #f1f1f1;
 }
-
 .boton-enviar {
   background-color: #4caf50;
   color: white;
@@ -205,7 +200,6 @@ hr {
   width: 100%;
   opacity: 0.9;
 }
-
 .boton-enviar:hover {
   opacity: 1;
 }

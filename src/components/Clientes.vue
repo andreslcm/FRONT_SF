@@ -244,7 +244,6 @@ export default {
   grid-template-rows: 100%;
   grid-template-areas: "t c";
 }
-
 .caja-iconos {
   grid-column: 2/-1;
   grid-row: 1/-1;
@@ -254,7 +253,6 @@ export default {
   background-color: rgba(39, 73, 119, 0.199);
   align-self: center;
 }
-
 .iconos {
   width: 80%;
   margin-top: 15px;
@@ -270,30 +268,24 @@ export default {
   position: relative;
   overflow: auto;
 }
-
 table {
   text-align: center;
   width: 100%;
 }
-
 thead {
   background-color: rgb(60, 63, 71);
   color: white;
 }
-
 tbody > tr:nth-child(even) {
   background-color: rgb(168, 164, 164);
 }
-
 td {
   padding: 10px;
 }
-
 .tabla {
   position: absolute;
   width: 100%;
 }
-
 .iconos-tabla {
   width: 15%;
   cursor: pointer;
@@ -316,7 +308,6 @@ td {
     width: 20%;
     cursor: pointer;
   }
-
   td {
     padding: 15px;
   }
@@ -338,7 +329,6 @@ td {
   z-index: 1;
   padding: 10px;
 }
-
 input[type="text"],
 input[type="number"] {
   width: 100%;
@@ -359,7 +349,6 @@ input[type="number"] {
   margin-left: 1%;
   opacity: 0.9;
 }
-
 .botones:hover {
   opacity: 1;
 }

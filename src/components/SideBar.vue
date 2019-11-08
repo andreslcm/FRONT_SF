@@ -43,7 +43,6 @@ export default {
     ". . ."
     ". . .";
 }
-
 .botones {
   background-color: #4caf50;
   border: none;
@@ -56,26 +55,21 @@ export default {
   cursor: pointer;
   opacity: 0.9;
 }
-
 .botones:hover {
   opacity: 1;
 }
 .boton-1 {
   grid-area: b1;
 }
-
 .boton-2 {
   grid-area: b2;
 }
-
 .boton-3 {
   grid-area: b3;
 }
-
 .boton-4 {
   grid-area: b4;
 }
-
 .imagen {
   width: 90%;
   margin: 20px auto;
@@ -84,13 +78,11 @@ export default {
 .imagen:hover {
   cursor: pointer;
 }
-
 .logout {
   margin: auto;
   width: 40%;
   grid-area: l;
 }
-
 .logout:hover {
   cursor: pointer;
 }

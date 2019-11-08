@@ -35,55 +35,45 @@ export default {
 </script>
 
 <style scoped>
-
 .border{
   background: #CCD4EB;
   height: 0.5vh;
 }
-
 .content {
   position: absolute;
   height: 90vh;
   width: 100vh;
   z-index: 0;
 }
-
 .large-header{
   height: 90vh;
   width: 100vh;
 }
-
-
 .foto{
   margin: auto;
 }
-
 .divfoto{
   margin: 0%;
   padding: 0;
 }
-
 .padre{
   display: flex;
   margin: auto;
   height: 92.5vh;
   background-color: #0C427D;
 }
-
 .hijo1{
   margin: auto;
   padding: auto;
   display: flex;
   z-index: 1;
 }
-
 .hijo2{
   padding: auto;
   margin: auto;
   display: flex;
   z-index: 1;
 }
-
 p{
   width: 80%;
   color: #fff;
@@ -91,21 +81,18 @@ p{
   text-align: justify;
   font-size: 3vh;
 }
-
 a{
   text-decoration: none;
   color: white;
   margin: 20px;
   align-self: center;
 }
-
 .cta{
   position: relative;
   margin: auto;
   padding: 19px 22px;
   transition: all 0.2s ease;
 }
-
 .cta:before{
   content: "";
   position: absolute;
@@ -118,7 +105,6 @@ a{
   height: 56px;
   transition: all 0.3s ease;
 }
-
 .cta span{
   position: relative;
   font-size: 16px;
@@ -128,7 +114,6 @@ a{
   text-transform: uppercase;
   vertical-align: middle;
 }
-
 .cta svg{
   position: relative;
   top: 0;
@@ -141,20 +126,16 @@ a{
   transform: translateX(-5px);
   transition: all 0.3s ease;
 }
-
 .cta:hover:before{
   width: 100%;
   background: rgba(204, 212, 235, 0.5);
 }
-
 .cta:hover svg{
   transform: translateX(0);
 }
-
 .cta:active{
   transform: scale(0.96);
 }
-
 .regis{
   text-decoration: underline;
 }
