@@ -18,7 +18,7 @@ import SideBar from "./SideBar.vue";
 import Clientes from "./Clientes.vue";
 import Facturas from "./Facturas.vue";
 import Estadisticas from "./Estadisticas.vue";
-import Usuario from "./Usuario";
+import Usuario from "./Usuario.vue";
 import AgregarCliente from "./AgregarCliente.vue";
 import AgregarFactura from "./AgregarFactura.vue";
 export default {
