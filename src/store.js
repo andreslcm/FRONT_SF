@@ -669,5 +669,102 @@ export const store = new Vuex.Store({
       }
       return max;
     },
+    /**
+     * Método para obtener el mejor pago.
+     * @param {estado} state
+     * @return String
+     */
+    getMejorPagoTotal: function (state) {
+      var max = 0;
+      state.facturas.forEach(factura => {
+            if (factura.total > max) {
+              max = factura.total;
+          } 
+      })
+      return max;
+    },
+    /**
+     * Método para obtener el mejor cliente.
+     * @param {estado} state
+     * @return String
+     */
+    getMejorPagoCliente: function (state) {
+      var max = 0;
+      var clientevar;
+      var nombreClientevar;
+      state.facturas.forEach(factura => {
+            if (factura.total > max) {
+              max = factura.total;
+              clientevar = factura.idCliente;
+          } 
+      })
+      state.clientes.forEach(cliente => {
+        if (cliente.idCliente == clientevar){
+          nombreClientevar = cliente.nombreCliente
+        }
+      })
+      return nombreClientevar;
+    },
+    /**
+     * Método para obtener el peor pago.
+     * @param {estado} state
+     * @return String
+     */
+    getPeorPagoTotal: function (state) {
+      var min = 0;
+      state.facturas.forEach(factura => {
+          if (min == 0){
+            min = factura.total;
+          }
+          if (factura.total < min) {
+              min = factura.total;
+          } 
+      })
+      return min;
+    },
+    /**
+     * Método para obtener el peor cliente.
+     * @param {estado} state
+     * @return String
+     */
+    getPeorPagoCliente: function (state) {
+      var min = 0;
+      var clientevar;
+      var nombreClientevar;
+      state.facturas.forEach(factura => {
+        if (min == 0){
+          min = factura.total;
+          clientevar = factura.idCliente;
+        }
+
+        if (factura.total < min) {
+          min = factura.total;
+          clientevar = factura.idCliente;
+        } 
+      })
+      state.clientes.forEach(cliente => {
+        if (cliente.idCliente == clientevar){
+          nombreClientevar = cliente.nombreCliente
+        }
+      })
+      return nombreClientevar;
+    },
+    /**
+     * Método para obtener la factura promedio.
+     * @param {estado} state
+     * @return String
+     */
+    getFacturaPromedio: function (state) {
+      var total = 0;
+      var largo = 0;
+      state.facturas.forEach(factura => {
+        total += Number(factura.total)
+        largo +=1;
+      });
+      var avg = total/largo;
+      return avg;
+    },
+
+
   }
 })
