@@ -611,5 +611,153 @@ export const store = new Vuex.Store({
       });
       return pagadas;
     },
+    /**
+     * Método para obtener el mejor cliente.
+     * @param {estado} state
+     */
+    getMejorCliente: function (state) {
+      var clientesArray = [];
+      var nombreClientevar;
+      state.clientes.forEach(cliente => {
+        console.log(cliente);
+        var totalcliente = 0;
+        state.facturas.forEach(factura => {
+          if (factura.idCliente==cliente.idCliente) {
+            totalcliente += Number(factura.total);
+            clientesArray.push(cliente.idCliente, totalcliente)
+          } 
+        });
+      })
+      var max = clientesArray[0];
+      var maxIndex = 0;
+      for (var i = 1; i < clientesArray.length; i++) {
+          if (clientesArray[i] > max) {
+              maxIndex = i;
+              max = clientesArray[i];
+          }
+      }
+      state.clientes.forEach(cliente => {
+        if (cliente.idCliente == clientesArray[(maxIndex -1)]){
+          nombreClientevar = cliente.nombreCliente
+        }
+      })
+      return nombreClientevar;
+    },
+    /**
+     * Método para obtener el mejor pago del cliente.
+     * @param {estado} state
+     */
+    getMejorPagoDeCliente: function (state) {
+      var clientesArray = [];
+      state.clientes.forEach(cliente => {
+        var totalcliente = 0;
+        state.facturas.forEach(factura => {
+          if (factura.idCliente==cliente.idCliente) {
+            totalcliente += Number(factura.total);
+            clientesArray.push(cliente.idCliente, totalcliente)
+          } 
+        });
+      })
+      console.log(clientesArray);
+      var max = clientesArray[0];
+      for (var i = 1; i < clientesArray.length; i++) {
+          if (clientesArray[i] > max) {
+              max = clientesArray[i];
+          }
+      }
+      return max;
+    },
+    /**
+     * Método para obtener el mejor pago total.
+     * @param {estado} state
+     */
+    getMejorPagoTotal: function (state) {
+      var max = 0;
+      state.facturas.forEach(factura => {
+            if (factura.total > max) {
+              max = factura.total;
+          } 
+      })
+      return max;
+    },
+    /**
+     * Método para obtener el mejor pago cliente.
+     * @param {estado} state
+     */
+    getMejorPagoCliente: function (state) {
+      var max = 0;
+      var clientevar;
+      var nombreClientevar;
+      state.facturas.forEach(factura => {
+            if (factura.total > max) {
+              max = factura.total;
+              clientevar = factura.idCliente;
+          } 
+      })
+      state.clientes.forEach(cliente => {
+        if (cliente.idCliente == clientevar){
+          nombreClientevar = cliente.nombreCliente
+        }
+      })
+      return nombreClientevar;
+    },
+    /**
+     * Método para obtener el peor pago total.
+     * @param {estado} state
+     */
+    getPeorPagoTotal: function (state) {
+      var min = 0;
+      state.facturas.forEach(factura => {
+          if (min == 0){
+            min = factura.total;
+          }
+
+          if (factura.total < min) {
+              min = factura.total;
+          } 
+      })
+      return min;
+    },
+    /**
+     * Método para obtener el peor pago total cliente.
+     * @param {estado} state
+     */
+    getPeorPagoCliente: function (state) {
+      var min = 0;
+      var clientevar;
+      var nombreClientevar;
+      state.facturas.forEach(factura => {
+        if (min == 0){
+          min = factura.total;
+          clientevar = factura.idCliente;
+        }
+
+        if (factura.total < min) {
+          min = factura.total;
+          clientevar = factura.idCliente;
+        } 
+      })
+      state.clientes.forEach(cliente => {
+        if (cliente.idCliente == clientevar){
+          nombreClientevar = cliente.nombreCliente
+        }
+      })
+      return nombreClientevar;
+    },
+    /**
+     * Método para obtener la factura promedio.
+     * @param {estado} state
+     */
+    getFacturaPromedio: function (state) {
+      var total = 0;
+      var largo = 0;
+      state.facturas.forEach(factura => {
+        total += Number(factura.total)
+        largo +=1;
+      });
+      var avg = total/largo;
+      return avg;
+    },
+
   }
 })
