@@ -298,7 +298,7 @@ export default {
 .cabecera {
   grid-area: cab;
   padding: 7px;
-  background-color: rgb(60, 63, 71);
+  background-color:#0C427D;
   color: white;
   text-align: center;
   font-weight: bold;

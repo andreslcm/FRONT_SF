@@ -296,9 +296,10 @@ export default {
     ". . . . . . . . . . . .";
 }
 .cabecera {
+  
   grid-area: cab;
   padding: 7px;
-  background-color: rgb(60, 63, 71);
+  background-color:#0C427D;
   color: white;
   text-align: center;
   font-weight: bold;
@@ -373,11 +374,12 @@ textarea {
 textarea:hover,
 input:hover,
 select:hover {
-  background-color: rgb(250, 250, 190);
+  background-color: #CCD4EB;
 }
 .boton-enviar {
   grid-area: bot;
   display: flex;
+  
 }
 .boton-enviar > div {
   flex: 1;
@@ -385,7 +387,7 @@ select:hover {
   text-align: center;
 }
 .boton-f {
-  background-color: #4caf50;
+  background-color: #0C427D;
   color: white;
   padding: 7px 15px;
   margin: 10px 5px;
