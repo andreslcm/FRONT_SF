@@ -1160,5 +1160,185 @@ export const store = new Vuex.Store({
       })
       return total;
     },
+    /**
+     * Método para obtener el total de factuas de enero.
+     * @param {estado} state
+     * @return String
+     */
+    getFacturasEnero: function (state) {
+      var total = 0;
+      state.facturas.forEach(factura => {
+        var variable = new Date(factura.fechaFactura)
+        if(variable.getMonth() == 0) {
+          total += 1;
+        }
+      })
+      return total;
+    },
+    /**
+     * Método para obtener el total de factuas de febrero.
+     * @param {estado} state
+     * @return String
+     */
+    getFacturasFebrero: function (state) {
+      var total = 0;
+      state.facturas.forEach(factura => {
+        var variable = new Date(factura.fechaFactura)
+        if(variable.getMonth() == 1) {
+          total += 1;
+        }
+      })
+      return total;
+    },
+    /**
+     * Método para obtener el total de factuas de marzo.
+     * @param {estado} state
+     * @return String
+     */
+    getFacturasMarzo: function (state) {
+      var total = 0;
+      state.facturas.forEach(factura => {
+        var variable = new Date(factura.fechaFactura)
+        if(variable.getMonth() == 2) {
+          total += 1;
+        }
+      })
+      return total;
+    },
+    /**
+     * Método para obtener el total de factuas de abril.
+     * @param {estado} state
+     * @return String
+     */
+    getFacturasAbril: function (state) {
+      var total = 0;
+      state.facturas.forEach(factura => {
+        var variable = new Date(factura.fechaFactura)
+        if(variable.getMonth() == 3) {
+          total += 1;
+        }
+      })
+      return total;
+    },
+    /**
+     * Método para obtener el total de factuas de mayo.
+     * @param {estado} state
+     * @return String
+     */
+    getFacturasMayo: function (state) {
+      var total = 0;
+      state.facturas.forEach(factura => {
+        var variable = new Date(factura.fechaFactura)
+        if(variable.getMonth() == 4) {
+          total += 1;
+        }
+      })
+      return total;
+    },
+    /**
+     * Método para obtener el total de factuas de junio.
+     * @param {estado} state
+     * @return String
+     */
+    getFacturasJunio: function (state) {
+      var total = 0;
+      state.facturas.forEach(factura => {
+        var variable = new Date(factura.fechaFactura)
+        if(variable.getMonth() == 5) {
+          total += 1;
+        }
+      })
+      return total;
+    },
+    /**
+     * Método para obtener el total de factuas de julio.
+     * @param {estado} state
+     * @return String
+     */
+    getFacturasJulio: function (state) {
+      var total = 0;
+      state.facturas.forEach(factura => {
+        var variable = new Date(factura.fechaFactura)
+        if(variable.getMonth() == 6) {
+          total += 1;
+        }
+      })
+      return total;
+    },
+    /**
+     * Método para obtener el total de factuas de agosto.
+     * @param {estado} state
+     * @return String
+     */
+    getFacturasAgosto: function (state) {
+      var total = 0;
+      state.facturas.forEach(factura => {
+        var variable = new Date(factura.fechaFactura)
+        if(variable.getMonth() == 7) {
+          total += 1;
+        }
+      })
+      return total;
+    },
+    /**
+     * Método para obtener el total de factuas de septiembre.
+     * @param {estado} state
+     * @return String
+     */
+    getFacturasSeptiembre: function (state) {
+      var total = 0;
+      state.facturas.forEach(factura => {
+        var variable = new Date(factura.fechaFactura)
+        if(variable.getMonth() == 8) {
+          total += 1;
+        }
+      })
+      return total;
+    },
+    /**
+     * Método para obtener el total de factuas de octubre.
+     * @param {estado} state
+     * @return String
+     */
+    getFacturasOctubre: function (state) {
+      var total = 0;
+      state.facturas.forEach(factura => {
+        var variable = new Date(factura.fechaFactura)
+        if(variable.getMonth() == 9) {
+          total += 1;
+        }
+      })
+      return total;
+    },
+    /**
+     * Método para obtener el total de factuas de noviembre.
+     * @param {estado} state
+     * @return String
+     */
+    getFacturasNoviembre: function (state) {
+      var total = 0;
+      state.facturas.forEach(factura => {
+        var variable = new Date(factura.fechaFactura)
+        if(variable.getMonth() == 10) {
+          total += 1;
+        }
+      })
+      return total;
+    },
+    /**
+     * Método para obtener el total de factuas de diciembre.
+     * @param {estado} state
+     * @return String
+     */
+    getFacturasDiciembre: function (state) {
+      var total = 0;
+      state.facturas.forEach(factura => {
+        var variable = new Date(factura.fechaFactura)
+        if(variable.getMonth() == 11) {
+          total += 1;
+        }
+      })
+      return total;
+    },
   }
 })
