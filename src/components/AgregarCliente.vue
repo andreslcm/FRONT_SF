@@ -239,10 +239,10 @@ input[type="number"] {
   display: inline-block;
   border: none;
   background: #CCD4EB;
-  color: blue;
+  color: #0C427D;
 }
 label{
-  color: #0C427D;
+  color: rgb(255, 255, 255);
 }
 
 hr {

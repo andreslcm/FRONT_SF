@@ -186,6 +186,8 @@ export default {
 
 .contenedor-facturas {
   height: 100%;
+  width: 94%;
+  margin-left: 6%;
   display: grid;
   grid-template-columns: 100%;
   grid-template-rows: 50px 40px auto;
@@ -211,7 +213,7 @@ export default {
   grid-area: cif;
   height: 100%;
   width: 100%;
-  background-color: rgba(138, 138, 138, 0.726);
+  background-color:#CCD4EB;
 }
 
 .contenedor-tabla-f {
@@ -224,12 +226,12 @@ table {
   width: 100%;
 }
 thead {
-  background-color: rgb(60, 63, 71);
+  background-color: #0C427D;
   color: white;
 }
 
 tbody > tr:nth-child(even) {
-  background-color: rgb(168, 164, 164);
+  background-color:#CCD4EB;
 }
 
 td {
@@ -242,13 +244,13 @@ td {
 }
 
 .orden-f:hover {
-  background-color: #4caf50;
+  background-color: #CCD4EB;
   color: black;
   cursor: pointer;
 }
 
 .seleccionar-f:hover {
-  background-color: #4caf50;
+  background-color: #CCD4EB;
   color: black;
   cursor: pointer;
 }
@@ -262,7 +264,8 @@ td {
 }
 
 .por-cobrar {
-  color: yellow;
+  color: #0C427D;
+
 }
 
 .vencidas {
