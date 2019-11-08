@@ -1,4 +1,7 @@
 <template>
+<div>
+<img class="titulo" src="../assets/tituloclientes.png"/>
+
   <div class="contenedor-ac">
     <!-- Contenedor izquierdo de datos del cliente -->
     <div class="datos-izquierda">
@@ -120,6 +123,7 @@
       <button class="boton-enviar" @click="agregarCliente(cliente)">Enviar</button>
     </div>
   </div>
+</div>
 </template>
 
 <script>

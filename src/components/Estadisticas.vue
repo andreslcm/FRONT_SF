@@ -1,4 +1,7 @@
 <template>
+<div>
+  <img class="tituloA" src="../assets/estadisticasAnuales.png"/>
+
 <div class="contenedor">
   <br>
   <div class="estadisticas12">
@@ -47,6 +50,9 @@
     </div>
   </div>
   <br>
+
+  <img class="tituloM" src="../assets/estadisticasMensuales.png" />
+
   <div class="estadisticas34">
     <div class="estadisticas3">
       <table class="progress">
@@ -115,6 +121,7 @@
         </table>
     </div>
   </div>
+</div>
 </div>
 </template>
 
@@ -189,7 +196,23 @@ export default {
 
 <style scoped>
 
+.tituloA{
+	width: 55%;
+	height: 6%;
+	float: right;
+	margin-top: 1%;
+  margin-left: 5%;
+}
+
+.tituloM{
+	width: 105%;
+	height: 8%;
+	float: left;
+  margin-left: 31%;
+}
+
 .contenedor{
+  margin-left: 25%;
   overflow: auto;
   align-content: center;
   align-items: center;
@@ -200,34 +223,41 @@ export default {
 }
 .estadisticas12 {
   display: table-row;
+  
 }
 .estadisticas34 {
   display: table-row;
+  margin-left: -4%;
 }
 .estadisticas1{
   margin: auto;
   align-items: center;
   justify-content: center;
   float: left;
-  margin-right: 2%;
+  margin-left: -6.5%;
 }
 .estadisticas2{
   margin: auto;
   align-items: center;
   justify-content: center;
   float: left;
+  margin-left: 22%;
 }
 .estadisticas3{
   margin: auto;
   align-items: center;
   justify-content: center;
   float: left;
+  margin-left: -17%;
+  
 }
 .estadisticas4{
   margin: auto;
   align-items: center;
   float: left;
   justify-content: center;
+  margin-left: 15%;
+  margin-top: -0.3%;
 }
 table.paleBlueRows {
   border: 1px solid #FFFFFF;

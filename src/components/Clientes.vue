@@ -346,7 +346,7 @@ input[type="number"] {
   background: #f1f1f1;
 }
 .botones {
-  background-color: #4caf50;
+  background-color: #0C427D;
   color: white;
   padding: 12px 20px;
   margin: 8px 0;

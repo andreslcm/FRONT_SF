@@ -1,4 +1,5 @@
 <template>
+<div>
   <!-- Barra lateral -->
   <div class="contenedor-side">
     <img class="imagen" src="../assets/logo-blanco.png" alt />
@@ -6,8 +7,10 @@
     <button @click="actualizarContador(2)" class="botones boton-2">Facturas</button>
     <button @click="actualizarContador(3)" class="botones boton-3">Estadísticas</button>
     <button @click="actualizarContador(4)" class="botones boton-4">Usuario</button>
-    <img class="logout" src="../assets/logout.png" @click="logout" />
+    <img class="logout" src="../assets/salir.png" @click="logout" />
   </div>
+    <img class="imagen1" src="../assets/chamo.png"/>
+</div>
 </template>
 
 <script>
@@ -93,9 +96,6 @@ label{
   color: #0C427D;
 }
 
-hr {
-  border: 1px solid #f1f1f1;
-}
 
 .boton-enviar {
   background-color: #0C427D;
@@ -199,7 +199,7 @@ hr {
 
 .imagen1{
   margin-left:34%;
-  margin-top: -100%;
+  margin-top: -110%;
   width: 80%;
   height: 28%;
   float: left;

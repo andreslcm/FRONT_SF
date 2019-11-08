@@ -1,4 +1,7 @@
 <template>
+<div>
+
+  <img class="EditPerfil" src="../assets/Eperfil.png"/>
   <!-- Contenedor de datos del usuario -->
   <div class="contenedor-usuario">
     <div class="u-datos">
@@ -110,6 +113,7 @@
     <div class="u-botones">
       <button @click="actualizarDatosUsuario(usuario)" class="boton-enviar">Actualizar</button>
     </div>
+  </div>
   </div>
 </template>
 
