@@ -119,8 +119,71 @@
 </template>
 
 <script>
-export default {
 
+import { mapGetters } from "vuex";
+export default {
+  data() {
+    return {
+      idFacturas: [],
+      contador: 0,
+      idFactura: "",
+      mostrar: false,
+    };
+  },
+  computed: {
+    ...mapGetters([
+      "getFacturas",
+      "getListaFacturas",
+      "getTotal",
+      "getPorCobrar",
+      "getVencidas",
+      "getPagadas",
+      "getMejorCliente",
+      "getMejorPagoTotal",
+      "getMejorPagoCliente",
+      "getMejorPagoDeCliente",
+      "getPeorPagoTotal",
+      "getPeorPagoCliente",
+      "getFacturaPromedio",
+      "getFacturasEnero",
+      "getFacturasFebrero",
+      "getFacturasMarzo",
+      "getFacturasAbril",
+      "getFacturasMayo",
+      "getFacturasJunio",
+      "getFacturasJulio",
+      "getFacturasAgosto",
+      "getFacturasSeptiembre",
+      "getFacturasOctubre",
+      "getFacturasNoviembre",
+      "getFacturasDiciembre",
+      "getPromedioEnero",
+      "getPromedioFebrero",
+      "getPromedioMarzo",
+      "getPromedioAbril",
+      "getPromedioMayo",
+      "getPromedioJunio",
+      "getPromedioJulio",
+      "getPromedioAgosto",
+      "getPromedioSeptiembre",
+      "getPromedioOctubre",
+      "getPromedioNoviembre",
+      "getPromedioDiciembre",
+      "getTotalEnero",
+      "getTotalFebrero",
+      "getTotalMarzo",
+      "getTotalAbril",
+      "getTotalMayo",
+      "getTotalJunio",
+      "getTotalJulio",
+      "getTotalAgosto",
+      "getTotalSeptiembre",
+      "getTotalOctubre",
+      "getTotalNoviembre",
+      "getTotalDiciembre"
+
+    ])
+  },
 }
 </script>
 
