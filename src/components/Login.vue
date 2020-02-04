@@ -12,7 +12,7 @@
           </li>
 
           <div class="button_cont" align="center">
-            <button @click="logear(usuario)" class="buttonhover"><span>Entrar</span></button>
+            <button @click="logear(usuario)" id="buttonhover" class="buttonhover"><span>Entrar</span></button>
           </div>
           <div class="contraRecuperar">
             <p>
@@ -39,13 +39,17 @@ export default {
   },
   methods: {
     login() {
+      //variables
       var nombreUsuario = document.getElementById("nombreUsuario").value;
       var contrasena = document.getElementById("contrasena").value;
 
+      //muestra el boton para iniciar el programa
       if (nombreUsuario != "" && contrasena!=""){
         document.getElementById("buttonhover").style.opacity = "1";
         document.getElementById("buttonhover").style.height = "auto";
       }
+
+      //esconde el boton si los campos estan vacios
       if (!nombreUsuario || !contrasena){
         document.getElementById("buttonhover").style.opacity = "0";
         document.getElementById("buttonhover").style.height = "0";
