@@ -2,24 +2,26 @@
 <div class="principal">
   <div class="log">
     <img class="imagen" src="../assets/logo-azul.png">
-      <ul>
-        <li>
-          <input v-model="usuario.nombreUsuario" type="text" id="nombreUsuario" placeholder="Usuario" required title="Nombre de Usuario"/>
-        </li>  
-        <li>
-          <input v-model="usuario.contrasena" type="password" id="contrasena" placeholder="Contraseña" required title="Contraseña"/>
-        </li>
+      <div @keyup="login()">
+        <ul>
+          <li>
+            <input v-model="usuario.nombreUsuario" type="text" id="nombreUsuario" placeholder="Usuario" required title="Nombre de Usuario"/>
+          </li>  
+          <li>
+            <input v-model="usuario.contrasena" type="password" id="contrasena" placeholder="Contraseña" required title="Contraseña"/>
+          </li>
 
-        <div class="button_cont" align="center">
-          <button @click="logear(usuario)" class="buttonhover"><span>Entrar</span></button>
-        </div>
-        <div class="contraRecuperar">
-          <p>
-            ¿Olvidaste tu contraseña?
-            <a href="#">Recuperala!</a>.
-          </p>
-        </div>
-      </ul>
+          <div class="button_cont" align="center">
+            <button @click="logear(usuario)" class="buttonhover"><span>Entrar</span></button>
+          </div>
+          <div class="contraRecuperar">
+            <p>
+              ¿Olvidaste tu contraseña?
+              <a href="#">Recuperala!</a>.
+            </p>
+          </div>
+        </ul>
+      </div>  
   </div>
 </div>
 </template>
@@ -36,6 +38,20 @@ export default {
     };
   },
   methods: {
+    login() {
+      var nombreUsuario = document.getElementById("nombreUsuario").value;
+      var contrasena = document.getElementById("contrasena").value;
+
+      if (nombreUsuario != "" && contrasena!=""){
+        document.getElementById("buttonhover").style.opacity = "1";
+        document.getElementById("buttonhover").style.height = "auto";
+      }
+      if (!nombreUsuario || !contrasena){
+        document.getElementById("buttonhover").style.opacity = "0";
+        document.getElementById("buttonhover").style.height = "0";
+        document.getElementById("buttonhover").style.overflow = "hidden";
+      }
+    },
     ...mapActions(["logear"])
   }
 };
@@ -45,6 +61,12 @@ export default {
 *{
   font-family:"Helvetica Neue", Helvetica;
   overflow: hidden;
+}
+.buttonhover{
+    transition: opacity 1s ease-out;
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
 }
 .principal{
   display: flex;
