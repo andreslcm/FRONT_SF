@@ -55,50 +55,35 @@ export default {
   methods: {
     registro() {
       //variables
-      var numeros = true;
       var contrasena = document.getElementById("contrsena").value;
       var contrasena2 = document.getElementById("contrsena2").value;
       var nombre = document.getElementById("nombre").value;
       var apellido = document.getElementById("apellido").value;
       var nombreUsuario = document.getElementById("nombreUsuario").value;
       var correo = document.getElementById("correo").value;
+      var comparacion;
+      var paramContrasenia;
 
       //si las contraseñas son iguales y distitnas de vacio
       if (contrasena == contrasena2 && contrasena!=""){
-        var comparacion = true;
+        comparacion = true;
       }
       //si la contraseña es menor a 8 caracteres y no contiene numeros, muestra el label
-      if (contrasena.length <= 8) {
+      if (contrasena.length <= 8 && contrasena.search(/\d/) == -1) {
         document.getElementById("labelcont").style.display = "block";
-      } else if (contrasena.search(/\d/) == -1) {
-        numeros = false;
-        document.getElementById("labelcont").style.display = "block";
-      }
-
-      //si la contraseña cumple con los requisitos, saca el label
-      if (contrasena.length >= 8) {
-        var longitud = true;
+        paramContrasenia = false;
+      } else {
         document.getElementById("labelcont").style.display = "none";
-      } else if (contrasena.search(/\d/) < -1) {
-        numeros = true;
-        document.getElementById("labelcont").style.display = "none";
+        paramContrasenia = true;
       }
 
       //permite mostrar el boton de registro una vez que se cumolen con los requisitos
-      if (comparacion && longitud && nombre != "" && apellido != "" && nombreUsuario != "" && correo != ""){
+      if (comparacion && paramContrasenia && nombre != "" && apellido != "" && nombreUsuario != "" && correo != ""){
         document.getElementById("submit").style.display = "block";
-      }
-
-      //para sacar de vista el label
-      if (longitud && numeros){
-        document.getElementById("labelcont").style.display = "none";
-      }
-
-      //si la contraseña es modificada y no es mayor o igual a 8 caracteres y no contiene numeros,
-      //esconde el boton de registro
-      if (!comparacion || !longitud || nombre == "" || apellido == "" || nombreUsuario == "" || correo == ""){
+      } else {
         document.getElementById("submit").style.display = "none";
       }
+
     },
     ...mapActions(["registrarUsuario"])
   }
