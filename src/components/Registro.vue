@@ -61,8 +61,8 @@ export default {
       var apellido = document.getElementById("apellido").value;
       var nombreUsuario = document.getElementById("nombreUsuario").value;
       var correo = document.getElementById("correo").value;
-      var comparacion;
-      var paramContrasenia;
+      var comparacion = false;
+      var paramContrasenia = false;
 
       //si las contraseñas son iguales y distitnas de vacio
       if (contrasena == contrasena2 && contrasena!=""){
