@@ -1,29 +1,8 @@
 # front_web
 
-## Project setup
-```
-npm install
-```
+Proyecto en Vue.js
 
-### Compiles and hot-reloads for development
+## Intrucciones
 ```
-npm run serve
+Clonar y luego correr comando 'npm install node' para descargar los módulos de node. Para ejecutarlo, correr el comando 'npm run serve'.
 ```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Run your tests
-```
-npm run test
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
