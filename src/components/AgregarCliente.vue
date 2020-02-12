@@ -2,7 +2,7 @@
 <div>
 <img class="titulo" src="../assets/tituloclientes.png"/>
 
-  <div class="contenedor-ac">
+  <div class="contenedor-ac"  @keyup="agregarCliente()">
     <!-- Contenedor izquierdo de datos del cliente -->
     <div class="datos-izquierda">
       <h2>Datos del cliente</h2>
@@ -15,6 +15,7 @@
         type="text"
         placeholder="Ingrese el nombre"
         name="nombreCliente"
+        id="nombreCliente"
         required
       />
       <label for="ciudad">
@@ -25,6 +26,7 @@
         type="text"
         placeholder="Ingrese la ciudad"
         name="ciudad"
+        id="ciudad"
         required
       />
       <label for="estado">
@@ -35,12 +37,13 @@
         type="text"
         placeholder="Ingrese el estado"
         name="estado"
+        id="estado"
         required
       />
       <label for="pais">
         <b>País</b>
       </label>
-      <input v-model="cliente.pais" type="text" placeholder="Ingrese el país" name="pais" required />
+      <input v-model="cliente.pais" type="text" placeholder="Ingrese el país" name="pais" id="pais" required />
       <label for="direccion">
         <b>Dirección</b>
       </label>
@@ -49,6 +52,7 @@
         type="text"
         placeholder="Ingrese la dirección"
         name="direccion"
+        id="direccion"
         required
       />
       <label for="codigoPostal">
@@ -59,6 +63,7 @@
         type="text"
         placeholder="Ingrese el código postal"
         name="codigoPostal"
+        id="codigoPostal"
         required
       />
       <label for="correo">
@@ -69,6 +74,7 @@
         type="text"
         placeholder="Ingrese el correo electrónico"
         name="correo"
+        id="correo"
         required
       />
     </div>
@@ -84,6 +90,7 @@
         type="number"
         placeholder="Ingrese los días del término de pago"
         name="terminoPago"
+        id="terminoPago"
         required
       />
       <label for="palabraTraduccion">
@@ -94,6 +101,7 @@
         type="number"
         placeholder="Ingrese el precio por palabra traducida"
         name="palabraTraduccion"
+        id="palabraTraduccion"
         step=".01"
         required
       />
@@ -105,6 +113,7 @@
         type="number"
         placeholder="Ingrese el precio por palabra editada"
         name="palabraEdicion"
+        id="palabraEdicion"
         step=".01"
         required
       />
@@ -116,11 +125,12 @@
         type="number"
         placeholder="Ingrese el precio por palabra revisada"
         name="palabraProofreading"
+        id="palabraProofreading"
         step=".01"
         required
       />
       
-      <button class="boton-enviar" @click="agregarCliente(cliente)">Enviar</button>
+      <button class="boton-enviar" id="boton-enviar" @click="agregarCliente(cliente)">Enviar</button>
     </div>
   </div>
 </div>
@@ -150,7 +160,51 @@ export default {
     };
   },
   methods: {
-    ...mapActions(["agregarCliente"])
+    ...mapActions(["agregarCliente"]),
+    agregarCliente(){
+      /*
+      Variables
+      */
+      var nombreClientes = document.getElementById("nombreCliente").value;
+      var ciudad = document.getElementById("ciudad").value;
+      var estado = document.getElementById("estado").value;
+      var pais = document.getElementById("pais").value;
+      var correo = document.getElementById("correo").value;
+      var direccion = document.getElementById("direccion").value;
+      var codigoPostal = document.getElementById("codigoPostal").value;
+      var terminoPago = document.getElementById("terminoPago").value;
+      var palabraTraduccion = document.getElementById("palabraTraduccion").value;
+      var palabraEdicion = document.getElementById("palabraEdicion").value;
+      var palabraProofreading = document.getElementById("palabraProofreading").value;
+      var camposVacios = false;
+      var camposNumeros = false;
+
+      /*
+      Evalua si hay campos vacios
+      */
+      if (nombreClientes != "" && ciudad != "" && estado != "" && pais != "" && correo != "" && direccion != "" && codigoPostal != ""
+      && terminoPago != "" && palabraTraduccion != "" && palabraEdicion != "" && palabraProofreading != "") {
+        camposVacios = true
+      } else {
+        camposVacios = false
+      }
+      /*
+      Evalua si hay campos numericos menores de 0
+      */
+      if (palabraEdicion > 0 && terminoPago > 0 && palabraEdicion > 0 && palabraProofreading > 0) {
+        camposNumeros = true
+      } else {
+        camposNumeros = false
+      }
+      /*
+      muestra el boton de "enviar" al cumplirse las condiciones dadas
+      */
+      if (camposVacios && camposNumeros) {
+        document.getElementById("boton-enviar").style.display = this.$block;
+      } else {
+        document.getElementById("boton-enviar").style.display = this.$none
+      }
+    }
   }
 };
 </script>
@@ -240,6 +294,7 @@ hr {
   opacity: 0.9;
   text-align: center;
   margin-top: 1%;
+  display: none;
 }
 .boton-enviar:hover {
   opacity: 1;
