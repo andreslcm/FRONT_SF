@@ -70,18 +70,18 @@ export default {
       }
       //si la contraseña es menor a 8 caracteres y no contiene numeros, muestra el label
       if (contrasena.length <= 8 && contrasena.search(/\d/) == -1) {
-        document.getElementById("labelcont").style.display = "block";
+        document.getElementById("labelcont").style.display = this.$block;
         paramContrasenia = false;
       } else {
-        document.getElementById("labelcont").style.display = "none";
+        document.getElementById("labelcont").style.display = this.$none;
         paramContrasenia = true;
       }
 
       //permite mostrar el boton de registro una vez que se cumolen con los requisitos
       if (comparacion && paramContrasenia && nombre != "" && apellido != "" && nombreUsuario != "" && correo != ""){
-        document.getElementById("submit").style.display = "block";
+        document.getElementById("submit").style.display = this.$block;
       } else {
-        document.getElementById("submit").style.display = "none";
+        document.getElementById("submit").style.display = this.$none;
       }
 
     },
