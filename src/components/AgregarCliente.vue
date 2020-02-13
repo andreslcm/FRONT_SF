@@ -184,17 +184,17 @@ export default {
       */
       if (nombreClientes != "" && ciudad != "" && estado != "" && pais != "" && correo != "" && direccion != "" && codigoPostal != ""
       && terminoPago != "" && palabraTraduccion != "" && palabraEdicion != "" && palabraProofreading != "") {
-        camposVacios = true
+        camposVacios = true;
       } else {
-        camposVacios = false
+        camposVacios = false;
       }
       /*
       Evalua si hay campos numericos menores de 0
       */
       if (palabraEdicion > 0 && terminoPago > 0 && palabraEdicion > 0 && palabraProofreading > 0) {
-        camposNumeros = true
+        camposNumeros = true;
       } else {
-        camposNumeros = false
+        camposNumeros = false;
       }
       /*
       muestra el boton de "enviar" al cumplirse las condiciones dadas
@@ -202,7 +202,7 @@ export default {
       if (camposVacios && camposNumeros) {
         document.getElementById("boton-enviar").style.display = this.$block;
       } else {
-        document.getElementById("boton-enviar").style.display = this.$none
+        document.getElementById("boton-enviar").style.display = this.$none;
       }
     }
   }
