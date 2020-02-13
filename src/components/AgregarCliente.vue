@@ -193,14 +193,12 @@ export default {
       */
       camposAValidar.forEach(function(campo) {
         camposVacios = camposVacios && document.getElementById(campo).value != "";
-        console.log(camposVacios)
       });
       /*
       Evalua si hay campos numericos menores de 0
       */
       camposAValidarNuemros.forEach(function(num) {
         camposNumeros = camposNumeros && document.getElementById(num).value > 0;
-        console.log(camposNumeros)
       });
       /*
       muestra el boton de "enviar" al cumplirse las condiciones dadas
