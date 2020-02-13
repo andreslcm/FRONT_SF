@@ -243,8 +243,8 @@ export default {
       /*
       Variables
       */
-     var camposVacios = false;
-     var camposNumeros = false;
+     var camposVacios = true;
+     var camposNumeros = true;
      var camposAValidar = [
       "nombreCliente",
       "ciudad",
@@ -257,20 +257,27 @@ export default {
       "palabraTraduccion",
       "palabraEdicion",
       "palabraProofreading",
-     ];
+      ];
+      var camposAValidarNuemros = [
+      "terminoPago",
+      "palabraTraduccion",
+      "palabraEdicion",
+      "palabraProofreading",
+      ];
 
       /*
       Evalua si hay campos vacios
       */
       camposAValidar.forEach(function(campo) {
-        camposVacios = camposVacios && campo.value != "";
+        camposVacios = camposVacios && document.getElementById(campo).value != "";
+        console.log(camposVacios)
       });
-      
       /*
       Evalua si hay campos numericos menores de 0
       */
-      camposAValidar.forEach(function(campo) {
-        camposVacios = camposVacios && campo.value > 0;
+      camposAValidarNuemros.forEach(function(num) {
+        camposNumeros = camposNumeros && document.getElementById(num).value > 0;
+        console.log(camposNumeros)
       });
       /*
       muestra el boton de "enviar" al cumplirse las condiciones dadas
