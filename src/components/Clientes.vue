@@ -121,10 +121,10 @@
       />
       <hr />
       <button @click="cerrarModal" class="botones">Cancelar</button>
-      <button @click="actualizar" id="botonenviar" class="botones">Enviar</button>
+      <button @click="actualizar" id="botonenviar" name="botonenviar" class="botones">Enviar</button>
     </div>
     <div class="caja-iconos">
-      <img @click="actualizarContador(5)" id="agregarCliente" class="iconos" src="../assets/agregar.png" alt />
+      <img @click="actualizarContador(5)" id="agregarCliente" name="agregarCliente" class="iconos" src="../assets/agregar.png" alt />
     </div>
     <!-- Tabla de clientes -->
     <div class="contenedor-tabla">
@@ -245,8 +245,7 @@ export default {
       /*
       Variables
       */
-     var camposVacios = true;
-     var camposNumeros = true;
+     var camposValidos = true;
      var camposAValidar = [
       "nombreCliente",
       "ciudad",
@@ -271,20 +270,18 @@ export default {
       Evalua si hay campos vacios
       */
       camposAValidar.forEach(function(campo) {
-        camposVacios = camposVacios && document.getElementById(campo).value != "";
-        console.log(camposVacios)
+        camposValidos = camposValidos && document.getElementById(campo).value != "";
       });
       /*
       Evalua si hay campos numericos menores de 0
       */
       camposAValidarNuemros.forEach(function(num) {
-        camposNumeros = camposNumeros && document.getElementById(num).value > 0;
-        console.log(camposNumeros)
+        camposValidos = camposValidos && document.getElementById(num).value > 0;
       });
       /*
       muestra el boton de "enviar" al cumplirse las condiciones dadas
       */
-      if (camposVacios && camposNumeros) {
+      if (camposValidos) {
         document.getElementById("botonenviar").style.display = this.$inline;
       } else {
         document.getElementById("botonenviar").style.display = this.$none;

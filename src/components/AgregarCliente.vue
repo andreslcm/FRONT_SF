@@ -165,8 +165,7 @@ export default {
       /*
       Variables
       */
-     var camposVacios = true;
-     var camposNumeros = true;
+     var camposValidos = true;
      var camposAValidar = [
       "nombreCliente",
       "ciudad",
@@ -192,18 +191,18 @@ export default {
       Evalua si hay campos vacios
       */
       camposAValidar.forEach(function(campo) {
-        camposVacios = camposVacios && document.getElementById(campo).value != "";
+        camposValidos = camposValidos && document.getElementById(campo).value != "";
       });
       /*
       Evalua si hay campos numericos menores de 0
       */
       camposAValidarNuemros.forEach(function(num) {
-        camposNumeros = camposNumeros && document.getElementById(num).value > 0;
+        camposValidos = camposValidos && document.getElementById(num).value > 0;
       });
       /*
       muestra el boton de "enviar" al cumplirse las condiciones dadas
       */
-      if (camposVacios && camposNumeros) {
+      if (camposValidos) {
         document.getElementById("boton-enviar").style.display = this.$block;
       } else {
         document.getElementById("boton-enviar").style.display = this.$none;
