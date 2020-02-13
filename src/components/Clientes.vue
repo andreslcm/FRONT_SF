@@ -124,7 +124,7 @@
       <button @click="actualizar" id="botonenviar" class="botones">Enviar</button>
     </div>
     <div class="caja-iconos">
-      <img @click="actualizarContador(5)" class="iconos" src="../assets/agregar.png" alt />
+      <img @click="actualizarContador(5)" id="agregarCliente" class="iconos" src="../assets/agregar.png" alt />
     </div>
     <!-- Tabla de clientes -->
     <div class="contenedor-tabla">
@@ -243,37 +243,35 @@ export default {
       /*
       Variables
       */
-      var nombreClientes = document.getElementById("nombreCliente").value;
-      var ciudad = document.getElementById("ciudad").value;
-      var estado = document.getElementById("estado").value;
-      var pais = document.getElementById("pais").value;
-      var correo = document.getElementById("correo").value;
-      var direccion = document.getElementById("direccion").value;
-      var codigoPostal = document.getElementById("codigoPostal").value;
-      var terminoPago = document.getElementById("terminoPago").value;
-      var palabraTraduccion = document.getElementById("palabraTraduccion").value;
-      var palabraEdicion = document.getElementById("palabraEdicion").value;
-      var palabraProofreading = document.getElementById("palabraProofreading").value;
-      var camposVacios = false;
-      var camposNumeros = false;
+     var camposVacios = false;
+     var camposNumeros = false;
+     var camposAValidar = [
+      "nombreCliente",
+      "ciudad",
+      "estado",
+      "pais",
+      "correo",
+      "direccion",
+      "codigoPostal",
+      "terminoPago",
+      "palabraTraduccion",
+      "palabraEdicion",
+      "palabraProofreading",
+     ];
 
       /*
       Evalua si hay campos vacios
       */
-      if (nombreClientes != "" && ciudad != "" && estado != "" && pais != "" && correo != "" && direccion != "" && codigoPostal != ""
-      && terminoPago != "" && palabraTraduccion != "" && palabraEdicion != "" && palabraProofreading != "") {
-        camposVacios = true;
-      } else {
-        camposVacios = false;
-      }
+      camposAValidar.forEach(function(campo) {
+        camposVacios = camposVacios && campo.value != "";
+      });
+      
       /*
       Evalua si hay campos numericos menores de 0
       */
-      if (palabraEdicion > 0 && terminoPago > 0 && palabraEdicion > 0 && palabraProofreading > 0) {
-        camposNumeros = true;
-      } else {
-        camposNumeros = false;
-      }
+      camposAValidar.forEach(function(campo) {
+        camposVacios = camposVacios && campo.value > 0;
+      });
       /*
       muestra el boton de "enviar" al cumplirse las condiciones dadas
       */
