@@ -148,7 +148,7 @@
                 <img
                   @click="borrarCliente(cliente.idCliente)"
                   class="iconos-tabla"
-                  name="iconos-tabla"
+                  name="borrar-tabla"
                   src="../assets/borrar.png"
                   alt
                 />
@@ -157,7 +157,7 @@
                 <img
                   @click="activarModal(cliente.idCliente)"
                   class="iconos-tabla"
-                  name="iconos-tabla"
+                  name="editar-tabla"
                   src="../assets/editar.png"
                   alt
                 />
