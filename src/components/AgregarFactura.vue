@@ -3,7 +3,7 @@
   <div class="contenedor-agregar-f" id="facturapdf" v-if="mostrar == true">
     <!-- Cebecera -->
     <div class="cabecera">FACTURA</div>
-    <div class="contenedor-fac">
+    <div class="contenedor-fac" @keyup="crearFactura()">
       <div class="datos-cliente">
         <!-- Menú desplegable de clientes-->
         <select class="select-clientes" id="selector" v-model="idCliente">
@@ -19,7 +19,7 @@
           v-for="cliente in getClientePorId(idCliente)"
           :key="cliente.nombreCliente"
         >
-          <p>{{cliente.nombreCliente}}</p>
+          <p id="nombreCliente">{{cliente.nombreCliente}}</p>
           <p>{{cliente.direccion}}</p>
           <p>{{cliente.ciudad}}</p>
           <p>{{cliente.estado}}</p>
@@ -138,13 +138,13 @@
       </div>
       <div class="boton-enviar">
         <div>
-          <button
-            @click="enviarFactura({factura: factura, detalles: detalles, idCliente: idCliente})"
-            class="boton-f"
-          >Enviar</button>
+          <button @click="actualizarContador(2)" class="boton-f">Cancelar</button>
         </div>
         <div>
-          <button @click="actualizarContador(2)" class="boton-f">Cancelar</button>
+          <button
+            @click="enviarFactura({factura: factura, detalles: detalles, idCliente: idCliente})"
+            class="boton-f" id="boton-enviar"
+          >Enviar</button>
         </div>
       </div>
     </div>
@@ -249,6 +249,52 @@ export default {
      */
     eliminarDetalle: function(indice) {
       this.detalles.splice(indice, 1);
+    },
+    /*
+      funcion para validar que todos los campos cuando se cree una factura esten completos
+    */
+    crearFactura(){
+      /*
+      Variables
+      */
+     var camposValidos = true;
+     var camposAValidar = [
+      "nombreCliente",
+      "numeroFactura",
+      "ordenCompra",
+      "fechaFactura",
+      "fechaVencimiento",
+      "subtotal",
+      "id",
+      "numeroPalabras",
+      "monto"
+      ];
+      var camposAValidarNuemros = [
+      "id",
+      "numeroPalabras",
+      "monto"
+      ];
+
+      /*
+      Evalua si hay campos vacios
+      */
+      camposAValidar.forEach(function(campo) {
+        camposValidos = camposValidos && document.getElementById(campo).value != "";
+      });
+      /*
+      Evalua si hay campos numericos menores de 0
+      */
+      camposAValidarNuemros.forEach(function(num) {
+        camposValidos = camposValidos && document.getElementById(num).value > 0;
+      });
+      /*
+      muestra el boton de "enviar" al cumplirse las condiciones dadas
+      */
+      if (camposValidos) {
+        document.getElementById("boton-enviar").style.display = this.$inline;
+      } else {
+        document.getElementById("boton-enviar").style.display = this.$none;
+      }
     }
   },
   mounted() {
@@ -436,5 +482,8 @@ select:hover {
 }
 .td-menos {
   display: flex;
+}
+#boton-enviar{
+  display: none; 
 }
 </style>

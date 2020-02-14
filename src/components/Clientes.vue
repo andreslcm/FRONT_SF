@@ -159,6 +159,7 @@
                   class="iconos-tabla"
                   name="editar-tabla"
                   src="../assets/editar.png"
+                  id="editar-tabla"
                   alt
                 />
               </td>

@@ -3,7 +3,7 @@
   <div class="barra-lateral">
     <!-- Botones -->
     <div class="b-agregar">
-      <button @click="actualizarContador(6)" class="boton">Agregar</button>
+      <button @click="actualizarContador(6)" name="agregar-factura" class="boton">Agregar</button>
     </div>
     <div class="b-borrar">
       <button @click="borrar" class="boton">Borrar</button>
