@@ -1,7 +1,7 @@
 <template>
   <div class="contenedor-clientes">
     <!-- Contenedor modal para editar los datos de un cliente. -->
-    <div id="modal-cliente" class="modal-cliente">
+    <div id="modal-cliente" class="modal-cliente" @keyup="editarCliente()">
       <label for="nombreCliente">
         <b>Nombre</b>
       </label>
@@ -10,6 +10,7 @@
         type="text"
         placeholder="Ingrese el nombre"
         name="nombreCliente"
+        id="nombreCliente"
         required
       />
       <label for="ciudad">
@@ -20,6 +21,7 @@
         type="text"
         placeholder="Ingrese la ciudad"
         name="ciudad"
+        id="ciudad"
         required
       />
       <label for="estado">
@@ -30,12 +32,13 @@
         type="text"
         placeholder="Ingrese el estado"
         name="estado"
+        id="estado"
         required
       />
       <label for="pais">
         <b>País</b>
       </label>
-      <input v-model="cliente.pais" type="text" placeholder="Ingrese el país" name="pais" required />
+      <input v-model="cliente.pais" type="text" placeholder="Ingrese el país" name="pais" id="pais" required />
       <label for="direccion">
         <b>Dirección</b>
       </label>
@@ -44,6 +47,7 @@
         type="text"
         placeholder="Ingrese la dirección"
         name="direccion"
+        id="direccion"
         required
       />
       <label for="codigoPostal">
@@ -54,6 +58,7 @@
         type="text"
         placeholder="Ingrese el código postal"
         name="codigoPostal"
+        id="codigoPostal"
         required
       />
       <label for="correo">
@@ -64,6 +69,7 @@
         type="text"
         placeholder="Ingrese el correo electrónico"
         name="correo"
+        id="correo"
         required
       />
       <label for="terminoPago">
@@ -74,6 +80,7 @@
         type="number"
         placeholder="Ingrese los días del término de pago"
         name="terminoPago"
+        id="terminoPago"
         required
       />
       <label for="palabraTraduccion">
@@ -84,6 +91,7 @@
         type="number"
         placeholder="Ingrese el precio por palabra traducida"
         name="palabraTraduccion"
+        id="palabraTraduccion"
         step=".01"
         required
       />
@@ -95,6 +103,7 @@
         type="number"
         placeholder="Ingrese el precio por palabra editada"
         name="palabraEdicion"
+        id="palabraEdicion"
         step=".01"
         required
       />
@@ -106,15 +115,16 @@
         type="number"
         placeholder="Ingrese el precio por palabra revisada"
         name="palabraProofreading"
+        id="palabraProofreading"
         step=".01"
         required
       />
       <hr />
-      <button @click="actualizar" class="botones">Enviar</button>
       <button @click="cerrarModal" class="botones">Cancelar</button>
+      <button @click="actualizar" id="botonenviar" name="botonenviar" class="botones">Enviar</button>
     </div>
     <div class="caja-iconos">
-      <img @click="actualizarContador(5)" class="iconos" src="../assets/agregar.png" alt />
+      <img @click="actualizarContador(5)" id="agregarCliente" name="agregarCliente" class="iconos" src="../assets/agregar.png" alt />
     </div>
     <!-- Tabla de clientes -->
     <div class="contenedor-tabla">
@@ -138,6 +148,7 @@
                 <img
                   @click="borrarCliente(cliente.idCliente)"
                   class="iconos-tabla"
+                  name="borrar-tabla"
                   src="../assets/borrar.png"
                   alt
                 />
@@ -146,6 +157,7 @@
                 <img
                   @click="activarModal(cliente.idCliente)"
                   class="iconos-tabla"
+                  name="editar-tabla"
                   src="../assets/editar.png"
                   alt
                 />
@@ -225,6 +237,55 @@ export default {
     actualizar: function() {
       this.actualizarCliente(this.cliente);
       this.cerrarModal();
+    },
+    /*
+    Funcion para verificar que se completen todos los datos del cliente al editarlo
+    */
+    editarCliente(){
+      /*
+      Variables
+      */
+     var camposValidos = true;
+     var camposAValidar = [
+      "nombreCliente",
+      "ciudad",
+      "estado",
+      "pais",
+      "correo",
+      "direccion",
+      "codigoPostal",
+      "terminoPago",
+      "palabraTraduccion",
+      "palabraEdicion",
+      "palabraProofreading",
+      ];
+      var camposAValidarNuemros = [
+      "terminoPago",
+      "palabraTraduccion",
+      "palabraEdicion",
+      "palabraProofreading",
+      ];
+
+      /*
+      Evalua si hay campos vacios
+      */
+      camposAValidar.forEach(function(campo) {
+        camposValidos = camposValidos && document.getElementById(campo).value != "";
+      });
+      /*
+      Evalua si hay campos numericos menores de 0
+      */
+      camposAValidarNuemros.forEach(function(num) {
+        camposValidos = camposValidos && document.getElementById(num).value > 0;
+      });
+      /*
+      muestra el boton de "enviar" al cumplirse las condiciones dadas
+      */
+      if (camposValidos) {
+        document.getElementById("botonenviar").style.display = this.$inline;
+      } else {
+        document.getElementById("botonenviar").style.display = this.$none;
+      }
     }
   },
   computed: {
