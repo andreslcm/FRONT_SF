@@ -196,7 +196,6 @@ export default {
       */
       camposAValidar.forEach(function(campo) {
         camposValidos = camposValidos && document.getElementById(campo).value != "";
-        console.log(campo)
       });
 
       /*
