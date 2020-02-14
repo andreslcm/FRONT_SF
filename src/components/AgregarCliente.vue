@@ -2,7 +2,7 @@
 <div>
 <img class="titulo" src="../assets/tituloclientes.png"/>
 
-  <div class="contenedor-ac">
+  <div class="contenedor-ac"  @keyup="agregarCliente()">
     <!-- Contenedor izquierdo de datos del cliente -->
     <div class="datos-izquierda">
       <h2>Datos del cliente</h2>
@@ -15,6 +15,7 @@
         type="text"
         placeholder="Ingrese el nombre"
         name="nombreCliente"
+        id="nombreCliente"
         required
       />
       <label for="ciudad">
@@ -25,6 +26,7 @@
         type="text"
         placeholder="Ingrese la ciudad"
         name="ciudad"
+        id="ciudad"
         required
       />
       <label for="estado">
@@ -35,12 +37,13 @@
         type="text"
         placeholder="Ingrese el estado"
         name="estado"
+        id="estado"
         required
       />
       <label for="pais">
         <b>País</b>
       </label>
-      <input v-model="cliente.pais" type="text" placeholder="Ingrese el país" name="pais" required />
+      <input v-model="cliente.pais" type="text" placeholder="Ingrese el país" name="pais" id="pais" required />
       <label for="direccion">
         <b>Dirección</b>
       </label>
@@ -49,6 +52,7 @@
         type="text"
         placeholder="Ingrese la dirección"
         name="direccion"
+        id="direccion"
         required
       />
       <label for="codigoPostal">
@@ -59,6 +63,7 @@
         type="text"
         placeholder="Ingrese el código postal"
         name="codigoPostal"
+        id="codigoPostal"
         required
       />
       <label for="correo">
@@ -69,6 +74,7 @@
         type="text"
         placeholder="Ingrese el correo electrónico"
         name="correo"
+        id="correo"
         required
       />
     </div>
@@ -84,6 +90,7 @@
         type="number"
         placeholder="Ingrese los días del término de pago"
         name="terminoPago"
+        id="terminoPago"
         required
       />
       <label for="palabraTraduccion">
@@ -94,6 +101,7 @@
         type="number"
         placeholder="Ingrese el precio por palabra traducida"
         name="palabraTraduccion"
+        id="palabraTraduccion"
         step=".01"
         required
       />
@@ -105,6 +113,7 @@
         type="number"
         placeholder="Ingrese el precio por palabra editada"
         name="palabraEdicion"
+        id="palabraEdicion"
         step=".01"
         required
       />
@@ -116,11 +125,12 @@
         type="number"
         placeholder="Ingrese el precio por palabra revisada"
         name="palabraProofreading"
+        id="palabraProofreading"
         step=".01"
         required
       />
       
-      <button class="boton-enviar" @click="agregarCliente(cliente)">Enviar</button>
+      <button class="boton-enviar" id="boton-enviar" @click="agregarCliente(cliente)">Enviar</button>
     </div>
   </div>
 </div>
@@ -150,7 +160,54 @@ export default {
     };
   },
   methods: {
-    ...mapActions(["agregarCliente"])
+    ...mapActions(["agregarCliente"]),
+    agregarCliente(){
+      /*
+      Variables
+      */
+     var camposValidos = true;
+     var camposAValidar = [
+      "nombreCliente",
+      "ciudad",
+      "estado",
+      "pais",
+      "correo",
+      "direccion",
+      "codigoPostal",
+      "terminoPago",
+      "palabraTraduccion",
+      "palabraEdicion",
+      "palabraProofreading",
+      ];
+      var camposAValidarNuemros = [
+      "terminoPago",
+      "palabraTraduccion",
+      "palabraEdicion",
+      "palabraProofreading",
+      ];
+    
+
+      /*
+      Evalua si hay campos vacios
+      */
+      camposAValidar.forEach(function(campo) {
+        camposValidos = camposValidos && document.getElementById(campo).value != "";
+      });
+      /*
+      Evalua si hay campos numericos menores de 0
+      */
+      camposAValidarNuemros.forEach(function(num) {
+        camposValidos = camposValidos && document.getElementById(num).value > 0;
+      });
+      /*
+      muestra el boton de "enviar" al cumplirse las condiciones dadas
+      */
+      if (camposValidos) {
+        document.getElementById("boton-enviar").style.display = this.$block;
+      } else {
+        document.getElementById("boton-enviar").style.display = this.$none;
+      }
+    }
   }
 };
 </script>
@@ -240,6 +297,7 @@ hr {
   opacity: 0.9;
   text-align: center;
   margin-top: 1%;
+  display: none;
 }
 .boton-enviar:hover {
   opacity: 1;
