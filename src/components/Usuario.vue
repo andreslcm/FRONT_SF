@@ -3,7 +3,7 @@
 
   <img class="EditPerfil" src="../assets/Eperfil.png"/>
   <!-- Contenedor de datos del usuario -->
-  <div class="contenedor-usuario">
+  <div class="contenedor-usuario" @keyup="editarUsuario()">
     <div class="u-datos">
       <label for="nombreUsuario">
         <b>Nombre</b>
@@ -13,6 +13,7 @@
         type="text"
         placeholder="Ingrese el nombre"
         name="nombreUsuario"
+        id="nombre"
         required
       />
       <label for="apellidoCliente">
@@ -23,6 +24,7 @@
         type="text"
         placeholder="Ingrese el apellido"
         name="apellidoCliente"
+        id="apellidoCliente"
         required
       />
       <label for="nombreUsuario">
@@ -33,6 +35,7 @@
         type="text"
         placeholder="Ingrese de usuario"
         name="nombreUsuario"
+        id="nombreUsuario"
         required
       />
       <label for="contrasena">
@@ -43,6 +46,7 @@
         type="password"
         placeholder="Ingrese su contraseña"
         name="contrasena"
+        id="contrasena"
         required
       />
       <label for="ciudad">
@@ -53,6 +57,7 @@
         type="text"
         placeholder="Ingrese la ciudad"
         name="ciudad"
+        id="ciudad"
         required
       />
       <label for="estado">
@@ -63,12 +68,13 @@
         type="text"
         placeholder="Ingrese el estado"
         name="estado"
+        id="estado"
         required
       />
       <label for="pais">
         <b>País</b>
       </label>
-      <input v-model="usuario.pais" type="text" placeholder="Ingrese el país" name="pais" required />
+      <input v-model="usuario.pais" type="text" placeholder="Ingrese el país" name="pais" id="pais" required />
       <label for="direccion">
         <b>Dirección</b>
       </label>
@@ -77,6 +83,7 @@
         type="text"
         placeholder="Ingrese la dirección"
         name="direccion"
+        id="direccion"
         required
       />
       <label for="codigoPostal">
@@ -87,6 +94,7 @@
         type="text"
         placeholder="Ingrese el código postal"
         name="codigoPostal"
+        id="codigoPostal"
         required
       />
       <label for="correo">
@@ -97,6 +105,7 @@
         type="text"
         placeholder="Ingrese el correo electrónico"
         name="correo"
+        id="correo"
         required
       />
       <label for="paypal">
@@ -107,11 +116,12 @@
         type="text"
         placeholder="Ingrese su correo asociado a PayPal"
         name="paypal"
+        id="paypal"
         required
       />
     </div>
     <div class="u-botones">
-      <button @click="actualizarDatosUsuario(usuario)" class="boton-enviar">Actualizar</button>
+      <button @click="actualizarDatosUsuario(usuario)" id="boton-enviar" class="boton-enviar">Actualizar</button>
     </div>
   </div>
   </div>
@@ -158,6 +168,44 @@ export default {
       this.usuario.telefono = this.getDatosUsuario.telefono;
       this.usuario.datosPaypal = this.getDatosUsuario.datosPaypal;
       this.usuario.datosPayoneer = this.getDatosUsuario.datosPayoneer;
+    },
+    /*
+      funcion para validar que todos los campos cuando se edita un cliente esten completos
+    */
+    editarUsuario(){
+      /*
+      Variables
+      */
+     var camposValidos = true;
+     var camposAValidar = [
+      "nombreUsuario",
+      "nombre",
+      "apellidoCliente",
+      "ciudad",
+      "estado",
+      "pais",
+      "correo",
+      "direccion",
+      "codigoPostal",
+      "contrasena",
+      "paypal",
+      ];
+
+      /*
+      Evalua si hay campos vacios
+      */
+      camposAValidar.forEach(function(campo) {
+        camposValidos = camposValidos && document.getElementById(campo).value != "";
+      });
+
+      /*
+      muestra el boton de "actualizar" al cumplirse las condiciones dadas
+      */
+      if (camposValidos) {
+        document.getElementById("boton-enviar").style.display = this.$inline;
+      } else {
+        document.getElementById("boton-enviar").style.display = this.$none;
+      }
     }
   },
   computed: {
@@ -245,5 +293,9 @@ hr {
   height: 6%;
   margin-left: 50%;
   margin-top: 2.5%;
+}
+
+#boton-enviar{
+  display: none;
 }
 </style>
