@@ -251,7 +251,7 @@ export default {
       this.detalles.splice(indice, 1);
     },
     /*
-      funcion para validar que todos los campos cuando se edita un cliente esten completos
+      funcion para validar que todos los campos cuando se cree una factura esten completos
     */
     crearFactura(){
       /*
@@ -288,7 +288,7 @@ export default {
         camposValidos = camposValidos && document.getElementById(num).value > 0;
       });
       /*
-      muestra el boton de "actualizar" al cumplirse las condiciones dadas
+      muestra el boton de "enviar" al cumplirse las condiciones dadas
       */
       if (camposValidos) {
         document.getElementById("boton-enviar").style.display = this.$inline;
@@ -484,6 +484,6 @@ select:hover {
   display: flex;
 }
 #boton-enviar{
-  display: none;
+  display: none; 
 }
 </style>
